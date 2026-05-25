@@ -1,0 +1,3859 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تراث الجزائر | توثيق ورقمنة التراث الجزائري</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Noto+Naskh+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --brown-deep: #0a1e2e;
+  --brown-mid: #1a4a6e;
+  --brown-warm: #2a6fa0;
+  --gold: #4da3d4;
+  --gold-light: #7ec5e8;
+  --gold-pale: #d0eaf7;
+  --cream: #eef6fb;
+  --cream-dark: #d0e8f5;
+  --ivory: #f5fafd;
+  --terracotta: #1a6fa8;
+  --green-heritage: #1a5a7a;
+  --green-light: #2a8ab0;
+  --text-dark: #071520;
+  --text-mid: #1a3a55;
+  --shadow: rgba(10,30,46,0.3);
+
+  /* ألوان إضافية — طابع أزرق بارد */
+  --cool-blue: #1a6fa8;
+  --cool-blue-light: #4da3d4;
+  --cool-blue-pale: #d0eaf7;
+  --accent-yellow: #4da3d4;
+  --accent-yellow-light: #7ec5e8;
+  --accent-green: #2a8ab0;
+  --accent-green-light: #4db8d8;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: 'Noto Naskh Arabic', serif;
+  background: var(--cream);
+  color: var(--text-dark);
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* ══════════════════════════════════════════
+   ISLAMIC GEOMETRIC SVG PATTERNS
+══════════════════════════════════════════ */
+.pattern-bg {
+  position: fixed; top:0; left:0; width:100%; height:100%;
+  pointer-events:none; z-index:0; opacity:0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cg fill='none' stroke='%231a4a6e' stroke-width='0.8'%3E%3Cpolygon points='50,5 61,35 95,35 68,57 79,91 50,70 21,91 32,57 5,35 39,35'/%3E%3Cpolygon points='50,18 58,40 82,40 63,55 70,78 50,63 30,78 37,55 18,40 42,40'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 100px 100px;
+}
+
+/* ══════════════════════════════════════════
+   ORNAMENTAL BORDER FRAME
+══════════════════════════════════════════ */
+.frame-border {
+  position: fixed; inset: 8px; pointer-events: none; z-index: 999;
+  border: 3px solid var(--brown-mid);
+  box-shadow: inset 0 0 0 2px var(--gold), 0 0 0 2px var(--gold);
+}
+.frame-border::before {
+  content:'';
+  position:absolute; inset:4px;
+  border: 1px solid var(--gold-light);
+  opacity: 0.5;
+}
+.corner-ornament {
+  position:fixed; width:60px; height:60px; z-index:1000; pointer-events:none;
+}
+.corner-ornament svg { width:100%; height:100%; }
+.co-tl { top:8px; right:8px; }
+.co-tr { top:8px; left:8px; transform:scaleX(-1); }
+.co-bl { bottom:8px; right:8px; transform:scaleY(-1); }
+.co-br { bottom:8px; left:8px; transform:scale(-1); }
+
+/* ══════════════════════════════════════════
+   HERO / WELCOME SCREEN
+══════════════════════════════════════════ */
+#hero {
+  min-height: 100vh;
+  display: flex; flex-direction:column; align-items:center; justify-content:center;
+  position:relative; overflow:hidden;
+  background: radial-gradient(ellipse at center, #d0eaf7 0%, #7ec5e8 40%, #1a6fa8 100%);
+}
+
+/* ── Full-cover arabesque tile layer (from photo pattern) ── */
+.hero-arabesque-tile {
+  position:absolute; inset:0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cdefs%3E%3Cstyle%3E.l%7Bfill:none;stroke:%231a4a6e;stroke-width:1.1%7D.lf%7Bfill:%23c8922a;fill-opacity:0.18;stroke:%231a4a6e;stroke-width:0.8%7D.lfd%7Bfill:%233d1f0a;fill-opacity:0.22;stroke:%231a4a6e;stroke-width:0.7%7D%3C/style%3E%3C/defs%3E%3C!-- Lozenge tile (repeating unit) --%3E%3C!-- center lozenge --%3E%3Cpath class='lf' d='M100 20 L140 100 L100 180 L60 100 Z'/%3E%3C!-- inner lozenge --%3E%3Cpath class='lfd' d='M100 40 L128 100 L100 160 L72 100 Z'/%3E%3C!-- inner flower cross --%3E%3Cpath class='l' d='M100 55 Q115 100 100 145 Q85 100 100 55'/%3E%3Cpath class='l' d='M57 100 Q100 85 143 100 Q100 115 57 100'/%3E%3Ccircle class='l' cx='100' cy='100' r='18'/%3E%3Ccircle class='lf' cx='100' cy='100' r='10'/%3E%3C!-- petal tips --%3E%3Ccircle cx='100' cy='62' r='5' fill='%23c8922a' fill-opacity='0.5'/%3E%3Ccircle cx='100' cy='138' r='5' fill='%23c8922a' fill-opacity='0.5'/%3E%3Ccircle cx='62' cy='100' r='5' fill='%23c8922a' fill-opacity='0.5'/%3E%3Ccircle cx='138' cy='100' r='5' fill='%23c8922a' fill-opacity='0.5'/%3E%3C!-- connecting chain between lozenges --%3E%3Cpath class='l' d='M100 20 L100 0'/%3E%3Cpath class='l' d='M100 180 L100 200'/%3E%3Cpath class='l' d='M140 100 L200 100'/%3E%3Cpath class='l' d='M60 100 L0 100'/%3E%3C!-- diagonal connectors --%3E%3Cpath class='l' d='M140 100 L200 0'/%3E%3Cpath class='l' d='M60 100 L0 0'/%3E%3Cpath class='l' d='M140 100 L200 200'/%3E%3Cpath class='l' d='M60 100 L0 200'/%3E%3C!-- corner small medallion hints --%3E%3Ccircle class='l' cx='0' cy='0' r='14'/%3E%3Ccircle class='l' cx='200' cy='0' r='14'/%3E%3Ccircle class='l' cx='0' cy='200' r='14'/%3E%3Ccircle class='l' cx='200' cy='200' r='14'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+  opacity: 0.22;
+  pointer-events:none;
+}
+
+/* ── Big central medallion (like the round one in the photo) ── */
+.hero-medallion {
+  position:absolute;
+  width: min(80vw, 650px);
+  height: min(80vw, 650px);
+  top:50%; left:50%;
+  transform:translate(-50%,-50%);
+  opacity:0.15;
+  pointer-events:none;
+  animation: slowSpin 80s linear infinite;
+}
+@keyframes slowSpin { from{transform:translate(-50%,-50%) rotate(0deg)} to{transform:translate(-50%,-50%) rotate(360deg)} }
+
+.hero-arabesque {
+  position:absolute; inset:0; overflow:hidden; pointer-events:none;
+}
+
+.hero-watermark {
+  position:absolute; inset:0;
+  background: radial-gradient(circle at 50% 50%, rgba(208,234,247,0.55) 0%, transparent 65%),
+              radial-gradient(circle at 20% 15%, rgba(26,111,168,0.12) 0%, transparent 40%),
+              radial-gradient(circle at 80% 85%, rgba(77,163,212,0.1) 0%, transparent 40%);
+  pointer-events:none;
+}
+
+.hero-content {
+  position:relative; z-index:2; text-align:center; padding: 40px;
+}
+
+.hero-title-ar {
+  font-family:'Amiri', serif;
+  font-size: clamp(3rem, 8vw, 6rem);
+  color: var(--brown-deep);
+  line-height:1.2;
+  text-shadow: 2px 4px 12px rgba(61,31,10,0.2);
+  margin-bottom:10px;
+  animation: fadeDown 1.2s ease both;
+}
+
+.hero-title-sub {
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
+  color: var(--brown-mid);
+  margin-bottom: 30px;
+  animation: fadeDown 1.2s 0.3s ease both;
+  opacity:0.9;
+}
+
+.hero-divider {
+  display:flex; align-items:center; justify-content:center; gap:12px;
+  margin: 20px auto 30px;
+  animation: fadeDown 1.2s 0.5s ease both;
+}
+.hero-divider span { font-size:1.4rem; color:var(--gold); }
+.hero-divider hr { width:80px; border:none; border-top:2px solid var(--gold-light); }
+
+.hero-desc {
+  font-size:1.1rem; color:var(--text-mid); max-width:600px; margin:0 auto 40px;
+  line-height:1.9;
+  animation: fadeDown 1.2s 0.6s ease both;
+}
+
+.hero-enter-btn {
+  font-family:'Amiri', serif;
+  font-size:1.3rem;
+  padding: 14px 50px;
+  background: linear-gradient(135deg, var(--brown-deep), var(--brown-mid));
+  color: var(--gold-pale);
+  border: 2px solid var(--gold);
+  border-radius: 4px;
+  cursor:pointer;
+  transition: all 0.3s;
+  animation: fadeDown 1.2s 0.8s ease both;
+  letter-spacing:2px;
+  position:relative; overflow:hidden;
+}
+.hero-enter-btn::after {
+  content:''; position:absolute; inset:0;
+  background: linear-gradient(135deg, transparent, rgba(200,146,42,0.2));
+  opacity:0; transition:0.3s;
+}
+.hero-enter-btn:hover { transform:translateY(-2px); box-shadow:0 8px 30px var(--shadow); }
+.hero-enter-btn:hover::after { opacity:1; }
+
+@keyframes fadeDown { from{opacity:0;transform:translateY(-20px)} to{opacity:1;transform:translateY(0)} }
+
+/* ══════════════════════════════════════════
+   MAIN APP (hidden initially)
+══════════════════════════════════════════ */
+#app { display:none; }
+
+/* ══════════════════════════════════════════
+   HEADER
+══════════════════════════════════════════ */
+#main-header {
+  background: linear-gradient(135deg, var(--brown-deep) 0%, var(--brown-mid) 55%, var(--cool-blue) 100%);
+  padding: 16px 30px;
+  display:flex; align-items:center; justify-content:space-between;
+  position:sticky; top:0; z-index:100;
+  border-bottom: 3px solid var(--cool-blue-light);
+  box-shadow: 0 4px 20px rgba(26,63,92,0.4);
+}
+.header-logo {
+  font-family:'Amiri', serif;
+  font-size:1.6rem; color:var(--gold-pale);
+  display:flex; align-items:center; gap:12px;
+}
+.header-logo span { font-size:1.8rem; }
+
+/* ══════════════════════════════════════════
+   NAVIGATION TABS
+══════════════════════════════════════════ */
+.nav-tabs {
+  display:flex; gap:6px;
+}
+.nav-tab {
+  font-family:'Amiri', serif;
+  font-size:1rem;
+  padding:10px 20px;
+  background: rgba(255,255,255,0.08);
+  color: var(--gold-pale);
+  border:1px solid rgba(200,146,42,0.3);
+  border-radius:4px;
+  cursor:pointer;
+  transition:all 0.25s;
+  display:flex; align-items:center; gap:8px;
+}
+.nav-tab:hover { background:rgba(77,163,212,0.25); border-color: var(--cool-blue-light); }
+.nav-tab.active {
+  background: linear-gradient(135deg, var(--cool-blue), var(--brown-mid));
+  color: white;
+  border-color: var(--cool-blue-light);
+  font-weight:700;
+}
+.nav-tab .tab-icon { font-size:1.2rem; }
+
+/* ══════════════════════════════════════════
+   PAGE SECTIONS
+══════════════════════════════════════════ */
+.page-section { display:none; padding:30px 20px; min-height:80vh; }
+.page-section.active { display:block; }
+
+.section-hero {
+  text-align:center;
+  padding: 40px 20px 30px;
+  background: linear-gradient(180deg, #c8e8f8 0%, var(--cream-dark) 60%, var(--cream) 100%);
+  border-bottom: 3px solid var(--cool-blue-light);
+  margin-bottom:30px;
+  position:relative;
+}
+.section-hero::after {
+  content:'';
+  position:absolute; bottom:0; left:0; right:0; height:3px;
+  background: linear-gradient(90deg, var(--cool-blue), var(--brown-mid), var(--cool-blue));
+}
+.section-hero h2 {
+  font-family:'Amiri', serif;
+  font-size:2.5rem; color:var(--brown-deep);
+}
+.section-hero p { color:var(--text-mid); margin-top:8px; }
+.ornament-line {
+  display:flex; align-items:center; justify-content:center; gap:10px; margin:15px 0;
+}
+.ornament-line hr { width:100px; border-color:var(--gold-light); }
+.ornament-line span { color:var(--accent-yellow); font-size:1.5rem; }
+
+/* ══════════════════════════════════════════
+   TAB 1: WILAYAS
+══════════════════════════════════════════ */
+.search-bar-wrap {
+  display:flex; justify-content:center; margin-bottom:30px;
+}
+.search-bar {
+  font-family:'Noto Naskh Arabic', serif;
+  width:100%; max-width:500px;
+  padding:12px 20px;
+  border:2px solid var(--gold-light);
+  border-radius:40px;
+  background:white;
+  font-size:1rem; color:var(--text-dark);
+  outline:none;
+  text-align:right;
+  transition:border-color 0.3s;
+}
+.search-bar:focus { border-color:var(--cool-blue); }
+
+.wilayas-grid {
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap:14px;
+  max-width:1200px; margin:0 auto;
+}
+.wilaya-card {
+  background: white;
+  border:1px solid var(--gold-light);
+  border-radius:8px;
+  padding:16px 12px;
+  text-align:center;
+  cursor:pointer;
+  transition:all 0.25s;
+  position:relative;
+  overflow:hidden;
+}
+.wilaya-card::before {
+  content:'';
+  position:absolute; top:0; right:0;
+  width:4px; height:100%;
+  background:linear-gradient(180deg, var(--cool-blue), var(--accent-green));
+}
+.wilaya-card:hover {
+  transform:translateY(-4px);
+  box-shadow:0 8px 24px rgba(122,59,18,0.2);
+  border-color:var(--gold);
+}
+.wilaya-num {
+  font-size:0.8rem; color:var(--cool-blue);
+  font-weight:700; margin-bottom:4px;
+}
+.wilaya-name {
+  font-family:'Amiri', serif;
+  font-size:1.15rem; color:var(--brown-deep);
+  font-weight:700;
+}
+.wilaya-region {
+  font-size:0.75rem; color:#999; margin-top:4px;
+}
+
+/* WILAYA DETAIL MODAL */
+.modal-overlay {
+  display:none; position:fixed; inset:0;
+  background:rgba(5,15,25,0.75);
+  z-index:500; overflow-y:auto;
+  backdrop-filter:blur(4px);
+}
+.modal-overlay.open { display:flex; align-items:flex-start; justify-content:center; padding:30px 15px; }
+.modal-box {
+  background:var(--cream);
+  border-radius:12px;
+  max-width:900px; width:100%;
+  position:relative;
+  border:2px solid var(--gold);
+  overflow:hidden;
+  animation:modalIn 0.35s ease;
+}
+@keyframes modalIn { from{opacity:0;transform:scale(0.95)} to{opacity:1;transform:scale(1)} }
+@keyframes modalSlideUp { from{transform:translateY(100%)} to{transform:translateY(0)} }
+@media(max-width:600px){
+  .modal-box {
+    animation: modalSlideUp 0.35s cubic-bezier(0.34,1.06,0.64,1) both;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    box-sizing: border-box;
+  }
+}
+.modal-header {
+  background:linear-gradient(135deg, var(--brown-deep), var(--brown-mid));
+  padding:24px 30px;
+  display:flex; align-items:center; justify-content:space-between;
+  border-bottom:2px solid var(--gold);
+}
+.modal-header h2 {
+  font-family:'Amiri', serif;
+  font-size:2rem; color:var(--gold-pale);
+}
+.modal-header p { color:rgba(245,223,160,0.7); font-size:0.9rem; }
+.modal-close {
+  background:none; border:none; color:var(--gold-pale);
+  font-size:1.5rem; cursor:pointer; padding:4px 10px;
+  border-radius:4px; transition:background 0.2s;
+}
+.modal-close:hover { background:rgba(255,255,255,0.15); }
+.modal-body { padding:30px; }
+
+.sites-grid {
+  display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr));
+  gap:20px;
+}
+@media(max-width:600px){
+  .sites-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px;
+  }
+  .modal-body { padding: 14px 10px 30px !important; }
+  .wilaya-subpane { padding: 12px 8px !important; }
+}
+.site-card {
+  background:white;
+  border-radius:10px;
+  overflow:hidden;
+  border:1px solid var(--cream-dark);
+  transition:box-shadow 0.25s;
+  min-width:0;
+  max-width:100%;
+}
+.site-card:hover { box-shadow:0 6px 20px rgba(122,59,18,0.15); }
+.site-img {
+  width:100%; height:160px; object-fit:cover;
+  background:linear-gradient(135deg, var(--brown-warm), var(--gold));
+  display:flex; align-items:center; justify-content:center;
+  font-size:3rem; color:white;
+}
+.site-img img { width:100%; height:100%; object-fit:cover; }
+.site-info { padding:16px; }
+.site-name {
+  font-family:'Amiri', serif;
+  font-size:1.2rem; color:var(--brown-deep);
+  font-weight:700; margin-bottom:8px;
+}
+.site-desc { font-size:0.88rem; color:var(--text-mid); line-height:1.7; margin-bottom:12px; word-break:break-word; overflow-wrap:break-word; }
+.site-name { word-break:break-word; overflow-wrap:break-word; }
+.site-info { overflow:hidden; }
+.site-map-btn {
+  display:inline-flex; align-items:center; gap:6px;
+  padding:7px 16px;
+  background:linear-gradient(135deg, var(--cool-blue), var(--cool-blue-light));
+  color:white; text-decoration:none;
+  border-radius:20px; font-size:0.85rem;
+  transition:opacity 0.2s;
+}
+.site-map-btn:hover { opacity:0.85; }
+
+/* ── تعديل وصف الموقع ── */
+.site-desc-wrap { margin-bottom: 12px; }
+.site-desc {
+  font-size:0.88rem; color:var(--text-mid); line-height:1.7;
+  word-break:break-word; overflow-wrap:break-word;
+}
+.site-desc-edit-btn {
+  display: inline-flex; align-items: center; gap: 4px;
+  margin-top: 6px;
+  padding: 4px 12px;
+  background: var(--cool-blue-pale);
+  border: 1px solid var(--cool-blue-light);
+  border-radius: 20px;
+  font-family: 'Noto Naskh Arabic', serif;
+  font-size: 0.78rem; color: var(--cool-blue);
+  cursor: pointer; transition: background 0.2s;
+}
+.site-desc-edit-btn:hover { background: var(--cool-blue-light); color: white; }
+.site-desc-editor {
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+.site-desc-editor textarea {
+  font-family: 'Noto Naskh Arabic', serif;
+  width: 100%; padding: 10px 13px;
+  border: 2px solid var(--cool-blue);
+  border-radius: 8px;
+  font-size: 0.9rem; color: var(--text-dark);
+  background: white; outline: none;
+  text-align: right; resize: vertical; min-height: 90px;
+  line-height: 1.7; box-sizing: border-box;
+}
+.site-desc-editor textarea:focus { border-color: var(--brown-mid); }
+.site-desc-editor-actions { display: flex; gap: 8px; }
+.site-desc-save {
+  flex: 1; padding: 9px 14px;
+  background: linear-gradient(135deg, var(--brown-deep), var(--brown-mid));
+  color: var(--gold-pale);
+  border: 2px solid var(--cool-blue-light);
+  border-radius: 8px;
+  font-family: 'Noto Naskh Arabic', serif;
+  font-size: 0.9rem; font-weight: 700;
+  cursor: pointer; transition: opacity 0.2s;
+}
+.site-desc-save:hover { opacity: 0.88; }
+.site-desc-cancel {
+  padding: 9px 14px;
+  background: var(--cream); color: var(--text-mid);
+  border: 1px solid var(--cream-dark);
+  border-radius: 8px;
+  font-family: 'Noto Naskh Arabic', serif;
+  font-size: 0.9rem; cursor: pointer;
+}
+@media(max-width:600px){
+  .site-desc-editor textarea { font-size: 16px !important; }
+}
+
+/* ── زر + المطور على بطاقات المواقع ── */
+.site-img { position: relative; }
+.dev-img-btn {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%) scale(0.7);
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  border: 2px solid rgba(255,255,255,0.5);
+  color: white;
+  font-size: 1.6rem; line-height: 1;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(4px);
+  z-index: 10;
+}
+.site-img:hover .dev-img-btn,
+.plan-img-wrap:hover .dev-img-btn {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+.dev-img-btn:hover {
+  background: rgba(200,146,42,0.7) !important;
+  border-color: var(--gold-light) !important;
+  transform: translate(-50%, -50%) scale(1.1) !important;
+}
+/* إذا كان هناك صورة — يظهر الزر في الزاوية بدل المركز */
+.site-img.has-img .dev-img-btn,
+.plan-img-wrap.has-img .dev-img-btn {
+  top: 10px; left: auto; right: 10px;
+  transform: scale(0.7);
+  width: 36px; height: 36px;
+  font-size: 1.1rem;
+  background: rgba(0,0,0,0.35);
+  border-color: rgba(255,255,255,0.4);
+}
+.site-img.has-img:hover .dev-img-btn,
+.plan-img-wrap.has-img:hover .dev-img-btn {
+  opacity: 1;
+  transform: scale(1);
+}
+.dev-img-btn:hover { z-index: 20; }
+
+/* ══════════════════════════════════════════
+   TAB 2: HERITAGE PLANS
+══════════════════════════════════════════ */
+.plans-grid {
+  display:grid; grid-template-columns:repeat(auto-fill, minmax(300px, 1fr));
+  gap:24px; max-width:1200px; margin:0 auto;
+}
+.plan-card {
+  background:white;
+  border-radius:12px;
+  overflow:hidden;
+  border:1px solid var(--gold-light);
+  transition:all 0.25s;
+}
+.plan-card:hover { transform:translateY(-4px); box-shadow:0 10px 30px rgba(122,59,18,0.2); }
+.plan-img-wrap {
+  width:100%; height:220px;
+  background:linear-gradient(135deg, var(--brown-deep), var(--brown-warm));
+  display:flex; align-items:center; justify-content:center;
+  font-size:4rem; position:relative; overflow:hidden;
+}
+.plan-badge {
+  position:absolute; top:12px; right:12px;
+  background:var(--accent-yellow); color:var(--brown-deep);
+  font-size:0.75rem; padding:4px 10px; border-radius:20px; font-weight:700;
+}
+.plan-content { padding:20px; }
+.plan-name {
+  font-family:'Amiri', serif;
+  font-size:1.4rem; color:var(--brown-deep); margin-bottom:10px;
+}
+.plan-location {
+  display:flex; align-items:center; gap:6px;
+  font-size:0.85rem; color:var(--cool-blue); margin-bottom:12px;
+}
+.plan-desc { font-size:0.9rem; color:var(--text-mid); line-height:1.75; margin-bottom:15px; }
+.plan-details {
+  display:grid; grid-template-columns:1fr 1fr; gap:10px;
+  background:var(--cream); border-radius:8px; padding:12px;
+}
+.plan-detail-item { font-size:0.82rem; }
+.plan-detail-label { color:var(--accent-yellow); font-weight:700; }
+.plan-detail-val { color:var(--text-mid); }
+
+/* ══════════════════════════════════════════
+   TAB 3: COMMUNITY
+══════════════════════════════════════════ */
+.community-layout {
+  max-width:900px; margin:0 auto;
+}
+
+.upload-zone {
+  border:2px dashed var(--gold-light);
+  border-radius:12px;
+  padding:40px;
+  text-align:center;
+  cursor:pointer;
+  margin-bottom:30px;
+  background:white;
+  transition:all 0.25s;
+  position:relative;
+}
+.upload-zone:hover { border-color:var(--gold); background:var(--cream); }
+.upload-zone input[type=file] { display:none; }
+.upload-icon { font-size:2.5rem; margin-bottom:10px; }
+.upload-title { font-family:'Amiri', serif; font-size:1.4rem; color:var(--brown-deep); }
+.upload-sub { font-size:0.9rem; color:#999; margin-top:5px; }
+
+.post-form-grid {
+  display:grid; grid-template-columns:1fr 1fr; gap:15px; margin-bottom:20px;
+}
+.form-field {
+  display:flex; flex-direction:column; gap:6px;
+}
+.form-field label { font-size:0.9rem; color:var(--brown-mid); font-weight:600; }
+.form-field input, .form-field textarea, .form-field select {
+  font-family:'Noto Naskh Arabic', serif;
+  padding:10px 14px;
+  border:1px solid var(--gold-light);
+  border-radius:6px;
+  font-size:0.95rem; color:var(--text-dark);
+  background:white;
+  outline:none; transition:border 0.2s;
+  text-align:right;
+}
+.form-field input:focus, .form-field textarea:focus { border-color:var(--gold); }
+.form-field textarea { resize:vertical; min-height:80px; }
+
+.preview-img-wrap {
+  display:none; text-align:center; margin-bottom:20px;
+}
+.preview-img-wrap img { max-height:200px; border-radius:8px; border:2px solid var(--gold-light); }
+
+.submit-post-btn {
+  font-family:'Amiri', serif;
+  width:100%; padding:14px;
+  background:linear-gradient(135deg, var(--brown-deep), var(--brown-mid));
+  color:var(--gold-pale);
+  border:2px solid var(--gold);
+  border-radius:8px;
+  font-size:1.2rem; cursor:pointer;
+  transition:all 0.25s;
+}
+.submit-post-btn:hover { opacity:0.9; transform:translateY(-1px); }
+
+.posts-feed { margin-top:40px; }
+.posts-feed h3 {
+  font-family:'Amiri', serif;
+  font-size:1.6rem; color:var(--brown-deep);
+  margin-bottom:20px; padding-bottom:10px;
+  border-bottom:2px solid var(--gold-light);
+}
+
+.post-item {
+  background:white;
+  border-radius:12px;
+  overflow:hidden;
+  border:1px solid var(--cream-dark);
+  margin-bottom:24px;
+  transition:box-shadow 0.25s;
+}
+.post-item:hover { box-shadow:0 6px 20px rgba(122,59,18,0.1); }
+.post-img { width:100%; max-height:350px; object-fit:cover; }
+.post-body { padding:20px; }
+.post-meta { display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; }
+.post-author { font-weight:700; color:var(--brown-mid); font-size:0.95rem; }
+.post-place { font-size:0.82rem; color:var(--accent-green); }
+.post-date { font-size:0.78rem; color:#bbb; }
+.post-text { color:var(--text-mid); line-height:1.7; margin-bottom:16px; }
+
+.comments-section { border-top:1px solid var(--cream-dark); padding-top:16px; }
+.comment-item {
+  display:flex; gap:10px; margin-bottom:12px;
+}
+.comment-avatar {
+  width:34px; height:34px; border-radius:50%;
+  background:linear-gradient(135deg, var(--cool-blue), var(--brown-mid));
+  display:flex; align-items:center; justify-content:center;
+  color:white; font-weight:700; font-size:0.85rem; flex-shrink:0;
+}
+.comment-bubble {
+  background:var(--cream); border-radius:8px; padding:10px 14px; flex:1;
+}
+.comment-name { font-weight:700; font-size:0.85rem; color:var(--brown-mid); }
+.comment-text { font-size:0.88rem; color:var(--text-dark); margin-top:3px; }
+
+.add-comment-wrap {
+  display:flex; gap:10px; margin-top:14px;
+}
+.comment-input {
+  font-family:'Noto Naskh Arabic', serif;
+  flex:1; padding:9px 14px;
+  border:1px solid var(--gold-light);
+  border-radius:20px; font-size:0.9rem;
+  outline:none; text-align:right;
+}
+.comment-input:focus { border-color:var(--gold); }
+.comment-send-btn {
+  padding:9px 18px;
+  background:var(--cool-blue); color:white;
+  border:none; border-radius:20px; cursor:pointer;
+  font-weight:700; transition:opacity 0.2s;
+}
+.comment-send-btn:hover { opacity:0.85; }
+
+/* ══════════════════════════════════════════
+   FOOTER
+══════════════════════════════════════════ */
+footer {
+  background:var(--brown-deep);
+  color:var(--gold-pale);
+  text-align:center;
+  padding:20px;
+  border-top:3px solid var(--gold);
+  font-size:0.9rem;
+}
+footer span { color:var(--gold); }
+
+/* ══ زر التعديل العائم ══ */
+#global-edit-btn {
+  position: fixed;
+  bottom: 80px; left: 16px;
+  z-index: 300;
+  background: linear-gradient(135deg, var(--brown-deep), var(--cool-blue));
+  color: white;
+  border: 2px solid var(--cool-blue-light);
+  border-radius: 30px;
+  padding: 10px 18px;
+  font-family: 'Noto Naskh Arabic', serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(26,111,168,0.4);
+  transition: all 0.25s;
+  display: flex; align-items: center; gap: 6px;
+}
+#global-edit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(26,111,168,0.5);
+}
+@media(min-width:601px){
+  #global-edit-btn { bottom: 24px; left: 24px; }
+}
+
+footer { position: relative; }
+
+/* ══════════════════════════════════════════
+   TAB 4: AI GUIDE
+══════════════════════════════════════════ */
+.ai-guide-layout { max-width:800px; margin:0 auto; display:flex; flex-direction:column; gap:16px; }
+.ai-regions-bar { background:white; border-radius:12px; border:1px solid var(--gold-light); padding:14px 16px; }
+.ai-region-label { font-size:0.85rem; color:var(--brown-mid); font-weight:700; display:block; margin-bottom:10px; }
+.ai-region-chips { display:flex; flex-wrap:wrap; gap:8px; }
+.region-chip {
+  font-family:'Noto Naskh Arabic',serif;
+  padding:6px 14px; background:var(--cream-dark);
+  border:1px solid var(--gold-light); border-radius:20px;
+  font-size:0.85rem; color:var(--brown-mid); cursor:pointer; transition:all 0.2s;
+}
+.region-chip:hover { background:var(--gold); color:white; border-color:var(--gold); transform:translateY(-1px); }
+.ai-chat-box {
+  background:white; border-radius:14px; border:1px solid var(--gold-light);
+  min-height:400px; max-height:520px; overflow-y:auto;
+  padding:20px; display:flex; flex-direction:column; gap:14px; scroll-behavior:smooth;
+}
+.ai-welcome-msg { text-align:center; padding:20px 10px; display:flex; flex-direction:column; align-items:center; gap:10px; margin:auto 0; }
+.ai-avatar-big { font-size:3.5rem; }
+.ai-welcome-title { font-family:'Amiri',serif; font-size:1.4rem; color:var(--brown-deep); }
+.ai-welcome-sub { font-size:0.9rem; color:var(--text-mid); line-height:1.7; max-width:460px; }
+.ai-welcome-examples { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-top:6px; }
+.ai-welcome-examples span {
+  padding:7px 14px; background:var(--cream-dark); border:1px solid var(--gold-light);
+  border-radius:20px; font-size:0.82rem; color:var(--brown-mid); cursor:pointer; transition:0.2s;
+}
+.ai-welcome-examples span:hover { background:var(--gold-pale); border-color:var(--gold); }
+.ai-msg { display:flex; gap:10px; align-items:flex-start; animation:msgIn 0.3s ease; }
+@keyframes msgIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+.ai-msg.user { flex-direction:row-reverse; }
+.ai-avatar-sm {
+  width:36px; height:36px; border-radius:50%; flex-shrink:0;
+  background:linear-gradient(135deg, var(--brown-deep), var(--brown-warm));
+  display:flex; align-items:center; justify-content:center; font-size:1.1rem;
+}
+.ai-msg.user .ai-avatar-sm { background:linear-gradient(135deg, var(--green-heritage), var(--green-light)); }
+.ai-bubble { max-width:78%; padding:12px 16px; border-radius:14px; font-size:0.92rem; line-height:1.75; color:var(--text-dark); }
+.ai-msg.bot .ai-bubble { background:var(--cream-dark); border:1px solid var(--gold-light); border-radius:4px 14px 14px 14px; }
+.ai-msg.user .ai-bubble { background:linear-gradient(135deg, var(--brown-deep), var(--brown-mid)); color:var(--gold-pale); border-radius:14px 4px 14px 14px; text-align:right; }
+.ai-typing-indicator { display:flex; gap:10px; align-items:center; }
+.typing-dots {
+  display:flex; gap:5px; align-items:center;
+  background:var(--cream-dark); border:1px solid var(--gold-light);
+  padding:12px 16px; border-radius:4px 14px 14px 14px;
+}
+.typing-dots span { width:8px; height:8px; border-radius:50%; background:var(--gold); display:block; animation:bounce 1.2s infinite; }
+.typing-dots span:nth-child(2){animation-delay:0.2s} .typing-dots span:nth-child(3){animation-delay:0.4s}
+@keyframes bounce { 0%,60%,100%{transform:translateY(0);opacity:0.5} 30%{transform:translateY(-6px);opacity:1} }
+.ai-input-wrap { display:flex; gap:10px; }
+.ai-input {
+  font-family:'Noto Naskh Arabic',serif; flex:1; padding:13px 18px;
+  border:2px solid var(--gold-light); border-radius:40px;
+  font-size:0.95rem; color:var(--text-dark); outline:none; text-align:right;
+  transition:border 0.2s; background:white;
+}
+.ai-input:focus { border-color:var(--gold); }
+.ai-send-btn {
+  font-family:'Amiri',serif; padding:13px 24px;
+  background:linear-gradient(135deg, var(--brown-deep), var(--brown-mid));
+  color:var(--gold-pale); border:2px solid var(--gold);
+  border-radius:40px; cursor:pointer; font-size:1rem; transition:all 0.2s; white-space:nowrap;
+}
+.ai-send-btn:hover { opacity:0.9; transform:translateY(-1px); }
+.ai-send-btn:disabled { opacity:0.5; cursor:not-allowed; transform:none; }
+
+
+/* ══════════════════════════════════════════
+   TAB 5: HERITAGE GALLERY
+══════════════════════════════════════════ */
+.gallery-filters {
+  display:flex; flex-wrap:wrap; gap:8px;
+  justify-content:center; margin-bottom:24px; padding:0 10px;
+}
+.gallery-filter {
+  font-family:'Noto Naskh Arabic',serif;
+  padding:8px 18px; border-radius:30px;
+  border:2px solid var(--gold-light);
+  background:white; color:var(--brown-mid);
+  cursor:pointer; font-size:0.9rem; transition:all 0.25s;
+}
+.gallery-filter:hover { border-color:var(--gold); background:var(--cream-dark); }
+.gallery-filter.active {
+  background:linear-gradient(135deg,var(--brown-deep),var(--brown-warm));
+  color:var(--gold-pale); border-color:var(--gold); font-weight:700;
+}
+.gallery-grid {
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:20px; max-width:1200px; margin:0 auto; padding:0 10px;
+}
+.gallery-card {
+  border-radius:16px; overflow:hidden; cursor:pointer; position:relative;
+  box-shadow:0 4px 20px rgba(61,31,10,0.15);
+  transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  background:var(--brown-deep);
+}
+.gallery-card:hover { transform:translateY(-8px) scale(1.02); box-shadow:0 16px 40px rgba(61,31,10,0.3); }
+.gallery-card-img { width:100%; height:300px; object-fit:cover; display:block; transition:transform 0.4s; }
+.gallery-card:hover .gallery-card-img { transform:scale(1.05); }
+.gallery-card:hover .gallery-card-img-wrap img { transform:scale(1.05); }
+.gallery-card-overlay {
+  position:absolute; inset:0;
+  background:linear-gradient(to top,rgba(30,10,0,0.95) 0%,rgba(30,10,0,0.2) 55%,transparent 100%);
+  display:flex; flex-direction:column; justify-content:flex-end; padding:20px;
+}
+.gallery-card-region { font-size:0.72rem; color:var(--gold); font-weight:700; letter-spacing:2px; margin-bottom:5px; }
+.gallery-card-title { font-family:'Amiri',serif; font-size:1.35rem; color:white; line-height:1.3; margin-bottom:4px; }
+.gallery-card-sub { font-size:0.78rem; color:rgba(255,255,255,0.65); }
+.gallery-card-badge {
+  position:absolute; top:12px; right:12px;
+  background:var(--gold); color:var(--brown-deep);
+  font-size:0.68rem; padding:3px 10px; border-radius:20px; font-weight:700;
+}
+.gallery-card-icon { position:absolute; top:12px; left:12px; font-size:1.8rem; filter:drop-shadow(0 2px 4px rgba(0,0,0,0.5)); }
+
+/* نافذة التفاصيل */
+.gallery-modal {
+  display:none; position:fixed; inset:0;
+  background:rgba(0,0,0,0.85); z-index:600;
+  overflow-y:auto; backdrop-filter:blur(8px);
+  padding:20px 15px; align-items:center; justify-content:center;
+}
+.gallery-modal.open { display:flex; }
+.gallery-modal-box {
+  background:var(--cream); border-radius:20px; max-width:880px; width:100%;
+  position:relative; overflow:hidden; border:2px solid var(--gold);
+  animation:modalIn 0.35s cubic-bezier(0.34,1.56,0.64,1);
+}
+.gallery-modal-close {
+  position:absolute; top:12px; left:12px; z-index:10;
+  background:rgba(0,0,0,0.5); border:none; color:white;
+  width:34px; height:34px; border-radius:50%; cursor:pointer; font-size:1rem;
+}
+.gallery-modal-close:hover { background:rgba(0,0,0,0.8); }
+.gallery-modal-content { display:grid; grid-template-columns:1fr 1fr; }
+.gallery-modal-img-wrap { position:relative; }
+.gallery-modal-img-wrap img { width:100%; height:100%; object-fit:cover; min-height:380px; }
+.gallery-modal-region {
+  position:absolute; bottom:12px; right:12px;
+  background:var(--gold); color:var(--brown-deep);
+  padding:4px 12px; border-radius:20px; font-size:0.78rem; font-weight:700;
+}
+.gallery-modal-info { padding:26px 22px; display:flex; flex-direction:column; gap:12px; }
+.gm-title { font-family:'Amiri',serif; font-size:1.7rem; color:var(--brown-deep); }
+.gm-location { font-size:0.85rem; color:var(--gold); font-weight:700; }
+.gm-desc { font-size:0.9rem; color:var(--text-mid); line-height:1.8; }
+.gm-details { display:grid; grid-template-columns:1fr 1fr; gap:8px; background:var(--cream-dark); border-radius:10px; padding:12px; }
+.gm-detail-label { color:var(--gold); font-weight:700; font-size:0.72rem; }
+.gm-detail-val { color:var(--text-dark); font-size:0.82rem; margin-top:2px; }
+.gm-ai-btn {
+  font-family:'Amiri',serif; padding:11px 18px;
+  background:linear-gradient(135deg,var(--brown-deep),var(--brown-warm));
+  color:var(--gold-pale); border:2px solid var(--gold);
+  border-radius:10px; cursor:pointer; font-size:0.95rem; transition:all 0.2s; margin-top:auto;
+}
+.gm-ai-btn:hover { opacity:0.9; transform:translateY(-1px); }
+.gallery-card.hidden { display:none; }
+
+/* ══════════════════════════════════════════
+   RESPONSIVE — DESKTOP (PC)
+══════════════════════════════════════════ */
+@media(min-width:1024px){
+  /* هيدر PC — أفقي كامل */
+  #main-header { padding: 14px 50px; }
+  .header-logo { font-size:1.8rem; }
+  .nav-tab { font-size:1.05rem; padding:11px 28px; }
+
+  /* شبكات أوسع */
+  .wilayas-grid { grid-template-columns: repeat(auto-fill, minmax(180px,1fr)); gap:18px; }
+  .plans-grid   { grid-template-columns: repeat(auto-fill, minmax(340px,1fr)); }
+  .sites-grid   { grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); }
+
+  /* ناف bottom — مخفي على PC */
+  #mobile-bottom-nav { display:none !important; }
+
+  /* padding أكبر للمحتوى */
+  .page-section { padding: 40px 60px; }
+  .section-hero { padding: 50px 60px 35px; }
+  .community-layout { max-width:800px; }
+
+  /* الإطار الزخرفي */
+  .frame-border { inset: 10px; }
+  .corner-ornament { width:70px; height:70px; }
+}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE — TABLET
+══════════════════════════════════════════ */
+@media(min-width:601px) and (max-width:1023px){
+  #main-header { padding: 12px 24px; }
+  .nav-tab { font-size:0.9rem; padding:9px 16px; }
+  .wilayas-grid { grid-template-columns: repeat(auto-fill, minmax(150px,1fr)); }
+  .plans-grid   { grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); }
+  #mobile-bottom-nav { display:none !important; }
+  .page-section { padding: 30px 28px; }
+}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE — MOBILE (هاتف)
+══════════════════════════════════════════ */
+@media(max-width:600px){
+
+  /* إخفاء الإطار الزخرفي على الهاتف */
+  .frame-border, .corner-ornament { display:none; }
+
+  /* هيدر الهاتف — مختصر */
+  #main-header {
+    padding: 10px 14px;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+  }
+  .header-logo { font-size:1.2rem; }
+  .header-logo span { font-size:1.4rem; }
+
+  /* إخفاء nav العلوي وإظهار nav السفلي */
+  .nav-tabs { display:none !important; }
+  #mobile-bottom-nav { display:flex !important; }
+
+  /* Hero الهاتف */
+  .hero-title-ar { font-size: clamp(2.2rem, 10vw, 3.5rem) !important; }
+  .hero-content { padding: 24px 16px; }
+  .hero-desc { font-size:0.95rem; }
+  .hero-enter-btn { font-size:1.1rem; padding:14px 40px; min-height:52px; }
+  .hero-medallion { width:90vw !important; height:90vw !important; }
+
+  /* شبكات الهاتف — عمودان لراحة أكبر */
+  .wilayas-grid { grid-template-columns: repeat(2, 1fr); gap:10px; padding:0 4px; }
+  .wilaya-card  { padding:14px 10px; min-height:80px; display:flex; flex-direction:column; justify-content:center; }
+  .wilaya-name  { font-size:1rem; }
+  .wilaya-num   { font-size:0.72rem; }
+  .wilaya-region { font-size:0.72rem; }
+
+  .plans-grid { grid-template-columns:1fr; gap:16px; }
+  .sites-grid { grid-template-columns:1fr; }
+
+  /* قسم المحتوى */
+  .page-section { padding:16px 10px 90px; }
+  .section-hero { padding:24px 14px 18px; }
+  .section-hero h2 { font-size:1.6rem; }
+
+  /* المودال على الهاتف — bottom sheet ناعم */
+  .modal-overlay {
+    padding: 0;
+    align-items: flex-end;
+  }
+  .modal-box {
+    border-radius: 20px 20px 0 0;
+    max-height: 92vh;
+    width: 100%;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    /* إزالة border السفلي */
+    border-bottom: none;
+  }
+  /* مؤشر السحب للأسفل */
+  .modal-box::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 4px;
+    background: rgba(255,255,255,0.35);
+    border-radius: 2px;
+    margin: 10px auto 0;
+  }
+  .modal-header { padding:14px 16px 16px; }
+  .modal-header h2 { font-size:1.3rem; }
+  .modal-body { padding:14px 10px 30px; }
+
+  /* تبويبات الولاية — قابلة للتمرير */
+  .wilaya-subtabs {
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    padding: 0 4px;
+  }
+  .wilaya-stab {
+    padding: 12px 16px;
+    font-size: 0.88rem;
+    scroll-snap-align: start;
+    min-height: 48px;
+  }
+  .wilaya-subpane { padding: 14px 8px; }
+
+  /* gallery الصور — عمودان */
+  .cat-gallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .cat-photo-img, .cat-photo-placeholder { height: 130px; }
+
+  /* site cards — أفضل على موبايل */
+  .site-img { height: 180px; }
+
+  /* ══ تبويب المجتمع — موبايل شامل ══ */
+  .community-layout { padding: 0; }
+
+  /* بطاقة النشر */
+  .community-layout > div:first-child {
+    border-radius: 10px !important;
+    padding: 14px !important;
+    margin-bottom: 18px !important;
+  }
+  .community-layout > div:first-child h3 {
+    font-size: 1.2rem !important;
+    margin-bottom: 12px !important;
+  }
+
+  /* منطقة الرفع */
+  .upload-zone { padding: 18px 12px; border-radius: 10px; }
+  .upload-icon { font-size: 2rem; margin-bottom: 6px; }
+  .upload-title { font-size: 0.98rem; }
+  .upload-sub { font-size: 0.78rem; }
+
+  /* الحقول — عمود واحد كامل */
+  .post-form-grid {
+    grid-template-columns: 1fr !important;
+    gap: 10px;
+  }
+  .post-form-grid .form-field { grid-column: 1 / -1 !important; }
+  .form-field label { font-size: 0.86rem; }
+  .form-field input,
+  .form-field textarea,
+  .form-field select {
+    font-size: 16px !important;
+    padding: 12px 14px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .form-field textarea { min-height: 85px; }
+
+  /* زر النشر */
+  .submit-post-btn { font-size: 1.05rem; padding: 14px; min-height: 50px; }
+
+  /* بطاقات المنشورات */
+  .post-body { padding: 12px 10px; }
+  .post-meta { flex-direction: column; align-items: flex-start; gap: 3px; margin-bottom: 8px; }
+  .post-author { font-size: 0.88rem; }
+  .post-place { font-size: 0.78rem; }
+  .post-date { font-size: 0.74rem; }
+  .post-text { font-size: 0.88rem; margin-bottom: 10px; }
+  .post-img { max-height: 240px; }
+
+  /* التعليقات */
+  .comments-section { padding-top: 10px; }
+  .comment-item { gap: 7px; margin-bottom: 8px; }
+  .comment-avatar { width: 28px; height: 28px; font-size: 0.75rem; flex-shrink: 0; }
+  .comment-bubble { padding: 7px 10px; border-radius: 6px; }
+  .comment-name { font-size: 0.8rem; }
+  .comment-text { font-size: 0.83rem; }
+
+  /* حقل إضافة تعليق */
+  .add-comment-wrap { flex-direction: row; gap: 7px; margin-top: 10px; align-items: center; }
+  .comment-input { font-size: 16px !important; padding: 10px 12px; flex: 1; min-width: 0; border-radius: 22px; }
+  .comment-send-btn { padding: 10px 14px; font-size: 0.82rem; white-space: nowrap; flex-shrink: 0; min-height: 44px; border-radius: 22px; }
+
+  /* عنوان الفيد */
+  .posts-feed h3 { font-size: 1.2rem; margin-bottom: 12px; }
+
+  /* أزرار اللمس — حجم مريح */
+  .mob-nav-btn { min-height: 54px; }
+  .modal-close { font-size:1.8rem; padding:6px 14px; min-width:44px; min-height:44px; }
+  .site-map-btn { padding: 10px 18px; font-size:0.9rem; min-height:44px; }
+  .wilaya-card { cursor:pointer; -webkit-tap-highlight-color: rgba(77,163,212,0.15); }
+
+  /* الفوتر */
+  footer { font-size:0.78rem; padding:14px 10px 70px; }
+
+  /* ══ جاليري الأزياء على الهاتف ══ */
+  #tab-libas { padding: 8px 6px 110px !important; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; }
+  .gallery-card-img { height: 190px !important; }
+  .gallery-card-title { font-size: 1rem !important; }
+  .gallery-card-sub { display: none; }
+  .gallery-modal-content { grid-template-columns: 1fr !important; }
+  .gallery-modal-img-wrap img { min-height: 220px !important; max-height: 260px; }
+  .gallery-modal-info { padding: 16px !important; gap: 10px !important; }
+  .gm-title { font-size: 1.3rem !important; }
+  .gm-details { grid-template-columns: 1fr 1fr !important; }
+  .gallery-filters { gap: 6px; }
+  .gallery-filter { font-size: 0.8rem; padding: 6px 12px; }
+  #tab-ai { padding: 8px 8px 110px !important; overflow-x:hidden !important; }
+
+  /* ══ اللباس التراثي على الهاتف ══ */
+  #tab-libas { padding: 8px 8px 110px !important; }
+  .libas-layout { gap: 14px; }
+  .libas-regions-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .libas-region-btn { padding: 10px 6px; font-size: 0.82rem; }
+  .libas-region-icon { font-size: 1.3rem; }
+  .libas-generate-btn { font-size: 1.1rem; padding: 14px; }
+  .ai-guide-layout { gap: 10px; width:100%; max-width:100%; }
+
+  /* شرائح المناطق */
+  .ai-regions-bar { padding:10px 10px; }
+  .ai-region-chips { gap: 6px; }
+  .region-chip { font-size:0.75rem; padding:5px 9px; }
+
+  /* نافذة المحادثة */
+  .ai-chat-box {
+    min-height:280px; max-height:370px;
+    padding:10px; overflow-x:hidden;
+  }
+
+  /* فقاعات الرسائل — منع الفيض */
+  .ai-msg { max-width:100%; overflow:hidden; }
+  .ai-bubble {
+    max-width:82% !important;
+    font-size:0.85rem !important;
+    padding:10px 12px !important;
+    word-break:break-word !important;
+    overflow-wrap:break-word !important;
+    white-space:normal !important;
+  }
+
+  /* حقل الإدخال */
+  .ai-input-wrap { gap:6px; }
+  .ai-input { padding:11px 12px; font-size:16px; min-width:0; flex:1; }
+  .ai-send-btn { padding:11px 12px; font-size:0.82rem; flex-shrink:0; }
+
+  /* رسالة الترحيب */
+  .ai-welcome-msg { padding:14px 6px; }
+  .ai-welcome-title { font-size:1.1rem; }
+  .ai-welcome-sub { font-size:0.82rem; }
+  .ai-welcome-examples { flex-direction:column; align-items:stretch; }
+  .ai-welcome-examples span { text-align:center; font-size:0.8rem; padding:8px; }
+
+  /* منع zoom على iOS في الحقول */
+  .search-bar { font-size:16px; padding:14px 18px; }
+  .comment-input { font-size:16px; }
+
+  /* staging grid موبايل */
+  .cat-staging-grid { grid-template-columns: 1fr; }
+  .cat-dropzone { padding: 18px; }
+}
+
+/* ══════════════════════════════════════════
+   MOBILE BOTTOM NAVIGATION BAR
+══════════════════════════════════════════ */
+#mobile-bottom-nav {
+  display: none;
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 200;
+  background: linear-gradient(135deg, var(--brown-deep), var(--brown-mid));
+  border-top: 2px solid var(--cool-blue-light);
+  box-shadow: 0 -4px 20px rgba(26,63,92,0.5);
+  padding: 6px 0 10px;
+  justify-content: space-around;
+  align-items: center;
+}
+.mob-nav-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px 4px;
+  border-radius: 10px;
+  transition: all 0.2s;
+  position: relative;
+}
+.mob-nav-btn .mob-icon { font-size: 1.5rem; line-height:1; }
+.mob-nav-btn .mob-label {
+  font-family: 'Noto Naskh Arabic', serif;
+  font-size: 0.68rem;
+  color: rgba(208,234,247,0.7);
+  transition: color 0.2s;
+}
+.mob-nav-btn.active .mob-label { color: var(--cool-blue-light); }
+.mob-nav-btn.active::before {
+  content:'';
+  position:absolute; top:0; left:50%; transform:translateX(-50%);
+  width:30px; height:3px;
+  background:var(--cool-blue-light);
+  border-radius:0 0 4px 4px;
+}
+.mob-nav-btn:active { transform:scale(0.92); }
+
+/* ══ زر التعديل العائم للجميع ══ */
+#global-edit-btn {
+  position: fixed;
+  bottom: 80px; left: 16px;
+  z-index: 500;
+  background: linear-gradient(135deg, var(--brown-deep) 0%, var(--brown-mid) 55%, var(--cool-blue) 100%);
+  color: white;
+  border: 2px solid var(--cool-blue-light);
+  border-radius: 30px;
+  padding: 11px 20px;
+  font-family: 'Noto Naskh Arabic', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(26,111,168,0.45);
+  transition: all 0.25s;
+  display: flex; align-items: center; gap: 6px;
+  letter-spacing: 0.5px;
+}
+#global-edit-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(26,111,168,0.55);
+}
+@media(min-width:601px){
+  #global-edit-btn { bottom: 24px; left: 24px; }
+}
+
+/* ══════════════════════════════════════════
+   WILAYA SUB-TABS (داخل نافذة الولاية)
+══════════════════════════════════════════ */
+.wilaya-subtabs {
+  display: flex; gap: 0;
+  border-bottom: 2px solid var(--cool-blue-pale);
+  background: var(--cream);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.wilaya-subtabs::-webkit-scrollbar { display:none; }
+.wilaya-stab {
+  flex-shrink: 0;
+  padding: 12px 20px;
+  background: none; border: none;
+  font-family: 'Noto Naskh Arabic', serif;
+  font-size: 0.95rem; color: var(--text-mid);
+  cursor: pointer; transition: 0.2s;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  white-space: nowrap;
+  display: flex; align-items: center; gap: 6px;
+}
+.wilaya-stab:hover { color: var(--cool-blue); background: var(--cool-blue-pale); }
+.wilaya-stab.active {
+  color: var(--brown-deep); font-weight: 700;
+  border-bottom-color: var(--cool-blue);
+  background: white;
+}
+.wilaya-subpane { display: none; padding: 24px; }
+.wilaya-subpane.active { display: block; }
+
+/* شبكة صور الخانة */
+.cat-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+.cat-photo-card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--cool-blue-pale);
+  box-shadow: 0 2px 8px rgba(26,74,110,0.08);
+  transition: box-shadow 0.2s;
+}
+.cat-photo-card:hover { box-shadow: 0 6px 20px rgba(26,74,110,0.15); }
+.cat-photo-title {
+  font-family: 'Amiri', serif;
+  font-size: 1.05rem; color: var(--brown-deep);
+  font-weight: 700; padding: 10px 14px 4px;
+  line-height: 1.4;
+}
+.cat-photo-desc {
+  font-size: 0.85rem; color: var(--text-mid);
+  padding: 0 14px 12px; line-height: 1.65;
+}
+.cat-photo-img {
+  width: 100%; height: 170px; object-fit: cover;
+  display: block;
+}
+.cat-photo-placeholder {
+  width: 100%; height: 170px;
+  background: linear-gradient(135deg, var(--cool-blue-pale), var(--cream-dark));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 3rem;
+}
+.cat-photo-del {
+  margin: 0 14px 12px; padding: 5px 10px;
+  background: #7a202015; color: #7a2020;
+  border: 1px solid #7a202030; border-radius: 6px;
+  font-size: 0.78rem; cursor: pointer;
+  font-family: 'Noto Naskh Arabic', serif;
+  transition: 0.2s;
+}
+.cat-photo-del:hover { background: #7a202025; }
+
+/* نموذج إضافة صورة للخانة */
+.cat-add-form {
+  background: var(--cream);
+  border: 2px dashed var(--cool-blue-pale);
+  border-radius: 10px;
+  padding: 18px; margin-top: 20px;
+}
+.cat-add-form h4 {
+  font-family: 'Amiri', serif;
+  font-size: 1.1rem; color: var(--brown-mid);
+  margin-bottom: 14px;
+}
+.cat-inp {
+  width: 100%; padding: 9px 13px;
+  border: 1px solid var(--cool-blue-pale);
+  border-radius: 7px;
+  font-family: 'Noto Naskh Arabic', serif;
+  font-size: 0.92rem; color: var(--text-dark);
+  background: white; outline: none;
+  text-align: right; margin-bottom: 10px;
+  transition: border 0.2s;
+}
+.cat-inp:focus { border-color: var(--cool-blue); }
+.cat-ta { resize: vertical; min-height: 65px; }
+.cat-upload-row {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 10px;
+}
+.cat-upload-btn {
+  padding: 8px 16px;
+  background: var(--cool-blue-pale);
+  border: 1px solid var(--cool-blue-light);
+  border-radius: 7px; cursor: pointer;
+  font-family: 'Noto Naskh Arabic', serif;
+  font-size: 0.88rem; color: var(--brown-mid);
+  transition: 0.2s; flex-shrink: 0;
+}
+.cat-upload-btn:hover { background: var(--cool-blue-light); color: white; }
+.cat-preview-img {
+  max-height: 80px; border-radius: 6px;
+  border: 1px solid var(--cool-blue-pale);
+  display: none;
+}
+.cat-submit-btn {
+  width: 100%; padding: 11px;
+  background: linear-gradient(135deg, var(--brown-deep), var(--brown-mid));
+  color: var(--gold-pale);
+  border: 2px solid var(--cool-blue-light);
+  border-radius: 8px;
+  font-family: 'Amiri', serif;
+  font-size: 1.1rem; cursor: pointer;
+  transition: opacity 0.2s;
+}
+/* ══ Multi-upload staging grid ══ */
+.cat-staging-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 14px;
+  margin: 14px 0;
+}
+.cat-stage-item {
+  background: white;
+  border-radius: 10px;
+  border: 1px solid var(--cool-blue-pale);
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(26,74,110,0.07);
+}
+.cat-stage-img {
+  width: 100%; height: 140px; object-fit: cover; display: block;
+}
+.cat-stage-fields { padding: 10px; }
+.cat-stage-inp {
+  width: 100%; padding: 7px 10px;
+  border: 1px solid var(--cool-blue-pale);
+  border-radius: 6px;
+  font-family: 'Noto Naskh Arabic', serif;
+  font-size: 0.85rem; color: var(--text-dark);
+  background: var(--cream); outline: none;
+  text-align: right; margin-bottom: 6px;
+  transition: border 0.2s;
+}
+.cat-stage-inp:focus { border-color: var(--cool-blue); }
+.cat-stage-ta { resize: vertical; min-height: 55px; }
+.cat-stage-del {
+  width: 100%; padding: 5px;
+  background: #fde8e8; border: none;
+  color: #b52020; font-size: 0.8rem;
+  cursor: pointer; font-family: 'Noto Naskh Arabic', serif;
+  border-top: 1px solid #fbd0d0;
+  transition: background 0.2s;
+}
+.cat-stage-del:hover { background: #fbcece; }
+.cat-dropzone {
+  border: 2px dashed var(--cool-blue-light);
+  border-radius: 10px;
+  padding: 22px;
+  text-align: center;
+  cursor: pointer;
+  background: var(--cool-blue-pale);
+  transition: 0.2s;
+  margin-bottom: 12px;
+}
+.cat-dropzone:hover { border-color: var(--cool-blue); background: #c2dff0; }
+.cat-dropzone-icon { font-size: 2rem; display: block; margin-bottom: 6px; }
+.cat-dropzone-txt { font-size: 0.9rem; color: var(--brown-mid); font-weight: 600; }
+.cat-dropzone-sub { font-size: 0.78rem; color: #888; margin-top: 3px; }
+.cat-count-badge {
+  display: inline-block;
+  background: var(--cool-blue); color: white;
+  border-radius: 20px; padding: 3px 12px;
+  font-size: 0.82rem; margin-bottom: 10px;
+}
+
+.cat-submit-btn:hover { opacity: 0.88; }
+.cat-empty {
+  text-align: center; padding: 30px;
+  color: #aaa; font-size: 0.95rem;
+}
+
+/* ══ دمج الأزرق مع البني في صفحة الهيرو وبعض العناصر ══ */
+.wilaya-card:hover {
+  transform:translateY(-4px);
+  box-shadow:0 8px 24px rgba(26,111,168,0.2);
+  border-color:var(--cool-blue-light);
+}
+.plan-card:hover { transform:translateY(-4px); box-shadow:0 10px 30px rgba(26,111,168,0.2); }
+.comment-input:focus { border-color:var(--cool-blue); }
+.form-field input:focus, .form-field textarea:focus { border-color:var(--cool-blue); }
+.search-bar { border:2px solid var(--cool-blue-pale); }
+</style>
+</head>
+<body>
+
+<!-- Fixed decorative frame -->
+<div class="frame-border"></div>
+
+<!-- Corner ornaments -->
+<div class="corner-ornament co-tl">
+<svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M60 0 Q30 0 0 30 L0 0 Z" fill="#1a4a6e" opacity="0.8"/>
+  <path d="M55 0 Q30 5 5 30" stroke="#c8922a" stroke-width="1.5" fill="none"/>
+  <circle cx="8" cy="8" r="3" fill="#4da3d4"/>
+  <circle cx="20" cy="5" r="1.5" fill="#4da3d4" opacity="0.7"/>
+  <circle cx="5" cy="20" r="1.5" fill="#4da3d4" opacity="0.7"/>
+</svg>
+</div>
+<div class="corner-ornament co-tr">
+<svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M60 0 Q30 0 0 30 L0 0 Z" fill="#1a4a6e" opacity="0.8"/>
+  <path d="M55 0 Q30 5 5 30" stroke="#c8922a" stroke-width="1.5" fill="none"/>
+  <circle cx="8" cy="8" r="3" fill="#4da3d4"/>
+</svg>
+</div>
+<div class="corner-ornament co-bl">
+<svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M60 0 Q30 0 0 30 L0 0 Z" fill="#1a4a6e" opacity="0.8"/>
+  <path d="M55 0 Q30 5 5 30" stroke="#c8922a" stroke-width="1.5" fill="none"/>
+  <circle cx="8" cy="8" r="3" fill="#4da3d4"/>
+</svg>
+</div>
+<div class="corner-ornament co-br">
+<svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M60 0 Q30 0 0 30 L0 0 Z" fill="#1a4a6e" opacity="0.8"/>
+  <path d="M55 0 Q30 5 5 30" stroke="#c8922a" stroke-width="1.5" fill="none"/>
+  <circle cx="8" cy="8" r="3" fill="#4da3d4"/>
+</svg>
+</div>
+
+<div class="pattern-bg"></div>
+
+<!-- ════════════════════════ HERO ════════════════════════ -->
+<div id="hero">
+
+  <!-- Andalusian lozenge tile pattern (full cover) -->
+  <div class="hero-arabesque-tile"></div>
+
+  <!-- Big central medallion SVG -->
+  <svg class="hero-medallion" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs><style>.m-ring{fill:none;stroke:%231a4a6e;stroke-width:1.5;}.m-fill{fill:%23c8922a;fill-opacity:0.25;stroke:%231a4a6e;stroke-width:1;}.m-dark{fill:%233d1f0a;fill-opacity:0.2;stroke:%231a4a6e;stroke-width:0.8;}</style></defs>
+    <circle class="m-ring" cx="250" cy="250" r="240"/>
+    <circle class="m-ring" cx="250" cy="250" r="228"/>
+    <g id="pt16"><ellipse class="m-fill" cx="250" cy="28" rx="18" ry="30"/><ellipse class="m-fill" cx="250" cy="28" rx="10" ry="18"/></g>
+    <use href="#pt16" transform="rotate(22.5,250,250)"/><use href="#pt16" transform="rotate(45,250,250)"/><use href="#pt16" transform="rotate(67.5,250,250)"/>
+    <use href="#pt16" transform="rotate(90,250,250)"/><use href="#pt16" transform="rotate(112.5,250,250)"/><use href="#pt16" transform="rotate(135,250,250)"/>
+    <use href="#pt16" transform="rotate(157.5,250,250)"/><use href="#pt16" transform="rotate(180,250,250)"/><use href="#pt16" transform="rotate(202.5,250,250)"/>
+    <use href="#pt16" transform="rotate(225,250,250)"/><use href="#pt16" transform="rotate(247.5,250,250)"/><use href="#pt16" transform="rotate(270,250,250)"/>
+    <use href="#pt16" transform="rotate(292.5,250,250)"/><use href="#pt16" transform="rotate(315,250,250)"/><use href="#pt16" transform="rotate(337.5,250,250)"/>
+    <circle class="m-ring" cx="250" cy="250" r="200"/>
+    <circle class="m-ring" cx="250" cy="250" r="186"/>
+    <polygon class="m-fill" points="250,68 270,232 432,250 270,268 250,432 230,268 68,250 230,232"/>
+    <polygon class="m-dark" points="250,118 264,236 382,250 264,264 250,382 236,264 118,250 236,236"/>
+    <circle class="m-ring" cx="250" cy="250" r="132"/>
+    <g id="ip8"><ellipse class="m-fill" cx="250" cy="128" rx="14" ry="24"/></g>
+    <use href="#ip8" transform="rotate(45,250,250)"/><use href="#ip8" transform="rotate(90,250,250)"/><use href="#ip8" transform="rotate(135,250,250)"/>
+    <use href="#ip8" transform="rotate(180,250,250)"/><use href="#ip8" transform="rotate(225,250,250)"/><use href="#ip8" transform="rotate(270,250,250)"/><use href="#ip8" transform="rotate(315,250,250)"/>
+    <circle class="m-fill" cx="250" cy="250" r="60"/>
+    <circle class="m-dark" cx="250" cy="250" r="42"/>
+    <circle class="m-ring" cx="250" cy="250" r="24"/>
+    <circle class="m-fill" cx="250" cy="250" r="16"/>
+    <ellipse class="m-fill" cx="250" cy="213" rx="8" ry="18"/>
+    <ellipse class="m-fill" cx="250" cy="287" rx="8" ry="18"/>
+    <ellipse class="m-fill" cx="213" cy="250" rx="18" ry="8"/>
+    <ellipse class="m-fill" cx="287" cy="250" rx="18" ry="8"/>
+  </svg>
+
+  <div class="hero-watermark"></div>
+
+  <div class="hero-content">
+    <h1 class="hero-title-ar">تراث الجزائر</h1>
+    <h1 class="hero-title-ar" style="font-size:clamp(2rem,5vw,3.5rem); color:var(--brown-warm);">بين يديك</h1>
+    <div class="hero-divider"><hr><span>✦</span><hr></div>
+    <p class="hero-title-sub">توثيق | رقمنة | حفظ الموروث الحضاري الجزائري</p>
+    <p class="hero-desc">
+      منصة رقمية تُعنى بتوثيق وحفظ التراث الجزائري العريق،<br>
+      من مواقع سياحية وأثرية إلى مخطوطات معمارية وموروث ثقافي،<br>
+      لنقل ذاكرة الأجداد إلى الأجيال القادمة.
+    </p>
+    <button class="hero-enter-btn" onclick="enterSite()">ادخل إلى المنصة &nbsp; ◄</button>
+  </div>
+</div>
+
+<!-- ════════════════════════ MAIN APP ════════════════════════ -->
+<div id="app">
+
+  <header id="main-header">
+    <div class="header-logo">
+      <span>🕌</span>
+      <div>
+        <div style="font-size:1.4rem">تراث الجزائر</div>
+        <div style="font-size:0.75rem; color:var(--gold-light); font-family:'Noto Naskh Arabic',serif; font-weight:400;">توثيق ورقمنة الموروث الحضاري</div>
+      </div>
+    </div>
+    <nav class="nav-tabs">
+      <button class="nav-tab active" onclick="showTab('wilayas')">
+        <span class="tab-icon">🗺️</span> الولايات
+      </button>
+      <button class="nav-tab" onclick="showTab('plans')">
+        <span class="tab-icon">🏛️</span> المخطوطات التراثية
+      </button>
+      <button class="nav-tab" onclick="showTab('community')">
+        <span class="tab-icon">📸</span> المجتمع
+      </button>
+      <button class="nav-tab" onclick="showTab('ai')">
+        <span class="tab-icon">🤖</span> المرشد الذكي
+      </button>
+      <button class="nav-tab" onclick="showTab('libas')">
+        <span class="tab-icon">👘</span> اللباس التراثي
+      </button>
+    </nav>
+  </header>
+
+  <!-- ══════ TAB 1: WILAYAS ══════ -->
+  <section id="tab-wilayas" class="page-section active">
+    <div class="section-hero">
+      <h2>🗺️ ولايات الجزائر السياحية</h2>
+      <div class="ornament-line"><hr><span>✦</span><hr></div>
+      <p>اكتشف الجمال الخفي في كل ولاية من الولايات الـ 58 — مواقع أثرية، طبيعة خلابة، موروث ثقافي عريق</p>
+    </div>
+    
+    <div class="search-bar-wrap">
+      <input class="search-bar" type="text" placeholder="🔍 ابحث عن ولاية..." oninput="filterWilayas(this.value)" id="wilaya-search">
+    </div>
+    
+    <div class="wilayas-grid" id="wilayas-grid"></div>
+  </section>
+
+  <!-- ══════ TAB 2: HERITAGE PLANS ══════ -->
+  <section id="tab-plans" class="page-section">
+    <div class="section-hero">
+      <h2>🏛️ المخطوطات التراثية</h2>
+      <div class="ornament-line"><hr><span>✦</span><hr></div>
+      <p>توثيق رقمي للمخطوطات المعمارية والزخارف التراثية الجزائرية النادرة</p>
+    </div>
+    <div class="plans-grid" id="plans-grid"></div>
+  </section>
+
+  <!-- ══════ TAB 3: COMMUNITY ══════ -->
+  <section id="tab-community" class="page-section">
+    <div class="section-hero">
+      <h2>📸 مجتمع التراث</h2>
+      <div class="ornament-line"><hr><span>✦</span><hr></div>
+      <p>شارك صورك ومقاطعك من أجمل المواقع الجزائرية وتفاعل مع محبي التراث</p>
+    </div>
+    
+    <div class="community-layout">
+      <!-- Upload Form -->
+      <div style="background:white; border-radius:12px; border:1px solid var(--gold-light); padding:24px; margin-bottom:30px;">
+        <h3 style="font-family:'Amiri',serif; font-size:1.5rem; color:var(--brown-deep); margin-bottom:20px;">📤 أضف مشاركتك</h3>
+        
+        <div class="upload-zone" id="upload-zone" onclick="document.getElementById('file-input').click()">
+          <input type="file" id="file-input" accept="image/*,video/*" onchange="previewFile(this)">
+          <div class="upload-icon">🖼️</div>
+          <div class="upload-title">اسحب صورتك هنا أو اضغط للاختيار</div>
+          <div class="upload-sub">PNG, JPG, MP4 — حجم أقصى 10MB</div>
+        </div>
+        
+        <div class="preview-img-wrap" id="preview-wrap">
+          <img id="preview-img" src="" alt="معاينة">
+        </div>
+        
+        <div class="post-form-grid">
+          <div class="form-field">
+            <label>اسمك</label>
+            <input type="text" id="post-author" placeholder="أحمد بن علي">
+          </div>
+          <div class="form-field">
+            <label>الموقع / الولاية</label>
+            <input type="text" id="post-place" placeholder="مثل: قسنطينة، جسر الجنان">
+          </div>
+          <div class="form-field" style="grid-column:1/-1">
+            <label>وصف المشاركة</label>
+            <textarea id="post-text" placeholder="أخبرنا عن هذا المكان الجميل..."></textarea>
+          </div>
+        </div>
+        
+        <button class="submit-post-btn" onclick="submitPost()">نشر المشاركة ✦</button>
+      </div>
+      
+      <!-- Posts Feed -->
+      <div class="posts-feed">
+        <h3>🌟 آخر المشاركات</h3>
+        <div id="posts-container"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ TAB 4: AI GUIDE ══════ -->
+  <section id="tab-ai" class="page-section">
+    <div class="section-hero">
+      <h2>🤖 المرشد السياحي الذكي</h2>
+      <div class="ornament-line"><hr><span>✦</span><hr></div>
+      <p>اسأل عن أي منطقة أو ولاية جزائرية — اكتشف تراثها، لباسها، أكلها، تاريخها</p>
+    </div>
+    <div class="ai-guide-layout">
+      <div class="ai-regions-bar">
+        <span class="ai-region-label">اختر منطقة سريعاً:</span>
+        <div class="ai-region-chips">
+          <button class="region-chip" onclick="askRegion('القبائل')">⛰️ القبائل</button>
+          <button class="region-chip" onclick="askRegion('تلمسان')">🕌 تلمسان</button>
+          <button class="region-chip" onclick="askRegion('جانت والطوارق')">🏜️ جانت</button>
+          <button class="region-chip" onclick="askRegion('بسكرة')">🌴 بسكرة</button>
+          <button class="region-chip" onclick="askRegion('قسنطينة')">🌉 قسنطينة</button>
+          <button class="region-chip" onclick="askRegion('الشاوية والأوراس')">🏔️ الأوراس</button>
+          <button class="region-chip" onclick="askRegion('وهران')">🏖️ وهران</button>
+          <button class="region-chip" onclick="askRegion('الهقار وتمنراست')">🌋 الهقار</button>
+          <button class="region-chip" onclick="askRegion('غرداية وميزاب')">🏘️ ميزاب</button>
+          <button class="region-chip" onclick="askRegion('سطيف وجميلة')">🏛️ سطيف</button>
+        </div>
+      </div>
+      <div class="ai-chat-box" id="ai-chat-box">
+        <div class="ai-welcome-msg" id="ai-welcome">
+          <div class="ai-avatar-big">🏺</div>
+          <div class="ai-welcome-title">مرحباً! أنا مرشدك السياحي الذكي</div>
+          <div class="ai-welcome-sub">اسألني عن أي منطقة جزائرية — سأحدثك عن تراثها، لباسها التقليدي، أكلها، موسيقاها، وتاريخها العريق</div>
+          <div class="ai-welcome-examples">
+            <span onclick="askRegion('تلمسان')">🕌 ما هو اللباس التقليدي لتلمسان؟</span>
+            <span onclick="sendAiMsg('ما هي أشهر الأكلات التقليدية في الجزائر؟')">🍲 أشهر الأكلات الجزائرية؟</span>
+            <span onclick="askRegion('الطوارق')">🐪 حدثني عن ثقافة الطوارق</span>
+          </div>
+        </div>
+        <div id="ai-messages"></div>
+        <div id="ai-typing" class="ai-typing-indicator" style="display:none">
+          <div class="ai-avatar-sm">🏺</div>
+          <div class="typing-dots"><span></span><span></span><span></span></div>
+        </div>
+      </div>
+      <div class="ai-input-wrap">
+        <input class="ai-input" id="ai-input" type="text"
+          placeholder="اسأل عن أي منطقة أو موضوع تراثي..."
+          onkeydown="if(event.key==='Enter') sendAiMsg()">
+        <button class="ai-send-btn" onclick="sendAiMsg()">إرسال ✦</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ TAB 5: HERITAGE GALLERY ══════ -->
+  <section id="tab-libas" class="page-section">
+    <div class="section-hero">
+      <h2>👘 جاليري الأزياء التراثية</h2>
+      <div class="ornament-line"><hr><span>✦</span><hr></div>
+      <p>اكتشف روعة الأزياء التقليدية لمناطق الجزائر — تراث حي يحكي قصة الأجداد</p>
+    </div>
+
+    <!-- فلاتر المناطق -->
+    <div class="gallery-filters">
+      <button class="gallery-filter active" onclick="filterGallery('all', this)">🌟 الكل</button>
+      <button class="gallery-filter" onclick="filterGallery('شمال', this)">🏔️ الشمال</button>
+      <button class="gallery-filter" onclick="filterGallery('جنوب', this)">🏜️ الجنوب</button>
+      <button class="gallery-filter" onclick="filterGallery('شرق', this)">🌉 الشرق</button>
+      <button class="gallery-filter" onclick="filterGallery('غرب', this)">🕌 الغرب</button>
+    </div>
+
+    <!-- المعرض -->
+    <div class="gallery-grid" id="gallery-grid"></div>
+
+    <!-- نافذة التفاصيل -->
+    <div class="gallery-modal" id="gallery-modal" onclick="closeGalleryModal(event)">
+      <div class="gallery-modal-box">
+        <button class="gallery-modal-close" onclick="closeGalleryModalBtn()">✕</button>
+        <div class="gallery-modal-content">
+          <div class="gallery-modal-img-wrap">
+            <img id="gm-img" src="" alt="">
+            <div class="gallery-modal-region" id="gm-region"></div>
+          </div>
+          <div class="gallery-modal-info">
+            <h2 id="gm-title" class="gm-title"></h2>
+            <div id="gm-location" class="gm-location"></div>
+            <p id="gm-desc" class="gm-desc"></p>
+            <div class="gm-details" id="gm-details"></div>
+            <button class="gm-ai-btn" id="gm-ai-btn" onclick="askAboutCostume()">
+              🤖 اسأل المرشد الذكي عن هذا الزي
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <footer>
+    <p>تراث الجزائر &nbsp;✦&nbsp; <span>مشروع تخرج لتوثيق ورقمنة الموروث الحضاري الجزائري</span></p>
+    <p style="margin-top:6px; font-size:0.8rem; opacity:0.7;">جميع الحقوق محفوظة <span id="copyright-trigger" onclick="handleCopyrightClick()">©</span> 2025</p>
+  </footer>
+
+  <!-- ══ زر التعديل العائم ══ -->
+  <button id="global-edit-btn" onclick="openAdminPanel()" title="تعديل المحتوى">
+    ✏️ <span>تعديل</span>
+  </button>
+
+  <!-- ══ شريط التنقل السفلي للهاتف ══ -->
+  <nav id="mobile-bottom-nav">
+    <button class="mob-nav-btn active" id="mob-btn-wilayas" onclick="showTabMobile('wilayas', this)">
+      <span class="mob-icon">🗺️</span>
+      <span class="mob-label">الولايات</span>
+    </button>
+    <button class="mob-nav-btn" id="mob-btn-plans" onclick="showTabMobile('plans', this)">
+      <span class="mob-icon">🏛️</span>
+      <span class="mob-label">المخطوطات</span>
+    </button>
+    <button class="mob-nav-btn" id="mob-btn-community" onclick="showTabMobile('community', this)">
+      <span class="mob-icon">📸</span>
+      <span class="mob-label">المجتمع</span>
+    </button>
+    <button class="mob-nav-btn" id="mob-btn-ai" onclick="showTabMobile('ai', this)">
+      <span class="mob-icon">🤖</span>
+      <span class="mob-label">المرشد</span>
+    </button>
+    <button class="mob-nav-btn" id="mob-btn-libas" onclick="showTabMobile('libas', this)">
+      <span class="mob-icon">👘</span>
+      <span class="mob-label">اللباس</span>
+    </button>
+  </nav>
+
+  <!-- زر التعديل العائم — للجميع -->
+  <button id="global-edit-btn" onclick="openAdminPanel()" title="تعديل المحتوى">✏️ تعديل</button>
+
+</div>
+
+<!-- WILAYA MODAL -->
+<div class="modal-overlay" id="wilaya-modal" onclick="closeModal(event)">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div>
+        <h2 id="modal-title">اسم الولاية</h2>
+        <p id="modal-subtitle">المواقع السياحية</p>
+      </div>
+      <button class="modal-close" onclick="closeModalBtn()">✕</button>
+    </div>
+
+    <!-- شريط التبويبات الفرعية -->
+    <div class="wilaya-subtabs" id="wilaya-subtabs">
+      <button class="wilaya-stab active" onclick="switchWilayaTab('sites',this)">🏛️ مواقع سياحية</button>
+      <button class="wilaya-stab" onclick="switchWilayaTab('clothing',this)">👗 الألبسة التقليدية</button>
+      <button class="wilaya-stab" onclick="switchWilayaTab('food',this)">🍲 الماكولات التقليدية</button>
+      <button class="wilaya-stab" onclick="switchWilayaTab('photos',this)">📸 صور سياحية</button>
+    </div>
+
+    <!-- خانة المواقع السياحية -->
+    <div class="wilaya-subpane active" id="wpane-sites">
+      <div class="sites-grid" id="modal-sites-grid"></div>
+    </div>
+
+    <!-- خانة الألبسة -->
+    <div class="wilaya-subpane" id="wpane-clothing">
+      <div id="cat-gallery-clothing" class="cat-gallery"></div>
+      <div class="cat-add-form">
+        <h4>➕ أضف صور الألبسة التقليدية</h4>
+        <div class="cat-dropzone" onclick="document.getElementById('cat-file-clothing').click()">
+          <span class="cat-dropzone-icon">👗</span>
+          <div class="cat-dropzone-txt">اختر صورة أو مجموعة صور دفعة واحدة</div>
+          <div class="cat-dropzone-sub">PNG, JPG — يمكنك تحديد عدة صور معاً</div>
+        </div>
+        <input type="file" id="cat-file-clothing" accept="image/*" multiple style="display:none" onchange="catPreviewMulti(this,'clothing')">
+        <div id="cat-staging-clothing"></div>
+        <button class="cat-submit-btn" id="cat-submit-clothing" style="display:none" onclick="catAddMulti('clothing')">نشر جميع الصور في خانة الألبسة ✦</button>
+      </div>
+    </div>
+
+    <!-- خانة الماكولات -->
+    <div class="wilaya-subpane" id="wpane-food">
+      <div id="cat-gallery-food" class="cat-gallery"></div>
+      <div class="cat-add-form">
+        <h4>➕ أضف صور الماكولات التقليدية</h4>
+        <div class="cat-dropzone" onclick="document.getElementById('cat-file-food').click()">
+          <span class="cat-dropzone-icon">🍲</span>
+          <div class="cat-dropzone-txt">اختر صورة أو مجموعة صور دفعة واحدة</div>
+          <div class="cat-dropzone-sub">PNG, JPG — يمكنك تحديد عدة صور معاً</div>
+        </div>
+        <input type="file" id="cat-file-food" accept="image/*" multiple style="display:none" onchange="catPreviewMulti(this,'food')">
+        <div id="cat-staging-food"></div>
+        <button class="cat-submit-btn" id="cat-submit-food" style="display:none" onclick="catAddMulti('food')">نشر جميع الصور في خانة الماكولات ✦</button>
+      </div>
+    </div>
+
+    <!-- خانة الصور السياحية -->
+    <div class="wilaya-subpane" id="wpane-photos">
+      <div id="cat-gallery-photos" class="cat-gallery"></div>
+      <div class="cat-add-form">
+        <h4>➕ أضف صور سياحية</h4>
+        <div class="cat-dropzone" onclick="document.getElementById('cat-file-photos').click()">
+          <span class="cat-dropzone-icon">📸</span>
+          <div class="cat-dropzone-txt">اختر صورة أو مجموعة صور دفعة واحدة</div>
+          <div class="cat-dropzone-sub">PNG, JPG — يمكنك تحديد عدة صور معاً</div>
+        </div>
+        <input type="file" id="cat-file-photos" accept="image/*" multiple style="display:none" onchange="catPreviewMulti(this,'photos')">
+        <div id="cat-staging-photos"></div>
+        <button class="cat-submit-btn" id="cat-submit-photos" style="display:none" onclick="catAddMulti('photos')">نشر جميع الصور السياحية ✦</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// ════════════════════════════════════════════════
+//  DATA
+// ════════════════════════════════════════════════
+
+// ╔══════════════════════════════════════════════════════════════════╗
+// ║           دليل المطور — إضافة صور للمواقع السياحية             ║
+// ╠══════════════════════════════════════════════════════════════════╣
+// ║  كل موقع سياحي يحتوي على حقل اختياري:  img                    ║
+// ║                                                                  ║
+// ║  ● إذا تركت img فارغاً  →  يظهر الرمز (icon) تلقائياً         ║
+// ║  ● إذا وضعت رابط صورة  →  تظهر الصورة بدل الرمز               ║
+// ║                                                                  ║
+// ║  طريقة إضافة صورة محلية (من نفس المجلد):                       ║
+// ║    img: "images/timgad.jpg"                                     ║
+// ║                                                                  ║
+// ║  طريقة إضافة صورة من الإنترنت:                                  ║
+// ║    img: "https://example.com/photo.jpg"                         ║
+// ║                                                                  ║
+// ║  لإزالة الصورة والرجوع للرمز: احذف قيمة img أو اتركها ""       ║
+// ╚══════════════════════════════════════════════════════════════════╝
+
+const WILAYAS = [
+  {num:1, name:"أدرار", region:"الجنوب الغربي", sites:[
+    {name:"تيميمون", desc:"مدينة حمراء بواحاتها الخلابة وقصورها الطينية العريقة، تعكس جمال العمارة الصحراوية", icon:"🏜️", img:"", map:"https://maps.google.com/?q=Timimoun+Adrar+Algeria"},
+    {name:"قصر أولف", desc:"قصر أثري يعود لقرون عدة ويحتضن فناناً بشرياً فريداً وسط الكثبان الذهبية", icon:"🏰", img:"", map:"https://maps.google.com/?q=Aoulef+Adrar+Algeria"}
+  ]},
+  {num:2, name:"الشلف", region:"الشمال الغربي", sites:[
+    {name:"بني راشد", desc:"منتجع طبيعي بين الجبال الخضراء يشتهر بمناخه المعتدل ومناظره الريفية الساحرة", icon:"⛰️", img:"", map:"https://maps.google.com/?q=Beni+Rachid+Chlef+Algeria"},
+    {name:"واد فضة", desc:"موقع طبيعي ساحر على ضفاف الوادي يجذب محبي الطبيعة والرحلات الاستكشافية", icon:"🌊", img:"", map:"https://maps.google.com/?q=Oued+Fodda+Chlef+Algeria"}
+  ]},
+  {num:3, name:"الأغواط", region:"الجنوب", sites:[
+    {name:"بحيرة أيقر", desc:"بحيرة ملحية مذهلة تحفل بالطيور المهاجرة وتلوّن أفق الصحراء بألوان استثنائية", icon:"🦩", img:"", map:"https://maps.google.com/?q=Ain+Madhi+Laghouat+Algeria"},
+    {name:"عين ماضي", desc:"بلدة تاريخية ذات قيمة روحية ومعمارية عالية، موطن الطريقة التيجانية الشهيرة", icon:"🕌", img:"", map:"https://maps.google.com/?q=Ain+Madhi+Algeria"}
+  ]},
+  {num:4, name:"أم البواقي", region:"الشرق", sites:[
+    {name:"خنشلة الأثرية", desc:"مواقع رومانية نادرة تحمل شواهد حضارة متعددة تمتد لآلاف السنين", icon:"🏛️", img:"", map:"https://maps.google.com/?q=Khenchela+Algeria"},
+    {name:"جبل الجرف", desc:"قمة جبلية تمنح زوارها منظراً بانورامياً استثنائياً على الأراضي الجزائرية", icon:"🏔️", img:"", map:"https://maps.google.com/?q=Djebel+Djorf+Oum+el+Bouaghi"}
+  ]},
+  {num:5, name:"باتنة", region:"الأوراس", sites:[
+    {name:"تيمقاد", desc:"مدينة رومانية مندثرة تُعدّ من أروع المواقع الأثرية في العالم، مُدرجة في التراث الإنساني لليونسكو", icon:"🏛️", img:"", map:"https://maps.google.com/?q=Timgad+Batna+Algeria"},
+    {name:"جبل الشيليا", desc:"أعلى قمة في الجزائر الشمالية (2328م) تكتسي بالثلوج شتاءً وتزهر ربيعاً", icon:"🏔️", img:"", map:"https://maps.google.com/?q=Djebel+Chelia+Batna"}
+  ]},
+  {num:6, name:"بجاية", region:"القبائل", sites:[
+    {name:"منطقة القبائل", desc:"جبال خضراء ذات إطلالات رائعة على البحر الأبيض المتوسط، غنية بالثقافة الأمازيغية", icon:"⛰️", img:"", map:"https://maps.google.com/?q=Bejaia+Kabylie+Algeria"},
+    {name:"شلال كيفان", desc:"شلال طبيعي خلاب يقع وسط غابات كثيفة ويمثل وجهة لمحبي المشي والاستكشاف", icon:"💧", img:"", map:"https://maps.google.com/?q=Kherrata+Bejaia+Algeria"}
+  ]},
+  {num:7, name:"بسكرة", region:"الجنوب الشرقي", sites:[
+    {name:"واحة الزيبان", desc:"واحة النخيل الشهيرة التي يضرب بها المثل في الخصوبة والجمال وكرم الضيافة", icon:"🌴", img:"", map:"https://maps.google.com/?q=Biskra+Oasis+Algeria"},
+    {name:"جبل الأوراس", desc:"سلسلة جبلية ذات طابع درامي ومنتجع طبيعي يأسر القلوب بتنوعه الطبيعي", icon:"🏔️", img:"", map:"https://maps.google.com/?q=Aures+Biskra+Algeria"}
+  ]},
+  {num:8, name:"بشار", region:"الجنوب الغربي", sites:[
+    {name:"بني عباس", desc:"واحة صحراوية ساحرة شهيرة بقصورها التقليدية ونخيلها الوارف وطبيعتها الهادئة", icon:"🏜️", img:"", map:"https://maps.google.com/?q=Beni+Abbes+Algeria"},
+    {name:"العرق الغربي الكبير", desc:"من أضخم بحار الرمال في العالم، يمتد على مئات الكيلومترات بكثبانه الذهبية الشاهقة", icon:"🏜️", img:"", map:"https://maps.google.com/?q=Grand+Erg+Occidental+Algeria"}
+  ]},
+  {num:9, name:"البليدة", region:"الشمال", sites:[
+    {name:"حديقة الدحلة الوطنية", desc:"غابة ساحرة على سفوح الأطلس التلي، ملاذ للمصطافين وعشاق الطبيعة قرب العاصمة", icon:"🌳", img:"", map:"https://maps.google.com/?q=Chiffa+Blida+Algeria"},
+    {name:"وادي القمار", desc:"موقع طبيعي بين التضاريس الجميلة، مشهور بنبع مياهه العذبة وإطلالاته الخضراء", icon:"🌿", img:"", map:"https://maps.google.com/?q=Oued+Lamar+Blida"}
+  ]},
+  {num:10, name:"البويرة", region:"القبائل", sites:[
+    {name:"محمية القمر الطبيعية", desc:"بحيرة أقر الرائعة وسط غابات الأرز، محمية طبيعية تحتضن حيوانات نادرة", icon:"🦌", img:"", map:"https://maps.google.com/?q=Tikjda+Bouira+Algeria"},
+    {name:"ضفاف وادي الصومام", desc:"وادٍ تاريخي يتخلله غطاء نباتي كثيف وإطلالات طبيعية تخطف الأبصار", icon:"🌊", img:"", map:"https://maps.google.com/?q=Soummam+Valley+Algeria"}
+  ]},
+  {num:11, name:"تمنراست", region:"الجنوب الكبير", sites:[
+    {name:"هقار", desc:"سلسلة جبلية بركانية مهيبة في قلب الصحراء الكبرى، أُدرجت في التراث العالمي لليونسكو", icon:"🌋", img:"", map:"https://maps.google.com/?q=Hoggar+Tamanrasset+Algeria"},
+    {name:"أسكرم", desc:"موقع روحاني فريد يضم كنيسة الأب دو فوكو على ارتفاع 2800م وسط الجبال البركانية", icon:"⛪", img:"", map:"https://maps.google.com/?q=Assekrem+Tamanrasset+Algeria"}
+  ]},
+  {num:12, name:"تبسة", region:"الشرق", sites:[
+    {name:"القوس الروماني تبسة", desc:"قوس انتصار روماني نادر في حالة جيدة جداً، يمثل شاهداً حياً على عظمة روما في شمال أفريقيا", icon:"🏛️", img:"", map:"https://maps.google.com/?q=Tebessa+Roman+Arch+Algeria"},
+    {name:"البازيليك البيزنطية", desc:"كنيسة بيزنطية أثرية تعود للقرن الرابع الميلادي، من أبرز المواقع الأثرية في الجزائر الشرقية", icon:"⛩️", img:"", map:"https://maps.google.com/?q=Basilica+Tebessa+Algeria"}
+  ]},
+  {num:13, name:"تلمسان", region:"الشمال الغربي", sites:[
+    {name:"مسجد سيدي أبو مدين", desc:"تحفة معمارية أندلسية إسلامية فريدة، رمز الفن الزياني المتميز في شمال أفريقيا", icon:"🕌", img:"", map:"https://maps.google.com/?q=Sidi+Boumediene+Tlemcen+Algeria"},
+    {name:"مدينة منصورة التاريخية", desc:"مدينة أثرية مندثرة يعود تاريخها للعهد المريني، تحتوي على أطلال قصر ومسجد شامخ", icon:"🏰", img:"", map:"https://maps.google.com/?q=Mansoura+Tlemcen+Algeria"}
+  ]},
+  {num:14, name:"تيارت", region:"الهضاب العليا", sites:[
+    {name:"تيارت الأثرية", desc:"مدينة ذات جذور عريقة في التاريخ الأمازيغي والروماني والإسلامي", icon:"🏛️", img:"", map:"https://maps.google.com/?q=Tiaret+Algeria"},
+    {name:"ضريح الخروبة", desc:"ضريح ملكي بربري قديم يشهد على مملكة تيهرت الرستمية ذات المجد التليد", icon:"🏟️", img:"", map:"https://maps.google.com/?q=Kherrouba+Tiaret+Algeria"}
+  ]},
+  {num:15, name:"تيزي وزو", region:"القبائل الكبرى", sites:[
+    {name:"قرية آيت بن حدو", desc:"قرية قبائلية أصيلة ذات معمار فريد، محفورة في قلب الجبل الأبيض وتعكس هوية أمازيغية أصيلة", icon:"🏘️", img:"", map:"https://maps.google.com/?q=Ait+Ben+Haddou+Tizi+Ouzou+Algeria"},
+    {name:"جبال جرجرة", desc:"أعلى قمم جبال القبائل بغاباتها الأرزية الشاهقة ومسالكها الاستكشافية المميزة", icon:"🏔️", img:"", map:"https://maps.google.com/?q=Djurdjura+Tizi+Ouzou+Algeria"}
+  ]},
+  {num:16, name:"الجزائر العاصمة", region:"الشمال", sites:[
+    {name:"القصبة العتيقة", desc:"مدينة عثمانية محفورة في التاريخ، أُدرجت في لائحة التراث العالمي لليونسكو عام 1992", icon:"🕌", img:"", map:"https://maps.google.com/?q=Casbah+Algiers+Algeria"},
+    {name:"المتحف الوطني للفنون", desc:"أهم متحف جزائري يضم تحفاً تمثل حقب تاريخية عديدة من العصور القديمة حتى اليوم", icon:"🎨", img:"", map:"https://maps.google.com/?q=National+Museum+Fine+Arts+Algiers"}
+  ]},
+  {num:17, name:"الجلفة", region:"الهضاب العليا", sites:[
+    {name:"قصور المسيلة", desc:"مجموعة قصور طينية تمثل العمارة الصحراوية الأصيلة وتحكي تاريخ سكان المنطقة", icon:"🏰", img:"", map:"https://maps.google.com/?q=Djelfa+Algeria"},
+    {name:"متحف الرعي", desc:"متحف متخصص يوثق ثقافة الرعي والترحال في منطقة الهضاب العليا الجزائرية", icon:"🏺", img:"", map:"https://maps.google.com/?q=Djelfa+Museum+Algeria"}
+  ]},
+  {num:18, name:"جيجل", region:"الشرق", sites:[
+    {name:"شاطئ الحمام", desc:"من أجمل شواطئ الجزائر بمياهه الفيروزية الصافية ورماله الذهبية", icon:"🏖️", img:"", map:"https://maps.google.com/?q=Plage+Hammam+Jijel+Algeria"},
+    {name:"غابة الإمبراطور", desc:"غابة كثيفة تمتد على مئات الهكتارات، ملاذ طبيعي يحمي أنواعاً نباتية وحيوانية نادرة", icon:"🌲", img:"", map:"https://maps.google.com/?q=Jijel+Forest+Algeria"}
+  ]},
+  {num:19, name:"سطيف", region:"الشرق", sites:[
+    {name:"جميلة — تيمقاد الشرق", desc:"مدينة رومانية أثرية رائعة مُدرجة في التراث العالمي، تمثل من أبرز المواقع الأثرية في أفريقيا", icon:"🏛️", img:"", map:"https://maps.google.com/?q=Djemila+Setif+Algeria"},
+    {name:"بحيرة بيزر", desc:"بحيرة ملحية طبيعية تستقطب آلاف طيور الفلامينغو الوردية في مشهد طبيعي خلاب", icon:"🦩", img:"", map:"https://maps.google.com/?q=Bazer+Lake+Setif+Algeria"}
+  ]},
+  {num:20, name:"سعيدة", region:"الشمال الغربي", sites:[
+    {name:"غابة مشونش", desc:"غابة طبيعية كثيفة بأشجار الأرز تحتضن حيوانات برية نادرة ومسارات مشي جميلة", icon:"🌲", img:"", map:"https://maps.google.com/?q=Machouns+Forest+Saida+Algeria"}
+  ]},
+  {num:21, name:"سكيكدة", region:"الشرق", sites:[
+    {name:"موقع رقادة الأثري", desc:"موقع أثري روماني يضم بقايا مبانٍ ومسرح وفيلات تشهد على الحضور الروماني المزدهر", icon:"🏛️", img:"", map:"https://maps.google.com/?q=Skikda+Roman+Site+Algeria"}
+  ]},
+  {num:22, name:"سيدي بلعباس", region:"الشمال الغربي", sites:[
+    {name:"مغنية التاريخية", desc:"مدينة حدودية ذات إرث تاريخي وجغرافي متميز على الحدود الجزائرية المغربية", icon:"🏙️", img:"", map:"https://maps.google.com/?q=Maghnia+Sidi+Bel+Abbes+Algeria"}
+  ]},
+  {num:23, name:"عنابة", region:"الشرق", sites:[
+    {name:"كنيسة القديس أوغسطين", desc:"كنيسة تاريخية بناها الفرنسيون فوق مقام القديس أوغسطينوس الفيلسوف المولود في هذه الأرض", icon:"⛪", img:"", map:"https://maps.google.com/?q=Saint+Augustine+Basilica+Annaba+Algeria"},
+    {name:"موقع هيبون الأثري", desc:"عاصمة مملكة نوميديا، مدينة أثرية رومانية رائعة تكشف عن ماضٍ حضاري مشرق", icon:"🏛️", img:"", map:"https://maps.google.com/?q=Hippo+Regius+Annaba+Algeria"}
+  ]},
+  {num:24, name:"قالمة", region:"الشرق", sites:[
+    {name:"الكالبوس الروماني", desc:"موقع أثري روماني يضم حماماً ومسرحاً بحالة جيدة جداً من أهم مواقع الشرق الجزائري", icon:"🏛️", img:"", map:"https://maps.google.com/?q=Calama+Guelma+Algeria"}
+  ]},
+  {num:25, name:"قسنطينة", region:"الشرق", sites:[
+    {name:"جسر سيدي راشد", desc:"جسر أثري شاهق فوق وادي الرمال يُعدّ من عجائب الهندسة المعمارية التاريخية في المنطقة", icon:"🌉", img:"", map:"https://maps.google.com/?q=Sidi+Rached+Bridge+Constantine+Algeria"},
+    {name:"قصبة قسنطينة", desc:"مدينة عتيقة متشبثة بالصخرة، تُعرف بـ'مدينة الجسور المعلقة'، بمبانٍ وتاريخ استثنائيين", icon:"🏙️", img:"", map:"https://maps.google.com/?q=Casbah+Constantine+Algeria"}
+  ]},
+  {num:26, name:"المدية", region:"الشمال", sites:[
+    {name:"متحف لالة خديجة", desc:"حديقة وطنية في جبال البليدة تضم غابات أرزية وحيواناً نادراً وجداول مياه رقراقة", icon:"🌳", img:"", map:"https://maps.google.com/?q=Medea+Algeria"}
+  ]},
+  {num:27, name:"مستغانم", region:"الشمال الغربي", sites:[
+    {name:"شاطئ أولاد بوكرة", desc:"شاطئ رملي طويل بمياه نظيفة، من أجمل شواطئ الجزائر الغربية التي تجذب المصطافين صيفاً", icon:"🏖️", img:"", map:"https://maps.google.com/?q=Beni+Saf+Mostaganem+Algeria"}
+  ]},
+  {num:28, name:"المسيلة", region:"الهضاب العليا", sites:[
+    {name:"موقع قلعة بني حماد", desc:"عاصمة الدولة الحمادية مُدرجة في لائحة التراث العالمي، من أبرز المواقع الأثرية الإسلامية في الجزائر", icon:"🏰", img:"", map:"https://maps.google.com/?q=Kalaâ+des+Beni+Hammad+Msila+Algeria"}
+  ]},
+  {num:29, name:"معسكر", region:"الشمال الغربي", sites:[
+    {name:"مدينة معسكر التاريخية", desc:"مسقط رأس الأمير عبد القادر، مدينة ذات تاريخ عريق في مقاومة الاستعمار الفرنسي", icon:"🏙️", img:"", map:"https://maps.google.com/?q=Mascara+Algeria"}
+  ]},
+  {num:30, name:"ورقلة", region:"الجنوب", sites:[
+    {name:"مدينة ورقلة القديمة", desc:"عاصمة الجنوب الشرقي تمزج بين الحداثة النفطية وتراث البيوت الطينية والأسواق العتيقة", icon:"🏘️", img:"", map:"https://maps.google.com/?q=Ouargla+Old+City+Algeria"},
+    {name:"بحيرة الصلدة", desc:"بحيرة ملحية صحراوية تبدو كمرآة لانهائية تعكس السماء في مشهد خيالي بالغ الجمال", icon:"🏜️", img:"", map:"https://maps.google.com/?q=Ouargla+Lake+Algeria"}
+  ]},
+  {num:31, name:"وهران", region:"الشمال الغربي", sites:[
+    {name:"قلعة سانتا كروز", desc:"قلعة إسبانية شاهقة تطل على ميناء وهران، تحتضن تاريخ المدينة الحضاري عبر القرون", icon:"🏰", img:"", map:"https://maps.google.com/?q=Santa+Cruz+Fort+Oran+Algeria"},
+    {name:"شاطئ عين الترك", desc:"من أشهر شواطئ الجزائر يجمع بين الرمل الذهبي والماء الفيروزي والمرافق السياحية الراقية", icon:"🏖️", img:"", map:"https://maps.google.com/?q=Ain+el+Turk+Oran+Algeria"}
+  ]},
+  {num:32, name:"البيض", region:"الجنوب الغربي", sites:[
+    {name:"قصور البيض", desc:"مجموعة قصور طينية أصيلة تجسد روعة العمارة الصحراوية التقليدية في الهضاب الجنوبية", icon:"🏰", img:"", map:"https://maps.google.com/?q=El+Bayadh+Algeria"}
+  ]},
+  {num:33, name:"إليزي", region:"أقصى الجنوب", sites:[
+    {name:"تاسيلي ناجر", desc:"هضبة صخرية بركانية مُدرجة في التراث العالمي تحمل نقوشاً صخرية بالغة الأهمية ترسم تاريخ الصحراء", icon:"🗿", img:"", map:"https://maps.google.com/?q=Tassili+Najjer+Illizi+Algeria"},
+    {name:"جبال العبيدات", desc:"منظومة جبلية صخرية فريدة في إليزي ذات تشكيلات جيولوجية تأخذ الأنفاس بجمالها البكر", icon:"🏔️", img:"", map:"https://maps.google.com/?q=Djanet+Illizi+Algeria"}
+  ]},
+  {num:34, name:"برج بوعريريج", region:"الشرق", sites:[
+    {name:"قلعة برج بوعريريج", desc:"موقع أثري يحمل آثار الحضور العثماني ويوثق حقبة مهمة من تاريخ الشرق الجزائري", icon:"🏰", img:"", map:"https://maps.google.com/?q=Bordj+Bou+Arreridj+Algeria"}
+  ]},
+  {num:35, name:"بومرداس", region:"الشمال", sites:[
+    {name:"موقع تيبازة", desc:"مدينة رومانية ساحلية أثرية تتناثر أعمدتها على شاطئ البحر المتوسط في مشهد بديع، مُدرجة في التراث العالمي", icon:"🏛️", img:"", map:"https://maps.google.com/?q=Tipaza+Algeria"}
+  ]},
+  {num:36, name:"الطارف", region:"الشرق", sites:[
+    {name:"الحديقة الوطنية لالمة", desc:"محمية طبيعية ذات غابات بلوطية كثيفة ونهر سيبوس وتنوع بيولوجي استثنائي", icon:"🌲", img:"", map:"https://maps.google.com/?q=El+Kala+National+Park+Algeria"}
+  ]},
+  {num:37, name:"تندوف", region:"أقصى الجنوب الغربي", sites:[
+    {name:"الصحراء الكبرى الغربية", desc:"منطقة صحراوية شاسعة يقصدها محبو المغامرة والسفاري الصحراوية بكثبانها ونجومها المتلألئة", icon:"🏜️", img:"", map:"https://maps.google.com/?q=Tindouf+Algeria"}
+  ]},
+  {num:38, name:"تيسمسيلت", region:"الهضاب العليا", sites:[
+    {name:"منطقة عين يوسف", desc:"موقع طبيعي هادئ بعيون مائية وغطاء نباتي طبيعي يوفر راحة رائعة لأبناء الهضاب", icon:"🌿", img:"", map:"https://maps.google.com/?q=Tissemsilt+Algeria"}
+  ]},
+  {num:39, name:"الوادي", region:"الجنوب الشرقي", sites:[
+    {name:"سوق غرداية الأسبوعي", desc:"سوق تقليدي أصيل في قلب وادي ميزاب، شاهد على ثقافة الإباضية الفريدة وحضارتهم العمرانية", icon:"🏺", img:"", map:"https://maps.google.com/?q=El+Oued+Algeria"},
+    {name:"قباب الوادي", desc:"معمار فريد يتميز بالقباب الطينية المزدوجة التي تزين المشهد البصري للمدينة وتحيّر المعماريين", icon:"🏘️", img:"", map:"https://maps.google.com/?q=El+Oued+Domes+Algeria"}
+  ]},
+  {num:40, name:"خنشلة", region:"الأوراس", sites:[
+    {name:"آثار مدينة ماسكولا", desc:"بقايا مدينة رومانية قديمة توفر مادة أثرية غنية بالنصوص والتماثيل والفسيفساء", icon:"🏛️", img:"", map:"https://maps.google.com/?q=Khenchela+Roman+Site+Algeria"}
+  ]},
+  {num:41, name:"سوق أهراس", region:"الشرق", sites:[
+    {name:"مدينة ثاغاستي الأثرية", desc:"موطن القديس أوغسطينوس وعاصمة نوميدية رومانية بالغة الأهمية الحضارية والتاريخية", icon:"🏛️", img:"", map:"https://maps.google.com/?q=Thagaste+Souk+Ahras+Algeria"}
+  ]},
+  {num:42, name:"تيبازة", region:"الشمال", sites:[
+    {name:"تيبازة الرومانية", desc:"من أعظم المواقع الأثرية في حوض المتوسط، أعمدة رومانية تقف شامخة أمام البحر في صورة لا تُنسى", icon:"🏛️", img:"", map:"https://maps.google.com/?q=Tipaza+Roman+Ruins+Algeria"},
+    {name:"ضريح الموريطاني", desc:"ضريح ملكي نوميدي ضخم يُعدّ من أجمل المباني الجنائزية في شمال أفريقيا، مشهد عمراني فريد", icon:"🏟️", img:"", map:"https://maps.google.com/?q=Mausoleum+Mauritanian+Tipaza+Algeria"}
+  ]},
+  {num:43, name:"ميلة", region:"الشرق", sites:[
+    {name:"موقع شيلول", desc:"موقع أثري يحتوي فسيفساء بيزنطية ورومانية نادرة تمثل قيمة إنسانية وفنية استثنائية", icon:"🎨", img:"", map:"https://maps.google.com/?q=Mila+Algeria"}
+  ]},
+  {num:44, name:"عين الدفلى", region:"الشمال", sites:[
+    {name:"وادي الشلف السياحي", desc:"موقع طبيعي أخضر على ضفاف أطول نهر في الجزائر، يجمع بين الجمال الطبيعي والتاريخي", icon:"🌊", img:"", map:"https://maps.google.com/?q=Ain+Defla+Algeria"}
+  ]},
+  {num:45, name:"النعامة", region:"الجنوب الغربي", sites:[
+    {name:"جبال القصور", desc:"سلسلة جبلية تتضمن قصوراً طينية قديمة وصحراء متدرجة الألوان من ذهبي إلى أرجواني", icon:"🏔️", img:"", map:"https://maps.google.com/?q=Naama+Algeria"}
+  ]},
+  {num:46, name:"عين تموشنت", region:"الشمال الغربي", sites:[
+    {name:"شاطئ بني صاف", desc:"شاطئ خلاب بمياه صافية يحيط به سكان يمارسون الصيد التقليدي في مشهد حضاري أصيل", icon:"🏖️", img:"", map:"https://maps.google.com/?q=Beni+Saf+Beach+Algeria"}
+  ]},
+  {num:47, name:"غرداية", region:"الجنوب", sites:[
+    {name:"وادي ميزاب", desc:"منظومة عمرانية إسلامية مذهلة مُدرجة في التراث العالمي، مخطوط بدقة هندسية استثنائية", icon:"🕌", img:"", map:"https://maps.google.com/?q=Ghardaia+M%27Zab+Algeria"},
+    {name:"مدينة غرداية القديمة", desc:"نموذج حضاري فريد في بناء المدن الصحراوية، يدرسه المعماريون من مختلف أنحاء العالم", icon:"🏘️", img:"", map:"https://maps.google.com/?q=Ghardaia+Old+City+Algeria"}
+  ]},
+  {num:48, name:"غليزان", region:"الشمال الغربي", sites:[
+    {name:"سد كرادة", desc:"بحيرة اصطناعية ذات منظر طبيعي جميل تحيط بها تلال خضراء وتجذب عشاق الصيد والطبيعة", icon:"🌊", img:"", map:"https://maps.google.com/?q=Relizane+Algeria"}
+  ]},
+  {num:49, name:"تيارت", region:"الهضاب العليا", sites:[
+    {name:"عاصمة الخيول العربية", desc:"مدينة تيارت مشهورة بتربية الخيول العربية الأصيلة، موطن خيل الدرافل ذات الشهرة العالمية", icon:"🐎", img:"", map:"https://maps.google.com/?q=Tiaret+Horses+Algeria"}
+  ]},
+  {num:50, name:"تيزي وزو", region:"القبائل الكبرى", sites:[
+    {name:"قرية ثاورت نعيث يراتن", desc:"قرية قبائلية عتيقة تحفظ الموروث الأمازيغي في معمارها وتقاليدها وزراعتها الجبلية", icon:"🏘️", img:"", map:"https://maps.google.com/?q=Ath+Yenni+Tizi+Ouzou+Algeria"}
+  ]},
+  {num:51, name:"بجاية", region:"القبائل الصغرى", sites:[
+    {name:"قلعة الناصر", desc:"قلعة تاريخية تطل على خليج بجاية تشهد على حقب حمادية وحفصية وعثمانية متعاقبة", icon:"🏰", img:"", map:"https://maps.google.com/?q=Bejaia+Fort+Algeria"}
+  ]},
+  {num:52, name:"برج بوعريريج", region:"الشرق الأوسط", sites:[
+    {name:"ملاحة الحضنة", desc:"أراضٍ رطبة طبيعية تستقطب أنواعاً نادرة من الطيور المهاجرة القادمة من أوروبا وأفريقيا", icon:"🦅", img:"", map:"https://maps.google.com/?q=Bordj+Bou+Arreridj+Wetlands"}
+  ]},
+  {num:53, name:"مغنية", region:"الشمال الغربي", sites:[
+    {name:"معهد الريحانة", desc:"موقع أثري وثقافي يرسم معالم التراث الأمازيغي والإسلامي على الحدود الغربية للجزائر", icon:"🕌", img:"", map:"https://maps.google.com/?q=Maghnia+Algeria"}
+  ]},
+  {num:54, name:"ورقلة", region:"الجنوب الشرقي", sites:[
+    {name:"عرق الشاش", desc:"كثبان رملية خيالية تمتد لعشرات الكيلومترات، وجهة للرحلات الصحراوية والتصوير الاستثنائي", icon:"🏜️", img:"", map:"https://maps.google.com/?q=Ouargla+Erg+Algeria"}
+  ]},
+  {num:55, name:"تمنراست", region:"أقصى الجنوب", sites:[
+    {name:"سوق الطوارق", desc:"سوق تقليدي أسبوعي يبيع التوارق فيه المجوهرات الفضية والمنسوجات والتوابل الصحراوية النادرة", icon:"🏺", img:"", map:"https://maps.google.com/?q=Tamanrasset+Tuareg+Market+Algeria"}
+  ]},
+  {num:56, name:"عين صالح", region:"الجنوب", sites:[
+    {name:"قصر عين صالح", desc:"قصر طيني تاريخي في قلب الصحراء الكبرى يعكس الحضارة الصحراوية في أبهى صورها", icon:"🏰", img:"", map:"https://maps.google.com/?q=In+Salah+Algeria"}
+  ]},
+  {num:57, name:"عين قزام", region:"الجنوب الجنوبي", sites:[
+    {name:"الحدود الصحراوية", desc:"منطقة حدودية تحتضن مجتمعات طوارقية محافظة على ثقافتها الأصيلة وتقاليد أسلافها", icon:"🏜️", img:"", map:"https://maps.google.com/?q=In+Guezzam+Algeria"}
+  ]},
+  {num:58, name:"برج باجي مختار", region:"الجنوب الغربي", sites:[
+    {name:"بوابة جنوب غرب الجزائر", desc:"نقطة الجنوب الغربي البعيدة، عالم من الهدوء الأبدي والكثبان التي تلامس الأفق", icon:"🌅", img:"", map:"https://maps.google.com/?q=Bordj+Badji+Mokhtar+Algeria"}
+  ]}
+];
+
+// ╔══════════════════════════════════════════════════════════════════╗
+// ║         دليل المطور — إضافة صور للمخطوطات التراثية              ║
+// ╠══════════════════════════════════════════════════════════════════╣
+// ║  كل مخطوط يحتوي على حقل اختياري:  img                           ║
+// ║                                                                  ║
+// ║  ● إذا تركت img فارغاً  →  يظهر الرمز (icon) تلقائياً         ║
+// ║  ● إذا وضعت رابط صورة  →  تظهر الصورة بدل الرمز               ║
+// ║                                                                  ║
+// ║  مثال بصورة محلية:   img: "plans/timgad-plan.jpg"              ║
+// ║  مثال بصورة إنترنت:  img: "https://example.com/plan.jpg"       ║
+// ║                                                                  ║
+// ║  الصورة ستظهر في الجزء العلوي من البطاقة (220px ارتفاع)        ║
+// ║  إذا فشل تحميل الصورة يعود الرمز تلقائياً (fallback)           ║
+// ╚══════════════════════════════════════════════════════════════════╝
+
+const PLANS = [
+  {
+    name:"مسجد قالمة البيزنطي",
+    category:"معمار بيزنطي",
+    location:"قالمة",
+    desc:"مخطوط أثري يكشف تحولات المبنى من كنيسة بيزنطية إلى مسجد إسلامي، نموذج نادر للتوافق الحضاري بين الثقافات المتعاقبة",
+    period:"القرن 4-7م",
+    style:"بيزنطي إسلامي",
+    size:"45م × 30م",
+    status:"قيد التوثيق",
+    icon:"🕌",
+    img:""
+  },
+  {
+    name:"قصر تيهرت الرستمي",
+    category:"معمار إسلامي",
+    location:"تيارت",
+    desc:"مخطوط إعادة بناء لقصر مدينة تيهرت عاصمة الدولة الرستمية، أول دولة إسلامية في المغرب العربي",
+    period:"القرن 8-10م",
+    style:"رستمي إباضي",
+    size:"80م × 60م",
+    status:"نموذج رقمي",
+    icon:"🏰",
+    img:""
+  },
+  {
+    name:"مسجد سيدي أبو مدين تلمسان",
+    category:"معمار أندلسي",
+    location:"تلمسان",
+    desc:"مخطوط مفصل للزاوية والمسجد، تحفة من تحف الفن الأندلسي الزياني بمقرنصاتها وزليجها الرائع",
+    period:"القرن 14م",
+    style:"أندلسي زياني",
+    size:"55م × 40م",
+    status:"موثق",
+    icon:"🕌",
+    img:""
+  },
+  {
+    name:"قلعة بني حماد",
+    category:"معمار إسلامي كلاسيكي",
+    location:"المسيلة",
+    desc:"مخطوطات تفصيلية للمينار والقصور والأسوار، أكبر مجمع إسلامي مُدرج في التراث العالمي بالجزائر",
+    period:"1007-1152م",
+    style:"حمادي أمازيغي",
+    size:"250م × 150م",
+    status:"يونسكو",
+    icon:"🏰",
+    img:""
+  },
+  {
+    name:"مدينة تيمقاد الرومانية",
+    category:"معمار روماني",
+    location:"باتنة",
+    desc:"مخطوط رقمي كامل للمدينة الرومانية المعصومة، يكشف شبكة الشوارع والأحياء والمباني العامة",
+    period:"100م",
+    style:"روماني متأخر",
+    size:"700م × 500م",
+    status:"يونسكو",
+    icon:"🏛️",
+    img:""
+  },
+  {
+    name:"زاوية سيدي التهامي",
+    category:"معمار صوفي",
+    location:"تلمسان",
+    desc:"مخطوط الزاوية العثمانية مع رسوم الزخارف الهندسية والنباتية التي تزين أعمدتها ومحرابها",
+    period:"القرن 17م",
+    style:"عثماني مغاربي",
+    size:"30م × 25م",
+    status:"جارٍ توثيقه",
+    icon:"🕌",
+    img:""
+  }
+];
+
+// ─── Default Community Posts ───
+const DEFAULT_POSTS = [
+  {
+    id:"p1",
+    author:"أحمد بن يوسف",
+    place:"تيمقاد، باتنة",
+    text:"زيارة لا تُنسى لمدينة تيمقاد الرومانية الرائعة! آلاف السنين من التاريخ تقف شامخة أمام ناظريك. من أجمل ما رأيت في حياتي.",
+    date:"منذ يومين",
+    img:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Timgad_Algerie.jpg/640px-Timgad_Algerie.jpg",
+    comments:[
+      {name:"فاطمة", text:"رائع جداً! تمنيت أن أكون هناك معك"},
+      {name:"كريم", text:"زرتها سنة 2022 وما أحلاها"}
+    ]
+  },
+  {
+    id:"p2",
+    author:"أميرة حداد",
+    place:"وادي ميزاب، غرداية",
+    text:"عمارة غرداية شيء آخر تماماً — لا يمكنك تصديق أن هذه المدينة بُنيت قبل ألف سنة ولا تزال مثالاً في التصميم.",
+    date:"منذ أسبوع",
+    img:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Gharda%C3%AFa_old_city.jpg/640px-Gharda%C3%AFa_old_city.jpg",
+    comments:[
+      {name:"محمد", text:"درستها في الجامعة ولم أتخيل جمالها الحقيقي"}
+    ]
+  }
+];
+
+// ════════════════════════════════════════════════
+//  FUNCTIONS
+// ════════════════════════════════════════════════
+
+function enterSite(){
+  document.getElementById('hero').style.display='none';
+  document.getElementById('app').style.display='block';
+  loadDevContent();
+  applyDevImages();
+  renderWilayas(WILAYAS);
+  renderPlans();
+  loadPosts();
+  initGallery();
+}
+
+function showTab(tab){
+  document.querySelectorAll('.page-section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+tab).classList.add('active');
+  event.currentTarget.classList.add('active');
+  // مزامنة مع شريط الهاتف السفلي
+  document.querySelectorAll('.mob-nav-btn').forEach(b=>b.classList.remove('active'));
+  const mobBtn = document.getElementById('mob-btn-'+tab);
+  if(mobBtn) mobBtn.classList.add('active');
+}
+
+function showTabMobile(tab, btn){
+  document.querySelectorAll('.page-section').forEach(s=>s.classList.remove('active'));
+  document.getElementById('tab-'+tab).classList.add('active');
+  // مزامنة مع الناف العلوي
+  document.querySelectorAll('.nav-tab').forEach(b=>b.classList.remove('active'));
+  const desktopBtns = document.querySelectorAll('.nav-tab');
+  desktopBtns.forEach(b=>{ if(b.getAttribute('onclick')&&b.getAttribute('onclick').includes("'"+tab+"'")) b.classList.add('active'); });
+  // تحديث الناف السفلي
+  document.querySelectorAll('.mob-nav-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  // الرجوع لأعلى
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+// ════════════════════════════════════════════════
+//  المرشد السياحي الذكي — Gemini API
+// ════════════════════════════════════════════════
+
+const GEMINI_API_KEY = "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";
+const GEMINI_URL = "https://openrouter.ai/api/v1/chat/completions";
+
+const AI_SYSTEM_PROMPT = `أنت مرشد سياحي وثقافي متخصص في التراث الجزائري.
+اسمك "مرشد" وأنت خبير في:
+- التراث الثقافي والحضاري لكل منطقة جزائرية
+- الأزياء التقليدية واللباس الشعبي لكل ولاية ومنطقة
+- الأكلات التقليدية الجزائرية
+- الموسيقى والفنون الشعبية
+- التاريخ والحضارات (نوميديا، رومانية، إسلامية، عثمانية)
+- المعالم السياحية والأثرية
+- العادات والتقاليد والأعراس
+- الحرف التقليدية والصناعات اليدوية
+أجب دائماً بالعربية الفصيحة مع لمسة دافئة.
+نظم إجاباتك بشكل جميل مع استخدام الرموز التعبيرية المناسبة.
+اجعل الإجابة ثرية بالمعلومات لكن سهلة القراءة.
+إذا سُئلت عن منطقة، تحدث عن: اللباس، الأكل، الموسيقى، المعالم، العادات.`;
+
+let aiConversation = [];
+let aiIsLoading = false;
+
+function askRegion(region) {
+  const msg = `حدثني عن منطقة ${region} — اللباس التقليدي، الأكل، الموسيقى، المعالم والعادات`;
+  document.getElementById('ai-input').value = msg;
+  sendAiMsg();
+}
+
+async function sendAiMsg(customMsg) {
+  const input = document.getElementById('ai-input');
+  const msg = customMsg || input.value.trim();
+  if (!msg || aiIsLoading) return;
+
+  input.value = '';
+  aiIsLoading = true;
+
+  const welcome = document.getElementById('ai-welcome');
+  if (welcome) welcome.style.display = 'none';
+
+  appendAiMsg('user', msg);
+  aiConversation.push({ role: 'user', parts: [{ text: msg }] });
+
+  const typing = document.getElementById('ai-typing');
+  typing.style.display = 'flex';
+  scrollAiChat();
+
+  const btn = document.querySelector('.ai-send-btn');
+  btn.disabled = true;
+
+  try {
+    const response = await fetch(GEMINI_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${GEMINI_API_KEY}`,
+        'HTTP-Referer': 'https://bedra1.github.io',
+        'X-Title': 'تراث الجزائر'
+      },
+      body: JSON.stringify({
+        model: 'meta-llama/llama-3.3-8b-instruct:free',
+        max_tokens: 1024,
+        temperature: 0.7,
+        messages: [
+          { role: 'system', content: AI_SYSTEM_PROMPT },
+          ...aiConversation.map(m => ({ role: m.role === 'model' ? 'assistant' : m.role, content: m.parts[0].text }))
+        ]
+      })
+    });
+
+    if (!response.ok) {
+      const err = await response.json();
+      throw new Error(err.error?.message || 'خطأ في الاتصال');
+    }
+
+    const data = await response.json();
+    const reply = data.choices?.[0]?.message?.content || 'عذراً، لم أتمكن من الإجابة.';
+
+    aiConversation.push({ role: 'model', parts: [{ text: reply }] });
+    typing.style.display = 'none';
+    appendAiMsg('bot', reply);
+
+  } catch (err) {
+    typing.style.display = 'none';
+    // رسالة خطأ مختصرة وواضحة
+    let errMsg = '⚠️ تعذّر الاتصال بالمرشد الذكي.';
+    if (err.message && err.message.includes('quota')) {
+      errMsg = '⚠️ تم تجاوز الحد اليومي المجاني للمفتاح. يرجى المحاولة غداً أو تغيير المفتاح.';
+    } else if (err.message && err.message.includes('API')) {
+      errMsg = '⚠️ مفتاح API غير صحيح. يرجى التحقق منه.';
+    } else if (err.message && err.message.includes('fetch')) {
+      errMsg = '⚠️ لا يوجد اتصال بالإنترنت. يرجى التحقق من الاتصال.';
+    }
+    appendAiMsg('bot', errMsg);
+  }
+
+  aiIsLoading = false;
+  btn.disabled = false;
+  input.focus();
+}
+
+function appendAiMsg(role, text) {
+  const container = document.getElementById('ai-messages');
+  const div = document.createElement('div');
+  div.className = `ai-msg ${role}`;
+  const formatted = text
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+    .replace(/\n/g, '<br>');
+  div.innerHTML = `
+    <div class="ai-avatar-sm">${role === 'bot' ? '🏺' : '👤'}</div>
+    <div class="ai-bubble">${formatted}</div>`;
+  container.appendChild(div);
+  scrollAiChat();
+}
+
+function scrollAiChat() {
+  const box = document.getElementById('ai-chat-box');
+  setTimeout(() => { box.scrollTop = box.scrollHeight; }, 100);
+}
+
+// ── Wilayas ──
+function renderWilayas(list){
+  const grid=document.getElementById('wilayas-grid');
+  grid.innerHTML=list.map(w=>`
+    <div class="wilaya-card" onclick="openWilaya(${w.num})">
+      <div class="wilaya-num">ولاية رقم ${w.num}</div>
+      <div class="wilaya-name">${w.name}</div>
+      <div class="wilaya-region">${w.region}</div>
+    </div>
+  `).join('');
+}
+
+function filterWilayas(q){
+  const filtered=WILAYAS.filter(w=>w.name.includes(q)||w.region.includes(q));
+  renderWilayas(filtered);
+}
+
+function openWilaya(num){
+  const w=WILAYAS.find(x=>x.num===num);
+  if(!w) return;
+  _currentWilayaNum = num;
+  document.getElementById('modal-title').textContent='ولاية '+w.name;
+  document.getElementById('modal-subtitle').textContent=w.region+' — '+w.sites.length+' مواقع سياحية';
+  document.getElementById('modal-sites-grid').innerHTML=w.sites.map((s,si)=>{
+    const descKey = `site_desc_w${w.num}_${si}`;
+    const savedDesc = localStorage.getItem(descKey) || s.desc;
+    return `
+    <div class="site-card">
+      <div class="site-img${s.img ? ' has-img' : ''}">
+        ${s.img
+          ? `<img src="${s.img}" alt="${s.name}" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.classList.remove('has-img');this.parentElement.innerHTML='<span style=font-size:3rem>${s.icon}</span>'+this.parentElement.innerHTML.replace(this.outerHTML,'')">`
+          : `<span style="font-size:3rem">${s.icon}</span>`}
+        <button class="dev-img-btn" title="تغيير صورة الموقع" onclick="openDevImgPicker('site','w_${w.num}_${si}','${s.name}')">＋</button>
+      </div>
+      <div class="site-info">
+        <div class="site-name">${s.name}</div>
+        <div class="site-desc-wrap" id="desc-wrap-${w.num}-${si}">
+          <div class="site-desc" id="desc-text-${w.num}-${si}">${savedDesc}</div>
+          <button class="site-desc-edit-btn" onclick="openDescEditor(${w.num},${si})">✏️ تعديل الوصف</button>
+          <div class="site-desc-editor" id="desc-editor-${w.num}-${si}">
+            <textarea id="desc-ta-${w.num}-${si}" placeholder="اكتب وصف الموقع...">${savedDesc}</textarea>
+            <div class="site-desc-editor-actions">
+              <button class="site-desc-save" onclick="saveDesc(${w.num},${si})">💾 حفظ</button>
+              <button class="site-desc-cancel" onclick="cancelDesc(${w.num},${si})">إلغاء</button>
+            </div>
+          </div>
+        </div>
+        <a class="site-map-btn" href="${s.map}" target="_blank" rel="noopener">
+          📍 عرض على خرائط قوقل
+        </a>
+      </div>
+    </div>
+  `}).join('');
+
+  // إعادة ضبط التبويبات على "مواقع سياحية"
+  document.querySelectorAll('.wilaya-stab').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.wilaya-subpane').forEach(p=>p.classList.remove('active'));
+  document.querySelector('.wilaya-stab').classList.add('active');
+  document.getElementById('wpane-sites').classList.add('active');
+
+  // تحميل الخانات الأخرى
+  catRenderGallery('clothing');
+  catRenderGallery('food');
+  catRenderGallery('photos');
+
+  const modal = document.getElementById('wilaya-modal');
+  modal.classList.add('open');
+  document.body.style.overflow='hidden';
+
+  // التمرير للأعلى عند فتح المودال
+  const box = modal.querySelector('.modal-box');
+  if(box) { box.scrollTop = 0; }
+
+  // Swipe down to close على الهاتف
+  setupSwipeToClose(modal, box);
+}
+
+function setupSwipeToClose(overlay, box) {
+  if(!box) return;
+  let startY = 0, isDragging = false;
+
+  box.ontouchstart = (e) => {
+    if(box.scrollTop > 10) return; // فقط من أعلى الـ modal
+    startY = e.touches[0].clientY;
+    isDragging = true;
+    box.style.transition = 'none';
+  };
+  box.ontouchmove = (e) => {
+    if(!isDragging) return;
+    const delta = e.touches[0].clientY - startY;
+    if(delta > 0) {
+      box.style.transform = `translateY(${delta}px)`;
+      overlay.style.background = `rgba(5,15,25,${Math.max(0, 0.75 - delta/300)})`;
+    }
+  };
+  box.ontouchend = (e) => {
+    if(!isDragging) return;
+    isDragging = false;
+    const delta = e.changedTouches[0].clientY - startY;
+    box.style.transition = 'transform 0.3s ease';
+    if(delta > 120) {
+      box.style.transform = 'translateY(100%)';
+      setTimeout(() => closeModal(), 300);
+    } else {
+      box.style.transform = 'translateY(0)';
+      overlay.style.background = 'rgba(5,15,25,0.75)';
+    }
+  };
+}
+
+// ─── تبويبات الولاية ───
+function switchWilayaTab(tab, btn){
+  document.querySelectorAll('.wilaya-stab').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.wilaya-subpane').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('wpane-'+tab).classList.add('active');
+}
+
+// ─── خانات الفئات (ألبسة، ماكولات، صور) ───
+let _currentWilayaNum = null;
+
+const CAT_ICONS = { clothing:'👗', food:'🍲', photos:'📸' };
+
+function catKey(wilayaNum, cat){ return `cat_w${wilayaNum}_${cat}`; }
+
+function catGetData(cat){
+  const key = catKey(_currentWilayaNum, cat);
+  return JSON.parse(localStorage.getItem(key)||'[]');
+}
+
+function catSaveData(cat, data){
+  const key = catKey(_currentWilayaNum, cat);
+  try {
+    localStorage.setItem(key, JSON.stringify(data));
+  } catch(e) {
+    // إذا امتلأ localStorage نحذف الصور الأقدم ونحاول مجدداً
+    if(e.name === 'QuotaExceededError' || e.code === 22){
+      if(data.length > 1){
+        data.pop(); // نحذف الأقدم
+        try { localStorage.setItem(key, JSON.stringify(data)); }
+        catch(e2){ alert('⚠️ مساحة التخزين ممتلئة، احذف بعض الصور القديمة أولاً'); }
+      } else {
+        alert('⚠️ حجم الصورة كبير جداً، جرب صورة بجودة أقل');
+      }
+    }
+  }
+}
+
+function catRenderGallery(cat){
+  const items = catGetData(cat);
+  const container = document.getElementById('cat-gallery-'+cat);
+  if(!container) return;
+  if(!items.length){
+    container.innerHTML = `<div class="cat-empty">${CAT_ICONS[cat]} لا توجد منشورات بعد — كن أول من يضيف!</div>`;
+    return;
+  }
+  container.innerHTML = items.map((item, idx) => `
+    <div class="cat-photo-card">
+      ${item.img
+        ? `<img class="cat-photo-img" src="${item.img}" alt="${item.title}" onerror="this.style.display='none'">`
+        : `<div class="cat-photo-placeholder">${CAT_ICONS[cat]}</div>`}
+      ${item.title ? `<div class="cat-photo-title">${item.title}</div>` : ''}
+      ${item.desc  ? `<div class="cat-photo-desc">${item.desc}</div>`   : ''}
+      <button class="cat-photo-del" onclick="catDeletePhoto('${cat}',${idx})">🗑️ حذف</button>
+    </div>
+  `).join('');
+}
+
+// ─── Multi-upload staging ───
+let _catStaging = { clothing: [], food: [], photos: [] };
+
+const CAT_PLACEHOLDERS = {
+  clothing: { title: 'اسم اللباس (مثل: الكراكو، الجبة...)', desc: 'تعريف مختصر عن هذا اللباس...' },
+  food:     { title: 'اسم الأكلة (مثل: الشخشوخة، القديد...)', desc: 'تعريف مختصر عن هذه الأكلة...' },
+  photos:   { title: 'عنوان الصورة (مثل: شروق الشمس على الهقار...)', desc: 'وصف المكان أو المشهد...' }
+};
+
+// ضغط الصورة قبل الحفظ لتجنب تجاوز حد localStorage
+function compressImage(dataUrl, maxWidth, quality){
+  return new Promise(resolve => {
+    const img = new Image();
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      let w = img.width, h = img.height;
+      if(w > maxWidth){ h = Math.round(h * maxWidth / w); w = maxWidth; }
+      canvas.width = w; canvas.height = h;
+      canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+      resolve(canvas.toDataURL('image/jpeg', quality));
+    };
+    img.src = dataUrl;
+  });
+}
+
+function catPreviewMulti(input, cat){
+  const files = Array.from(input.files);
+  if(!files.length) return;
+
+  let loaded = 0;
+  files.forEach((file) => {
+    const reader = new FileReader();
+    reader.onload = async e => {
+      // ضغط الصورة: عرض 800px وجودة 0.75
+      const compressed = await compressImage(e.target.result, 800, 0.75);
+      _catStaging[cat].push({ img: compressed, title: '', desc: '' });
+      loaded++;
+      if(loaded === files.length) catRenderStaging(cat);
+    };
+    reader.readAsDataURL(file);
+  });
+  input.value = '';
+}
+
+function catRenderStaging(cat){
+  const items = _catStaging[cat];
+  const container = document.getElementById('cat-staging-'+cat);
+  const submitBtn = document.getElementById('cat-submit-'+cat);
+  if(!items.length){ container.innerHTML=''; submitBtn.style.display='none'; return; }
+
+  const ph = CAT_PLACEHOLDERS[cat];
+  container.innerHTML = `
+    <div class="cat-count-badge">📂 ${items.length} صورة جاهزة للنشر</div>
+    <div class="cat-staging-grid">
+      ${items.map((item,i) => `
+        <div class="cat-stage-item">
+          <img class="cat-stage-img" src="${item.img}">
+          <div class="cat-stage-fields">
+            <input class="cat-stage-inp" type="text"
+              placeholder="${ph.title}"
+              value="${item.title}"
+              oninput="_catStaging['${cat}'][${i}].title=this.value">
+            <textarea class="cat-stage-inp cat-stage-ta"
+              placeholder="${ph.desc}"
+              oninput="_catStaging['${cat}'][${i}].desc=this.value">${item.desc}</textarea>
+          </div>
+          <button class="cat-stage-del" onclick="catRemoveStage('${cat}',${i})">✕ إزالة هذه الصورة</button>
+        </div>
+      `).join('')}
+    </div>
+  `;
+  submitBtn.style.display = 'block';
+}
+
+function catRemoveStage(cat, idx){
+  _catStaging[cat].splice(idx, 1);
+  catRenderStaging(cat);
+}
+
+function catAddMulti(cat){
+  const items = _catStaging[cat];
+  if(!items.length){ alert('⚠️ لا توجد صور للنشر'); return; }
+  const data = catGetData(cat);
+  items.forEach(item => data.unshift({ title: item.title, desc: item.desc, img: item.img }));
+  catSaveData(cat, data);
+  _catStaging[cat] = [];
+  catRenderStaging(cat);
+  catRenderGallery(cat);
+  alert(`✅ تم نشر ${items.length} صورة بنجاح!`);
+}
+
+function catDeletePhoto(cat, idx){
+  if(!confirm('حذف هذه الصورة؟')) return;
+  const data = catGetData(cat);
+  data.splice(idx, 1);
+  catSaveData(cat, data);
+  catRenderGallery(cat);
+}
+
+function closeModal(e){ if(e.target===document.getElementById('wilaya-modal')) closeModalBtn(); }
+function closeModalBtn(){
+  const modal = document.getElementById('wilaya-modal');
+  const box = modal.querySelector('.modal-box');
+  if(box) { box.style.transform = ''; box.style.transition = ''; }
+  modal.style.background = '';
+  modal.classList.remove('open');
+  document.body.style.overflow='';
+}
+
+
+// ── تعديل وصف الموقع السياحي ──
+function openDescEditor(wNum, si){
+  const textEl  = document.getElementById(`desc-text-${wNum}-${si}`);
+  const editBtn = textEl.nextElementSibling;          // زر "تعديل الوصف"
+  const editor  = document.getElementById(`desc-editor-${wNum}-${si}`);
+  const ta      = document.getElementById(`desc-ta-${wNum}-${si}`);
+  textEl.style.display  = 'none';
+  editBtn.style.display = 'none';
+  editor.style.display  = 'flex';
+  ta.focus();
+  ta.setSelectionRange(ta.value.length, ta.value.length);
+}
+
+function saveDesc(wNum, si){
+  const ta  = document.getElementById(`desc-ta-${wNum}-${si}`);
+  const val = ta.value.trim();
+  const key = `site_desc_w${wNum}_${si}`;
+  if(val){ localStorage.setItem(key, val); }
+  else   { localStorage.removeItem(key); }
+  const textEl  = document.getElementById(`desc-text-${wNum}-${si}`);
+  const editBtn = textEl.nextElementSibling;
+  const editor  = document.getElementById(`desc-editor-${wNum}-${si}`);
+  textEl.textContent    = val || '';
+  textEl.style.display  = 'block';
+  editBtn.style.display = 'inline-flex';
+  editor.style.display  = 'none';
+}
+
+function cancelDesc(wNum, si){
+  const textEl  = document.getElementById(`desc-text-${wNum}-${si}`);
+  const editBtn = textEl.nextElementSibling;
+  const editor  = document.getElementById(`desc-editor-${wNum}-${si}`);
+  const ta      = document.getElementById(`desc-ta-${wNum}-${si}`);
+  // أعد النص الأصلي
+  ta.value              = textEl.textContent;
+  textEl.style.display  = 'block';
+  editBtn.style.display = 'inline-flex';
+  editor.style.display  = 'none';
+}
+
+// ── Plans ──
+function renderPlans(){
+  document.getElementById('plans-grid').innerHTML=PLANS.map((p,pi)=>`
+    <div class="plan-card">
+      <div class="plan-img-wrap${p.img ? ' has-img' : ''}">
+        ${p.img
+          ? `<img src="${p.img}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;" onerror="this.style.display='none'">`
+          : ''}
+        <div style="font-size:4rem;position:relative;z-index:1;${p.img ? 'display:none' : ''}">${p.icon}</div>
+        <div class="plan-badge">${p.category}</div>
+        <button class="dev-img-btn" title="تغيير صورة المخطوط" onclick="openDevImgPicker('plan','p_${pi}','${p.name}')">＋</button>
+      </div>
+      <div class="plan-content">
+        <div class="plan-name">${p.name}</div>
+        <div class="plan-location">📍 ${p.location}</div>
+        <div class="plan-desc">${p.desc}</div>
+        <div class="plan-details">
+          <div class="plan-detail-item"><div class="plan-detail-label">الحقبة</div><div class="plan-detail-val">${p.period}</div></div>
+          <div class="plan-detail-item"><div class="plan-detail-label">الأسلوب</div><div class="plan-detail-val">${p.style}</div></div>
+          <div class="plan-detail-item"><div class="plan-detail-label">المساحة</div><div class="plan-detail-val">${p.size}</div></div>
+          <div class="plan-detail-item"><div class="plan-detail-label">الحالة</div><div class="plan-detail-val">${p.status}</div></div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ── Community ──
+function loadPosts(){
+  let posts = JSON.parse(localStorage.getItem('turath_posts')||'null');
+  if(!posts){ posts=DEFAULT_POSTS; savePosts(posts); }
+  renderPosts(posts);
+}
+
+function savePosts(posts){ localStorage.setItem('turath_posts', JSON.stringify(posts)); }
+
+function renderPosts(posts){
+  document.getElementById('posts-container').innerHTML=posts.map(p=>`
+    <div class="post-item" id="post-${p.id}">
+      ${p.img ? (p.img.startsWith('data:video') || p.img.endsWith('.mp4') || p.img.endsWith('.webm') ? `<video class="post-img" src="${p.img}" controls muted playsinline style="width:100%;max-height:400px;object-fit:cover"></video>` : `<img class="post-img" src="${p.img}" alt="صورة المشاركة" onerror="this.style.display='none'">`) : ''}
+      <div class="post-body">
+        <div class="post-meta">
+          <div>
+            <div class="post-author">👤 ${p.author}</div>
+            <div class="post-place">📍 ${p.place}</div>
+          </div>
+          <div class="post-date">${p.date}</div>
+        </div>
+        <div class="post-text">${p.text}</div>
+        <div class="comments-section">
+          <div id="comments-${p.id}">
+            ${renderComments(p.comments)}
+          </div>
+          <div class="add-comment-wrap">
+            <input class="comment-input" type="text" placeholder="أضف تعليقاً..." id="ci-${p.id}">
+            <button class="comment-send-btn" onclick="addComment('${p.id}')">إرسال</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderComments(comments){
+  return (comments||[]).map(c=>`
+    <div class="comment-item">
+      <div class="comment-avatar">${c.name[0]}</div>
+      <div class="comment-bubble">
+        <div class="comment-name">${c.name}</div>
+        <div class="comment-text">${c.text}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function addComment(postId){
+  const input=document.getElementById('ci-'+postId);
+  const text=input.value.trim();
+  if(!text) return;
+  const name=prompt('اسمك؟','زائر') || 'زائر';
+  let posts=JSON.parse(localStorage.getItem('turath_posts')||'[]');
+  const post=posts.find(p=>p.id===postId);
+  if(post){
+    if(!post.comments) post.comments=[];
+    post.comments.push({name, text});
+    savePosts(posts);
+    document.getElementById('comments-'+postId).innerHTML=renderComments(post.comments);
+    input.value='';
+  }
+}
+
+let uploadedImgData = null;
+
+function previewFile(input){
+  const file=input.files[0];
+  if(!file) return;
+  if(file.size > 50*1024*1024){ alert('الملف كبير جداً! الحجم الأقصى 50MB'); return; }
+  const isVideo = file.type.startsWith('video/');
+  const reader=new FileReader();
+  reader.onload=e=>{
+    uploadedImgData=e.target.result;
+    const wrap = document.getElementById('preview-wrap');
+    const imgEl = document.getElementById('preview-img');
+    // إزالة أي فيديو سابق
+    const oldVid = document.getElementById('preview-vid');
+    if(oldVid) oldVid.remove();
+    if(isVideo){
+      imgEl.style.display='none';
+      const vid = document.createElement('video');
+      vid.id='preview-vid'; vid.src=uploadedImgData;
+      vid.controls=true; vid.muted=true;
+      vid.style.cssText='max-height:200px;border-radius:8px;border:2px solid var(--cool-blue-light);display:block;margin:0 auto;max-width:100%';
+      wrap.appendChild(vid);
+    } else {
+      imgEl.style.display='block';
+      imgEl.src=uploadedImgData;
+    }
+    wrap.style.display='block';
+    document.getElementById('upload-zone').style.borderColor='var(--cool-blue)';
+  };
+  reader.readAsDataURL(file);
+}
+
+function submitPost(){
+  const author=document.getElementById('post-author').value.trim();
+  const place=document.getElementById('post-place').value.trim();
+  const text=document.getElementById('post-text').value.trim();
+  if(!author||!text){ alert('الرجاء ملء الاسم ووصف المشاركة على الأقل'); return; }
+  
+  let posts=JSON.parse(localStorage.getItem('turath_posts')||'[]');
+  const newPost={
+    id:'p'+Date.now(),
+    author, place:place||'الجزائر',
+    text,
+    date:'الآن',
+    img:uploadedImgData||'',
+    comments:[]
+  };
+  posts.unshift(newPost);
+  savePosts(posts);
+  renderPosts(posts);
+  
+  // Reset
+  document.getElementById('post-author').value='';
+  document.getElementById('post-place').value='';
+  document.getElementById('post-text').value='';
+  document.getElementById('preview-wrap').style.display='none';
+  document.getElementById('upload-zone').style.borderColor='';
+  uploadedImgData=null;
+  document.getElementById('file-input').value='';
+  
+  alert('✅ تمت إضافة مشاركتك بنجاح!');
+}
+
+// ════════════════════════════════════════════════
+// ════════════════════════════════════════════════
+//  جاليري الأزياء التراثية
+// ════════════════════════════════════════════════
+
+const GALLERY_DATA = [
+  {
+    title: "الشدة التلمسانية",
+    region: "غرب", zone: "تلمسان",
+    icon: "🕌", badge: "أندلسي",
+    img: "https://upload.wikimedia.org/wikipedia/commons/5/5e/Tlemcen_robe.jpg",
+    desc: "الشدة التلمسانية تحفة فنية أندلسية تجمع بين الحرير والذهب والمخمل، تُعدّ من أرقى الأزياء التقليدية في شمال أفريقيا وتُرتدى في المناسبات الكبرى.",
+    details: [
+      {label:"المنطقة", val:"تلمسان — الشمال الغربي"},
+      {label:"المادة", val:"حرير وذهب ومخمل"},
+      {label:"المناسبة", val:"الأعراس والمناسبات"},
+      {label:"الأصل", val:"حضارة أندلسية"},
+    ]
+  },
+  {
+    title: "اللباس القبائلي",
+    region: "شمال", zone: "القبائل",
+    icon: "⛰️", badge: "أمازيغي",
+    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Femme_kabyle.jpg/500px-Femme_kabyle.jpg",
+    desc: "اللباس الأمازيغي القبائلي يتميز بتطريزه الملون بألوان زاهية وحليه الفضية الثقيلة. يعكس هوية الشعب القبائلي ومرونته الثقافية عبر آلاف السنين.",
+    details: [
+      {label:"المنطقة", val:"القبائل الكبرى والصغرى"},
+      {label:"المادة", val:"قطن وصوف وفضة"},
+      {label:"المناسبة", val:"الأعياد والحفلات"},
+      {label:"الأصل", val:"حضارة أمازيغية"},
+    ]
+  },
+  {
+    title: "لباس الطوارق",
+    region: "جنوب", zone: "تمنراست",
+    icon: "🏜️", badge: "صحراوي",
+    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Tuareg_man_2008.jpg/500px-Tuareg_man_2008.jpg",
+    desc: "اللباس الأزرق الأسطوري للطوارق — شعب الصحراء الكبرى. يتميز بعمامة الليثام التي تغطي الوجه واللون الأزرق الداكن الذي يتصبغ منه جلدهم فسُمّوا بـ'الرجال الزرق'.",
+    details: [
+      {label:"المنطقة", val:"تمنراست — الهقار"},
+      {label:"المادة", val:"قطن مصبوغ بالنيلة"},
+      {label:"المميز", val:"عمامة الليثام"},
+      {label:"الأصل", val:"حضارة طوارقية"},
+    ]
+  },
+  {
+    title: "اللباس الشاوي",
+    region: "شرق", zone: "الأوراس",
+    icon: "🏔️", badge: "أمازيغي",
+    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Tenue_Chaoui.jpg/500px-Tenue_Chaoui.jpg",
+    desc: "زي الشاوية يتميز بألوانه الصارخة وتطريزاته الهندسية الفريدة المستوحاة من جبال الأوراس. الحلي الفضية الثقيلة جزء أساسي من هذا الزي العريق.",
+    details: [
+      {label:"المنطقة", val:"الأوراس — باتنة وخنشلة"},
+      {label:"المادة", val:"صوف وفضة"},
+      {label:"المميز", val:"تطريز هندسي"},
+      {label:"الأصل", val:"حضارة شاوية أمازيغية"},
+    ]
+  },
+  {
+    title: "البرنوس الجزائري",
+    region: "جنوب", zone: "بسكرة",
+    icon: "🌴", badge: "صحراوي",
+    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Burnous_Algerie.jpg/500px-Burnous_Algerie.jpg",
+    desc: "البرنوس الصوفي الكلاسيكي — رمز الرجل الجزائري الأصيل. يُصنع من صوف الغنم الخالص ويتميز بقبعته المخروطية. يرتديه الرجال في المناسبات ومجالس الكبار.",
+    details: [
+      {label:"المنطقة", val:"الهضاب العليا والجنوب"},
+      {label:"المادة", val:"صوف مغزول يدوياً"},
+      {label:"المميز", val:"القبة المخروطية"},
+      {label:"الأصل", val:"تراث بربري قديم"},
+    ]
+  },
+  {
+    title: "اللباس المزابي",
+    region: "جنوب", zone: "غرداية",
+    icon: "🏘️", badge: "إباضي",
+    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Femme_mozabite.jpg/500px-Femme_mozabite.jpg",
+    desc: "تتميز المرأة المزابية بلباسها الأبيض الكامل الذي يُغطي كل الجسم في رمزية روحانية عميقة. تصميمه الفريد يعكس قيم الحضارة الإباضية في الحياء والتواضع.",
+    details: [
+      {label:"المنطقة", val:"غرداية — وادي ميزاب"},
+      {label:"المادة", val:"قطن أبيض"},
+      {label:"المميز", val:"التغطية الكاملة البيضاء"},
+      {label:"الأصل", val:"حضارة إباضية"},
+    ]
+  },
+  {
+    title: "الحايك القسنطيني",
+    region: "شرق", zone: "قسنطينة",
+    icon: "🌉", badge: "عثماني",
+    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Haik_Constantine.jpg/500px-Haik_Constantine.jpg",
+    desc: "الحايك الأبيض الرقيق رمز المرأة القسنطينية الأصيلة. يُعبّر عن الوقار والجمال ويُلقى على الكتف بطريقة فنية مميزة تتوارثها الأجيال.",
+    details: [
+      {label:"المنطقة", val:"قسنطينة — الشرق"},
+      {label:"المادة", val:"حرير أو قطن أبيض"},
+      {label:"المميز", val:"البياض والرقة"},
+      {label:"الأصل", val:"تراث عثماني"},
+    ]
+  },
+  {
+    title: "اللباس الوهراني",
+    region: "غرب", zone: "وهران",
+    icon: "🏖️", badge: "أندلسي",
+    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Costume_Oran.jpg/500px-Costume_Oran.jpg",
+    desc: "اللباس الوهراني يجمع بين الأناقة الأندلسية وأثر الحضور الإسباني في المدينة. يتميز بألوانه الزاهية وتطريزاته الدقيقة المستوحاة من تاريخ المدينة المتنوع.",
+    details: [
+      {label:"المنطقة", val:"وهران — الشمال الغربي"},
+      {label:"المادة", val:"حرير وقطن"},
+      {label:"المميز", val:"مزيج أندلسي إسباني"},
+      {label:"الأصل", val:"تراث متعدد الحضارات"},
+    ]
+  },
+];
+
+let currentCostume = null;
+
+function initGallery() {
+  renderGallery(GALLERY_DATA);
+}
+
+function renderGallery(data) {
+  const grid = document.getElementById('gallery-grid');
+  const colors = ['#3d1f0a','#1a3a2a','#0a1a3a','#2a0a1a','#1a2a0a','#3a1a0a','#0a2a3a','#2a1a3a'];
+  grid.innerHTML = data.map((item, i) => `
+    <div class="gallery-card" onclick="openGalleryModal(${GALLERY_DATA.indexOf(item)})">
+      <div class="gallery-card-img-wrap" style="width:100%;height:300px;position:relative;overflow:hidden;background:${colors[i%colors.length]}">
+        <img
+          src="${item.img}"
+          alt="${item.title}"
+          style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s;"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+        >
+        <div style="display:none;position:absolute;inset:0;background:linear-gradient(135deg,${colors[i%colors.length]},#7a3b12);align-items:center;justify-content:center;flex-direction:column;gap:12px">
+          <div style="font-size:4rem">${item.icon}</div>
+          <div style="font-family:'Amiri',serif;font-size:1.3rem;color:#f5dfa0;text-align:center;padding:0 16px">${item.title}</div>
+        </div>
+      </div>
+      <div class="gallery-card-overlay">
+        <div class="gallery-card-region">${item.zone}</div>
+        <div class="gallery-card-title">${item.title}</div>
+        <div class="gallery-card-sub">اضغط لاكتشاف التفاصيل ←</div>
+      </div>
+      <div class="gallery-card-badge">${item.badge}</div>
+      <div class="gallery-card-icon">${item.icon}</div>
+    </div>
+  `).join('');
+}
+
+function filterGallery(region, btn) {
+  document.querySelectorAll('.gallery-filter').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const filtered = region === 'all' ? GALLERY_DATA : GALLERY_DATA.filter(i => i.region === region);
+  renderGallery(filtered);
+}
+
+function openGalleryModal(idx) {
+  const item = GALLERY_DATA[idx];
+  currentCostume = item;
+  document.getElementById('gm-img').src = item.img;
+  document.getElementById('gm-img').onerror = function(){ this.src=`https://via.placeholder.com/500x400/3d1f0a/c8922a?text=${encodeURIComponent(item.title)}`; };
+  document.getElementById('gm-title').textContent = item.title;
+  document.getElementById('gm-region').textContent = item.zone;
+  document.getElementById('gm-location').textContent = '📍 ' + item.details[0].val;
+  document.getElementById('gm-desc').textContent = item.desc;
+  document.getElementById('gm-details').innerHTML = item.details.map(d => `
+    <div class="gm-detail">
+      <div class="gm-detail-label">${d.label}</div>
+      <div class="gm-detail-val">${d.val}</div>
+    </div>
+  `).join('');
+  document.getElementById('gallery-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeGalleryModal(e) {
+  if(e.target === document.getElementById('gallery-modal')) closeGalleryModalBtn();
+}
+function closeGalleryModalBtn() {
+  document.getElementById('gallery-modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function askAboutCostume() {
+  if(!currentCostume) return;
+  closeGalleryModalBtn();
+  showTabMobile('ai', document.getElementById('mob-btn-ai'));
+  setTimeout(() => {
+    sendAiMsg(`حدثني بالتفصيل عن "${currentCostume.title}" من منطقة ${currentCostume.zone} — تاريخه، طريقة صنعه، مناسبات ارتدائه، ومعناه الثقافي`);
+  }, 500);
+}
+
+// ════════════════════════════════════════════════
+//  DEVELOPER ADMIN PANEL
+// ════════════════════════════════════════════════
+
+// ════════════════════════════════════════════════
+//  OPEN EDIT PANEL — متاح للجميع بدون كلمة سر
+// ════════════════════════════════════════════════
+
+// ── تفعيل لوحة التعديل: زر ✏️ الثابت في الصفحة ──
+
+let _devClickCount = 0;
+let _devClickTimer = null;
+
+function handleCopyrightClick(){
+  openAdminPanel();
+}
+
+// ════════════════════════════════════════════════
+//  زر + المطور — نافذة رفع صورة مباشرة لكل بطاقة
+// ════════════════════════════════════════════════
+function openDevImgPicker(type, key, label){
+  // إزالة أي نافذة سابقة
+  const old = document.getElementById('dev-picker-overlay');
+  if(old) old.remove();
+
+  // الصورة الحالية
+  const saved = JSON.parse(localStorage.getItem('turath_dev_imgs')||'{}');
+  const currentImg = saved[`${type}_${key}`] || '';
+
+  const overlay = document.createElement('div');
+  overlay.id = 'dev-picker-overlay';
+  overlay.innerHTML = `
+    <div id="dev-picker-box">
+      <div id="dev-picker-header">
+        <div>
+          <div id="dev-picker-title">📸 رفع صورة للمطور</div>
+          <div id="dev-picker-label">${label}</div>
+        </div>
+        <button id="dev-picker-close" onclick="document.getElementById('dev-picker-overlay').remove()">✕</button>
+      </div>
+      <div id="dev-picker-body">
+        ${currentImg ? `
+          <div id="dev-picker-current">
+            <div class="dev-picker-section-label">الصورة الحالية</div>
+            <img src="${currentImg}" id="dev-picker-cur-img">
+          </div>` : `
+          <div id="dev-picker-empty">
+            <div style="font-size:2rem;margin-bottom:8px">🖼️</div>
+            <div>لا توجد صورة — يظهر الرمز حالياً</div>
+          </div>`}
+        <div class="dev-picker-section-label" style="margin-top:16px">رفع صورة جديدة</div>
+        <div id="dev-picker-dropzone" onclick="document.getElementById('dev-picker-file').click()">
+          <input type="file" id="dev-picker-file" accept="image/*" style="display:none" onchange="devPickerPreview(this)">
+          <div id="dev-picker-preview-wrap" style="display:none">
+            <img id="dev-picker-preview-img" src="">
+          </div>
+          <div id="dev-picker-drop-hint">
+            <div style="font-size:1.8rem">＋</div>
+            <div>اضغط لاختيار صورة</div>
+          </div>
+        </div>
+        <div id="dev-picker-actions">
+          <button class="dev-picker-btn dev-picker-save" onclick="devPickerSave('${type}','${key}')">💾 حفظ</button>
+          ${currentImg ? `<button class="dev-picker-btn dev-picker-del" onclick="devPickerDelete('${type}','${key}')">🗑️ حذف</button>` : ''}
+          <button class="dev-picker-btn dev-picker-cancel" onclick="document.getElementById('dev-picker-overlay').remove()">إلغاء</button>
+        </div>
+      </div>
+    </div>`;
+
+  // إغلاق بالنقر خارج
+  overlay.addEventListener('click', e => { if(e.target === overlay) overlay.remove(); });
+  document.body.appendChild(overlay);
+}
+
+let _devPickerImg = null;
+
+function devPickerPreview(input){
+  const file = input.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    _devPickerImg = e.target.result;
+    document.getElementById('dev-picker-preview-img').src = _devPickerImg;
+    document.getElementById('dev-picker-preview-wrap').style.display = 'block';
+    document.getElementById('dev-picker-drop-hint').style.display = 'none';
+  };
+  reader.readAsDataURL(file);
+}
+
+function devPickerSave(type, key){
+  if(!_devPickerImg){
+    alert('⚠️ ارفع صورة أولاً');
+    return;
+  }
+  const saved = JSON.parse(localStorage.getItem('turath_dev_imgs')||'{}');
+  saved[`${type}_${key}`] = _devPickerImg;
+  localStorage.setItem('turath_dev_imgs', JSON.stringify(saved));
+  _devPickerImg = null;
+
+  applyDevImages();
+  if(type === 'site'){
+    // إعادة فتح نافذة الولاية إن كانت مفتوحة
+    const modalOpen = document.getElementById('wilaya-modal').classList.contains('open');
+    if(modalOpen){
+      const wnum = key.split('_')[1];
+      openWilaya(parseInt(wnum));
+    }
+  } else {
+    renderPlans();
+  }
+  document.getElementById('dev-picker-overlay').remove();
+}
+
+function devPickerDelete(type, key){
+  if(!confirm('حذف الصورة والرجوع للرمز؟')) return;
+  const saved = JSON.parse(localStorage.getItem('turath_dev_imgs')||'{}');
+  delete saved[`${type}_${key}`];
+  localStorage.setItem('turath_dev_imgs', JSON.stringify(saved));
+  _devPickerImg = null;
+  applyDevImages();
+  if(type === 'site'){
+    const modalOpen = document.getElementById('wilaya-modal').classList.contains('open');
+    if(modalOpen){
+      const wnum = key.split('_')[1];
+      openWilaya(parseInt(wnum));
+    }
+  } else {
+    renderPlans();
+  }
+  document.getElementById('dev-picker-overlay').remove();
+}
+
+function handleCopyrightClick(){
+  openAdminPanel();
+}
+
+function openAdminPanel(){
+  const old = document.getElementById('admin-panel-overlay');
+  if(old) old.remove();
+
+  // بناء قائمة الولايات
+  let wilayaOpts = WILAYAS.map(w =>
+    `<option value="${w.num}">[${w.num}] ${w.name}</option>`).join('');
+
+  const panel = document.createElement('div');
+  panel.id = 'admin-panel-overlay';
+  panel.innerHTML = `
+  <div id="admin-panel-box">
+    <div id="admin-header">
+      <div>
+        <div id="admin-title">✏️ لوحة تعديل المحتوى</div>
+        <div id="admin-sub">تراث الجزائر — مفتوحة للجميع بدون تعقيدات</div>
+      </div>
+      <button id="admin-close-btn" onclick="closeAdminPanel()">✕</button>
+    </div>
+
+    <!-- تبويبات اللوحة -->
+    <div id="admin-tabs">
+      <button class="adm-tab active" onclick="admTab('sites',this)">🗺️ الولايات والمواقع</button>
+      <button class="adm-tab" onclick="admTab('plans',this)">🏛️ المخطوطات</button>
+      <button class="adm-tab" onclick="admTab('community',this); admRenderPostsList()">📸 المجتمع</button>
+    </div>
+
+    <!-- ══ قسم المواقع ══ -->
+    <div id="adm-sites" class="adm-pane">
+
+      <!-- اختيار الولاية -->
+      <div class="adm-row">
+        <label class="adm-lbl">الولاية</label>
+        <select id="adm-wilaya-sel" class="adm-sel" onchange="admLoadWilayaSites()">
+          <option value="">— اختر ولاية —</option>
+          ${wilayaOpts}
+        </select>
+      </div>
+
+      <!-- قائمة المواقع الحالية -->
+      <div id="adm-sites-list"></div>
+
+      <!-- نموذج إضافة / تعديل موقع -->
+      <div id="adm-site-form" style="display:none">
+        <div class="adm-form-title" id="adm-site-form-title">➕ إضافة موقع جديد</div>
+        <input type="hidden" id="adm-site-idx" value="-1">
+        <div class="adm-row"><label class="adm-lbl">اسم الموقع *</label>
+          <input class="adm-inp" id="adm-s-name" placeholder="مثال: قلعة الصخرة"></div>
+        <div class="adm-row"><label class="adm-lbl">الوصف *</label>
+          <textarea class="adm-inp adm-ta" id="adm-s-desc" placeholder="وصف مختصر عن الموقع..."></textarea></div>
+        <div class="adm-row"><label class="adm-lbl">رابط قوقل ماب</label>
+          <input class="adm-inp" id="adm-s-map" placeholder="https://maps.google.com/?q=..."></div>
+        <div class="adm-row"><label class="adm-lbl">رمز (Emoji)</label>
+          <input class="adm-inp" id="adm-s-icon" placeholder="🏛️" style="width:80px"></div>
+        <div class="adm-row"><label class="adm-lbl">📸 صورة أو 🎬 فيديو (اختياري)</label>
+          <div class="adm-img-picker" onclick="document.getElementById('adm-s-img-file').click()">
+            <input type="file" id="adm-s-img-file" accept="image/*,video/*" style="display:none" onchange="admSiteMediaPreview(this)">
+            <img id="adm-s-img-preview" style="display:none;max-height:120px;border-radius:6px;margin-bottom:6px">
+            <video id="adm-s-vid-preview" style="display:none;max-height:120px;border-radius:6px;margin-bottom:6px;width:100%" controls muted></video>
+            <div id="adm-s-img-hint"><span style="font-size:1.5rem">🖼️🎬</span> اضغط لاختيار صورة أو فيديو</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:10px;margin-top:14px">
+          <button class="adm-btn adm-save" onclick="admSaveSite()">💾 حفظ الموقع</button>
+          <button class="adm-btn adm-cancel" onclick="admCancelSiteForm()">↩ إلغاء</button>
+        </div>
+      </div>
+
+      <button class="adm-btn adm-add" id="adm-add-site-btn" style="display:none;margin-top:14px"
+        onclick="admShowSiteForm(-1)">➕ إضافة موقع جديد لهذه الولاية</button>
+    </div>
+
+    <!-- ══ قسم المخطوطات ══ -->
+    <div id="adm-plans" class="adm-pane" style="display:none">
+
+      <!-- قائمة المخطوطات -->
+      <div id="adm-plans-list"></div>
+
+      <!-- نموذج إضافة / تعديل مخطوط -->
+      <div id="adm-plan-form" style="display:none">
+        <div class="adm-form-title" id="adm-plan-form-title">➕ إضافة مخطوط جديد</div>
+        <input type="hidden" id="adm-plan-idx" value="-1">
+        <div class="adm-row"><label class="adm-lbl">اسم المخطوط *</label>
+          <input class="adm-inp" id="adm-p-name" placeholder="مثال: مسجد تلمسان"></div>
+        <div class="adm-row"><label class="adm-lbl">الفئة</label>
+          <input class="adm-inp" id="adm-p-cat" placeholder="مثال: معمار أندلسي"></div>
+        <div class="adm-row"><label class="adm-lbl">الموقع / المدينة</label>
+          <input class="adm-inp" id="adm-p-loc" placeholder="مثال: تلمسان"></div>
+        <div class="adm-row"><label class="adm-lbl">الوصف *</label>
+          <textarea class="adm-inp adm-ta" id="adm-p-desc" placeholder="وصف المخطوط..."></textarea></div>
+        <div class="adm-row"><label class="adm-lbl">الحقبة الزمنية</label>
+          <input class="adm-inp" id="adm-p-period" placeholder="مثال: القرن 14م"></div>
+        <div class="adm-row"><label class="adm-lbl">الأسلوب المعماري</label>
+          <input class="adm-inp" id="adm-p-style" placeholder="مثال: أندلسي زياني"></div>
+        <div class="adm-row"><label class="adm-lbl">المساحة</label>
+          <input class="adm-inp" id="adm-p-size" placeholder="مثال: 55م × 40م"></div>
+        <div class="adm-row"><label class="adm-lbl">حالة التوثيق</label>
+          <input class="adm-inp" id="adm-p-status" placeholder="مثال: موثق / جارٍ توثيقه"></div>
+        <div class="adm-row"><label class="adm-lbl">رمز (Emoji)</label>
+          <input class="adm-inp" id="adm-p-icon" placeholder="🏛️" style="width:80px"></div>
+        <div class="adm-row"><label class="adm-lbl">📸 صورة أو 🎬 فيديو (اختياري)</label>
+          <div class="adm-img-picker" onclick="document.getElementById('adm-p-img-file').click()">
+            <input type="file" id="adm-p-img-file" accept="image/*,video/*" style="display:none" onchange="admPlanMediaPreview(this)">
+            <img id="adm-p-img-preview" style="display:none;max-height:120px;border-radius:6px;margin-bottom:6px">
+            <video id="adm-p-vid-preview" style="display:none;max-height:120px;border-radius:6px;margin-bottom:6px;width:100%" controls muted></video>
+            <div id="adm-p-img-hint"><span style="font-size:1.5rem">🖼️🎬</span> اضغط لاختيار صورة أو فيديو</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:10px;margin-top:14px">
+          <button class="adm-btn adm-save" onclick="admSavePlan()">💾 حفظ المخطوط</button>
+          <button class="adm-btn adm-cancel" onclick="admCancelPlanForm()">↩ إلغاء</button>
+        </div>
+      </div>
+
+      <button class="adm-btn adm-add" style="margin-top:14px" onclick="admShowPlanForm(-1)">➕ إضافة مخطوط تراثي جديد</button>
+    </div>
+
+    <!-- ══ قسم المجتمع ══ -->
+    <div id="adm-community" class="adm-pane" style="display:none">
+      <div id="adm-posts-list"></div>
+    </div>
+
+    <div id="admin-footer">
+      <span style="font-size:0.78rem;color:var(--cool-blue-light)">اضغط ✏️ تعديل في أي وقت — التغييرات تُحفظ محلياً</span>
+      <span id="admin-status"></span>
+    </div>
+  </div>`;
+  document.body.appendChild(panel);
+  admRenderPlansList();
+  admRenderPostsList();
+}
+
+function closeAdminPanel(){
+  const p = document.getElementById('admin-panel-overlay');
+  if(p) p.remove();
+}
+
+// ── تبويبات اللوحة ──
+function admTab(name, btn){
+  document.querySelectorAll('.adm-pane').forEach(p => p.style.display='none');
+  document.querySelectorAll('.adm-tab').forEach(b => b.classList.remove('active'));
+  document.getElementById('adm-'+name).style.display='block';
+  btn.classList.add('active');
+}
+
+// ════════════════════════
+//  إدارة المواقع الأثرية
+// ════════════════════════
+let _admSiteImg = null;
+
+function admLoadWilayaSites(){
+  const wnum = parseInt(document.getElementById('adm-wilaya-sel').value);
+  document.getElementById('adm-sites-list').innerHTML = '';
+  document.getElementById('adm-site-form').style.display = 'none';
+  document.getElementById('adm-add-site-btn').style.display = 'none';
+  if(!wnum) return;
+  const w = WILAYAS.find(x => x.num === wnum);
+  if(!w) return;
+
+  let html = `<div class="adm-list-title">مواقع ولاية ${w.name} (${w.sites.length} موقع)</div>`;
+  w.sites.forEach((s, i) => {
+    html += `
+    <div class="adm-item">
+      <div class="adm-item-info">
+        <div class="adm-item-name">${s.icon || '📍'} ${s.name}</div>
+        <div class="adm-item-sub">${s.desc.substring(0,60)}...</div>
+      </div>
+      <div class="adm-item-btns">
+        <button class="adm-ibtn adm-edit" onclick="admShowSiteForm(${i})">✏️ تعديل</button>
+        <button class="adm-ibtn adm-add-inline" onclick="admShowSiteForm(-1)" title="إضافة موقع جديد">➕</button>
+        <button class="adm-ibtn adm-del" onclick="admDeleteSite(${i})">🗑️</button>
+      </div>
+    </div>`;
+  });
+  document.getElementById('adm-sites-list').innerHTML = html;
+  document.getElementById('adm-add-site-btn').style.display = 'block';
+}
+
+function admShowSiteForm(idx){
+  _admSiteImg = null;
+  const wnum = parseInt(document.getElementById('adm-wilaya-sel').value);
+  const w = WILAYAS.find(x => x.num === wnum);
+  document.getElementById('adm-site-form').style.display = 'block';
+  document.getElementById('adm-add-site-btn').style.display = 'none';
+  document.getElementById('adm-site-idx').value = idx;
+
+  if(idx >= 0 && w){
+    const s = w.sites[idx];
+    document.getElementById('adm-site-form-title').textContent = '✏️ تعديل الموقع: ' + s.name;
+    document.getElementById('adm-s-name').value = s.name;
+    document.getElementById('adm-s-desc').value = s.desc;
+    document.getElementById('adm-s-map').value = s.map || '';
+    document.getElementById('adm-s-icon').value = s.icon || '';
+    // صورة موجودة
+    if(s.img){
+      document.getElementById('adm-s-img-preview').src = s.img;
+      document.getElementById('adm-s-img-preview').style.display='block';
+      document.getElementById('adm-s-img-hint').style.display='none';
+      _admSiteImg = s.img;
+    } else {
+      document.getElementById('adm-s-img-preview').style.display='none';
+      document.getElementById('adm-s-img-hint').style.display='block';
+    }
+  } else {
+    document.getElementById('adm-site-form-title').textContent = '➕ إضافة موقع جديد';
+    document.getElementById('adm-s-name').value='';
+    document.getElementById('adm-s-desc').value='';
+    document.getElementById('adm-s-map').value='';
+    document.getElementById('adm-s-icon').value='📍';
+    document.getElementById('adm-s-img-preview').style.display='none';
+    document.getElementById('adm-s-img-hint').style.display='block';
+  }
+  document.getElementById('adm-site-form').scrollIntoView({behavior:'smooth'});
+}
+
+function admSiteImgPreview(input){ admSiteMediaPreview(input); }
+function admSiteMediaPreview(input){
+  const file = input.files[0]; if(!file) return;
+  const isVideo = file.type.startsWith('video/');
+  const r = new FileReader();
+  r.onload = e => {
+    _admSiteImg = e.target.result;
+    const imgEl = document.getElementById('adm-s-img-preview');
+    const vidEl = document.getElementById('adm-s-vid-preview');
+    if(isVideo){
+      imgEl.style.display='none';
+      vidEl.src = _admSiteImg; vidEl.style.display='block';
+    } else {
+      vidEl.style.display='none';
+      imgEl.src = _admSiteImg; imgEl.style.display='block';
+    }
+    document.getElementById('adm-s-img-hint').style.display='none';
+  };
+  r.readAsDataURL(file);
+}
+
+function admSaveSite(){
+  const wnum = parseInt(document.getElementById('adm-wilaya-sel').value);
+  const w = WILAYAS.find(x => x.num === wnum);
+  if(!w){ adminStatus('⚠️ اختر ولاية أولاً'); return; }
+
+  const name = document.getElementById('adm-s-name').value.trim();
+  const desc = document.getElementById('adm-s-desc').value.trim();
+  if(!name || !desc){ adminStatus('⚠️ الاسم والوصف مطلوبان'); return; }
+
+  const site = {
+    name,
+    desc,
+    map: document.getElementById('adm-s-map').value.trim() || `https://maps.google.com/?q=${encodeURIComponent(name)}+Algeria`,
+    icon: document.getElementById('adm-s-icon').value.trim() || '📍',
+    img: _admSiteImg || ''
+  };
+
+  const idx = parseInt(document.getElementById('adm-site-idx').value);
+  if(idx >= 0){
+    w.sites[idx] = site;
+  } else {
+    w.sites.push(site);
+  }
+
+  // حفظ في localStorage
+  saveDevContent();
+  admCancelSiteForm();
+  admLoadWilayaSites();
+  // تحديث نافذة الولاية إن كانت مفتوحة
+  if(document.getElementById('wilaya-modal').classList.contains('open')) openWilaya(wnum);
+  adminStatus('✅ تم حفظ الموقع بنجاح!');
+}
+
+function admDeleteSite(idx){
+  const wnum = parseInt(document.getElementById('adm-wilaya-sel').value);
+  const w = WILAYAS.find(x => x.num === wnum);
+  if(!w || !confirm(`حذف "${w.sites[idx].name}"؟`)) return;
+  w.sites.splice(idx, 1);
+  saveDevContent();
+  admLoadWilayaSites();
+  adminStatus('🗑️ تم حذف الموقع');
+}
+
+function admCancelSiteForm(){
+  _admSiteImg = null;
+  document.getElementById('adm-site-form').style.display='none';
+  document.getElementById('adm-add-site-btn').style.display='block';
+}
+
+// ════════════════════════
+//  إدارة المخطوطات التراثية
+// ════════════════════════
+let _admPlanImg = null;
+
+function admRenderPlansList(){
+  let html = `<div class="adm-list-title">المخطوطات التراثية الحالية (${PLANS.length} مخطوط)</div>`;
+  PLANS.forEach((p,i) => {
+    html += `
+    <div class="adm-item">
+      <div class="adm-item-info">
+        <div class="adm-item-name">${p.icon||'🏛️'} ${p.name}</div>
+        <div class="adm-item-sub">📍 ${p.location} — ${p.category}</div>
+      </div>
+      <div class="adm-item-btns">
+        <button class="adm-ibtn adm-edit" onclick="admShowPlanForm(${i})">✏️ تعديل</button>
+        <button class="adm-ibtn adm-add-inline" onclick="admShowPlanForm(-1)" title="إضافة مخطوط جديد">➕</button>
+        <button class="adm-ibtn adm-del" onclick="admDeletePlan(${i})">🗑️</button>
+      </div>
+    </div>`;
+  });
+  const el = document.getElementById('adm-plans-list');
+  if(el) el.innerHTML = html;
+}
+
+function admShowPlanForm(idx){
+  _admPlanImg = null;
+  document.getElementById('adm-plan-form').style.display='block';
+  document.getElementById('adm-plan-idx').value = idx;
+
+  if(idx >= 0){
+    const p = PLANS[idx];
+    document.getElementById('adm-plan-form-title').textContent = '✏️ تعديل: ' + p.name;
+    document.getElementById('adm-p-name').value = p.name;
+    document.getElementById('adm-p-cat').value = p.category||'';
+    document.getElementById('adm-p-loc').value = p.location||'';
+    document.getElementById('adm-p-desc').value = p.desc;
+    document.getElementById('adm-p-period').value = p.period||'';
+    document.getElementById('adm-p-style').value = p.style||'';
+    document.getElementById('adm-p-size').value = p.size||'';
+    document.getElementById('adm-p-status').value = p.status||'';
+    document.getElementById('adm-p-icon').value = p.icon||'🏛️';
+    if(p.img){
+      document.getElementById('adm-p-img-preview').src = p.img;
+      document.getElementById('adm-p-img-preview').style.display='block';
+      document.getElementById('adm-p-img-hint').style.display='none';
+      _admPlanImg = p.img;
+    } else {
+      document.getElementById('adm-p-img-preview').style.display='none';
+      document.getElementById('adm-p-img-hint').style.display='block';
+    }
+  } else {
+    document.getElementById('adm-plan-form-title').textContent = '➕ إضافة مخطوط جديد';
+    ['adm-p-name','adm-p-cat','adm-p-loc','adm-p-desc','adm-p-period','adm-p-style','adm-p-size','adm-p-status'].forEach(id => document.getElementById(id).value='');
+    document.getElementById('adm-p-icon').value='🏛️';
+    document.getElementById('adm-p-img-preview').style.display='none';
+    document.getElementById('adm-p-img-hint').style.display='block';
+  }
+  document.getElementById('adm-plan-form').scrollIntoView({behavior:'smooth'});
+}
+
+function admPlanImgPreview(input){ admPlanMediaPreview(input); }
+function admPlanMediaPreview(input){
+  const file = input.files[0]; if(!file) return;
+  const isVideo = file.type.startsWith('video/');
+  const r = new FileReader();
+  r.onload = e => {
+    _admPlanImg = e.target.result;
+    const imgEl = document.getElementById('adm-p-img-preview');
+    const vidEl = document.getElementById('adm-p-vid-preview');
+    if(isVideo){
+      imgEl.style.display='none';
+      vidEl.src = _admPlanImg; vidEl.style.display='block';
+    } else {
+      vidEl.style.display='none';
+      imgEl.src = _admPlanImg; imgEl.style.display='block';
+    }
+    document.getElementById('adm-p-img-hint').style.display='none';
+  };
+  r.readAsDataURL(file);
+}
+
+function admSavePlan(){
+  const name = document.getElementById('adm-p-name').value.trim();
+  const desc = document.getElementById('adm-p-desc').value.trim();
+  if(!name||!desc){ adminStatus('⚠️ الاسم والوصف مطلوبان'); return; }
+
+  const plan = {
+    name,
+    category: document.getElementById('adm-p-cat').value.trim()||'تراث معماري',
+    location: document.getElementById('adm-p-loc').value.trim()||'الجزائر',
+    desc,
+    period: document.getElementById('adm-p-period').value.trim()||'—',
+    style: document.getElementById('adm-p-style').value.trim()||'—',
+    size: document.getElementById('adm-p-size').value.trim()||'—',
+    status: document.getElementById('adm-p-status').value.trim()||'جارٍ توثيقه',
+    icon: document.getElementById('adm-p-icon').value.trim()||'🏛️',
+    img: _admPlanImg||''
+  };
+
+  const idx = parseInt(document.getElementById('adm-plan-idx').value);
+  if(idx >= 0) PLANS[idx] = plan;
+  else PLANS.push(plan);
+
+  saveDevContent();
+  admCancelPlanForm();
+  admRenderPlansList();
+  renderPlans();
+  adminStatus('✅ تم حفظ المخطوط!');
+}
+
+function admDeletePlan(idx){
+  if(!confirm(`حذف "${PLANS[idx].name}"؟`)) return;
+  PLANS.splice(idx,1);
+  saveDevContent();
+  admRenderPlansList();
+  renderPlans();
+  adminStatus('🗑️ تم حذف المخطوط');
+}
+
+function admCancelPlanForm(){
+  _admPlanImg = null;
+  document.getElementById('adm-plan-form').style.display='none';
+}
+
+// ════════════════════════
+//  إدارة المجتمع — المنشورات
+// ════════════════════════
+function admRenderPostsList(){
+  const el = document.getElementById('adm-posts-list');
+  if(!el) return;
+  let posts = JSON.parse(localStorage.getItem('turath_posts')||'[]');
+  if(!posts.length){ el.innerHTML='<div style="color:#4da3d4;padding:16px;text-align:center">لا توجد منشورات بعد</div>'; return; }
+  let html = `<div class="adm-list-title">منشورات المجتمع (${posts.length} منشور)</div>`;
+  posts.forEach((p,i) => {
+    const preview = p.img
+      ? (p.img.startsWith('data:video') ? '🎬 فيديو' : `<img src="${p.img}" style="width:50px;height:40px;object-fit:cover;border-radius:4px;vertical-align:middle">`)
+      : '📝';
+    html += `
+    <div class="adm-item">
+      <div class="adm-item-info">
+        <div class="adm-item-name">${preview} ${p.author}</div>
+        <div class="adm-item-sub">📍 ${p.place} — ${p.text.substring(0,50)}...</div>
+      </div>
+      <div class="adm-item-btns">
+        <button class="adm-ibtn adm-del" onclick="admDeletePost('${p.id}')">🗑️ حذف</button>
+      </div>
+    </div>`;
+  });
+  el.innerHTML = html;
+}
+
+function admDeletePost(id){
+  if(!confirm('حذف هذا المنشور نهائياً؟')) return;
+  let posts = JSON.parse(localStorage.getItem('turath_posts')||'[]');
+  posts = posts.filter(p => p.id !== id);
+  localStorage.setItem('turath_posts', JSON.stringify(posts));
+  renderPosts(posts);
+  admRenderPostsList();
+  adminStatus('🗑️ تم حذف المنشور');
+}
+
+// ════════════════════════
+//  حفظ وتحميل المحتوى
+// ════════════════════════
+function saveDevContent(){
+  // حفظ المواقع المعدّلة لكل ولاية
+  const sitesData = {};
+  WILAYAS.forEach(w => { sitesData[w.num] = w.sites; });
+  localStorage.setItem('turath_dev_sites', JSON.stringify(sitesData));
+  // حفظ المخطوطات
+  localStorage.setItem('turath_dev_plans', JSON.stringify(PLANS));
+}
+
+function loadDevContent(){
+  // تحميل المواقع
+  const sitesData = JSON.parse(localStorage.getItem('turath_dev_sites')||'null');
+  if(sitesData){
+    WILAYAS.forEach(w => {
+      if(sitesData[w.num]) w.sites = sitesData[w.num];
+    });
+  }
+  // تحميل المخطوطات
+  const plansData = JSON.parse(localStorage.getItem('turath_dev_plans')||'null');
+  if(plansData){
+    PLANS.length = 0;
+    plansData.forEach(p => PLANS.push(p));
+  }
+}
+
+function adminStatus(msg){
+  const el = document.getElementById('admin-status');
+  if(!el) return;
+  el.textContent = msg;
+  setTimeout(()=>{ if(el) el.textContent=''; }, 3000);
+}
+
+// تطبيق الصور المحفوظة على البيانات عند كل تحميل
+function applyDevImages(){
+  const saved = JSON.parse(localStorage.getItem('turath_dev_imgs') || '{}');
+  WILAYAS.forEach(w => {
+    w.sites.forEach((s, si) => {
+      const key = `site_w_${w.num}_${si}`;
+      if(saved[key]) s.img = saved[key];
+    });
+  });
+  PLANS.forEach((p, pi) => {
+    const key = `plan_p_${pi}`;
+    if(saved[key]) p.img = saved[key];
+  });
+}
+
+</script>
+
+<!-- ══ DEV IMAGE PICKER MINI MODAL ══ -->
+<style>
+#dev-picker-overlay {
+  position: fixed; inset: 0; z-index: 8000;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(5px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.2s ease;
+}
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+#dev-picker-box {
+  background: #071520;
+  border: 2px solid #4da3d4;
+  border-radius: 14px;
+  width: 100%; max-width: 420px;
+  overflow: hidden;
+  animation: modalIn 0.25s ease;
+  font-family: 'Noto Naskh Arabic', serif;
+  direction: rtl;
+}
+#dev-picker-header {
+  background: linear-gradient(135deg,#0a1e2e,#1a4a6e);
+  padding: 14px 18px;
+  display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 2px solid #4da3d4;
+}
+#dev-picker-title { font-family:'Amiri',serif; font-size:1.2rem; color:#d0eaf7; }
+#dev-picker-label { font-size:0.78rem; color:rgba(208,234,247,0.7); margin-top:2px; }
+#dev-picker-close {
+  background: none; border: 1px solid rgba(77,163,212,0.35);
+  color: #f5dfa0; cursor: pointer; padding: 3px 10px;
+  border-radius: 5px; font-size: 1rem; transition: 0.2s;
+}
+#dev-picker-close:hover { background: rgba(200,146,42,0.2); }
+#dev-picker-body { padding: 18px; }
+#dev-picker-current img, #dev-picker-preview-img {
+  width: 100%; max-height: 150px; object-fit: cover;
+  border-radius: 8px; border: 1px solid #7a3b1260;
+}
+#dev-picker-empty {
+  text-align:center; padding:16px;
+  color:#7a3b12; font-size:0.88rem;
+  background:#3d1f0a30; border-radius:8px;
+}
+.dev-picker-section-label {
+  font-size: 0.8rem; color: #c8922a; font-weight: 700; margin-bottom: 8px;
+}
+#dev-picker-dropzone {
+  border: 2px dashed #1a6fa8; border-radius: 8px;
+  min-height: 90px; display: flex; align-items: center;
+  justify-content: center; flex-direction: column; gap: 6px;
+  cursor: pointer; color: #c8922a; font-size: 0.88rem;
+  transition: 0.2s; padding: 12px;
+}
+#dev-picker-dropzone:hover { border-color: #4da3d4; background: #3d1f0a30; }
+#dev-picker-actions { display: flex; gap: 8px; margin-top: 16px; }
+.dev-picker-btn {
+  flex: 1; padding: 9px 12px; border: none; border-radius: 8px;
+  cursor: pointer; font-family:'Noto Naskh Arabic',serif;
+  font-size: 0.9rem; font-weight: 600; transition: opacity 0.2s;
+}
+.dev-picker-btn:hover { opacity: 0.85; }
+.dev-picker-save   { background: #c8922a; color: #071520; }
+.dev-picker-del    { background: #7a2020; color: #ffeaea; }
+.dev-picker-cancel { background: #0a1e2e; color: #4da3d4; border: 1px solid #7a3b12; }
+</style>
+
+<!-- ══ ADMIN PANEL STYLES ══ -->
+<style>
+#admin-panel-overlay {
+  position:fixed; inset:0; z-index:9999;
+  background:rgba(0,0,0,0.78); backdrop-filter:blur(6px);
+  display:flex; align-items:center; justify-content:center;
+  padding:16px;
+}
+#admin-panel-box {
+  background:#071520;
+  border:2px solid #4da3d4;
+  border-radius:14px;
+  width:100%; max-width:700px;
+  max-height:92vh; overflow-y:auto;
+  box-shadow:0 20px 60px rgba(0,0,0,0.7);
+  animation:modalIn 0.3s ease;
+  font-family:'Noto Naskh Arabic',serif;
+  direction:rtl;
+}
+#admin-header {
+  background:linear-gradient(135deg,#0a1e2e,#1a4a6e,#1a6fa8);
+  padding:16px 20px;
+  display:flex; align-items:center; justify-content:space-between;
+  border-bottom:2px solid #4da3d4;
+  border-radius:12px 12px 0 0;
+  position:sticky; top:0; z-index:10;
+}
+#admin-title { font-family:'Amiri',serif; font-size:1.4rem; color:#f5dfa0; }
+#admin-sub { font-size:0.75rem; color:rgba(245,223,160,0.55); margin-top:2px; }
+#admin-close-btn {
+  background:none; border:1px solid rgba(77,163,212,0.4);
+  color:#f5dfa0; font-size:1rem; cursor:pointer;
+  padding:4px 12px; border-radius:6px; transition:0.2s;
+}
+#admin-close-btn:hover { background:rgba(200,146,42,0.2); }
+
+/* تبويبات اللوحة */
+#admin-tabs {
+  display:flex; gap:0;
+  border-bottom:2px solid #1a6fa850;
+  background:#06101a;
+}
+.adm-tab {
+  flex:1; padding:12px;
+  background:none; border:none; color:#4da3d4;
+  font-family:'Noto Naskh Arabic',serif; font-size:0.95rem;
+  cursor:pointer; transition:0.2s;
+  border-bottom:3px solid transparent; margin-bottom:-2px;
+}
+.adm-tab:hover { color:#4da3d4; background:#1a4a6e30; }
+.adm-tab.active { color:#4da3d4; border-bottom-color:#4da3d4; background:#1a4a6e50; }
+
+/* الأقسام */
+.adm-pane { padding:18px 20px; }
+.adm-row { margin-bottom:12px; }
+.adm-lbl { display:block; font-size:0.82rem; color:#4da3d4; font-weight:700; margin-bottom:5px; }
+.adm-inp {
+  width:100%; padding:9px 12px;
+  background:#0a1e2e; color:#d0eaf7;
+  border:1px solid #7a3b1260; border-radius:7px;
+  font-family:'Noto Naskh Arabic',serif; font-size:0.9rem;
+  outline:none; transition:border 0.2s;
+}
+.adm-inp:focus { border-color:#4da3d4; }
+.adm-ta { resize:vertical; min-height:70px; }
+
+/* قائمة العناصر */
+.adm-list-title {
+  font-family:'Amiri',serif; font-size:1.05rem; color:#4da3d4;
+  margin-bottom:10px; padding-bottom:8px;
+  border-bottom:1px solid #7a3b1240;
+}
+.adm-item {
+  display:flex; align-items:center; justify-content:space-between;
+  background:#0a1e2e; border:1px solid #1a6fa840;
+  border-radius:8px; padding:10px 14px; margin-bottom:8px;
+  gap:10px;
+}
+.adm-item-info { flex:1; min-width:0; }
+.adm-item-name { color:#d0eaf7; font-size:0.95rem; font-weight:600; }
+.adm-item-sub { color:#2a6fa0; font-size:0.78rem; margin-top:2px;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.adm-item-btns { display:flex; gap:6px; flex-shrink:0; }
+.adm-ibtn {
+  padding:5px 10px; border:none; border-radius:6px;
+  cursor:pointer; font-size:0.82rem; transition:opacity 0.2s;
+  font-family:'Noto Naskh Arabic',serif;
+}
+.adm-ibtn:hover { opacity:0.8; }
+.adm-edit { background:#1a4a6e; color:#d0eaf7; }
+.adm-del  { background:#7a2020; color:#ffeaea; }
+.adm-add-inline { background:#1a5a7a; color:#d0eaf7; }
+
+/* نموذج التعديل */
+.adm-form-title {
+  font-family:'Amiri',serif; font-size:1.1rem; color:#4da3d4;
+  margin-bottom:14px; padding:10px 14px;
+  background:#1a4a6e30; border-radius:8px;
+  border-right:3px solid #4da3d4;
+}
+.adm-img-picker {
+  border:2px dashed #1a6fa8; border-radius:8px;
+  padding:14px; text-align:center; cursor:pointer;
+  color:#c8922a; font-size:0.88rem; transition:0.2s;
+  min-height:70px; display:flex; align-items:center;
+  justify-content:center; flex-direction:column; gap:6px;
+}
+.adm-img-picker:hover { border-color:#4da3d4; background:#3d1f0a30; }
+
+/* أزرار */
+.adm-btn {
+  padding:10px 18px; border:none; border-radius:8px;
+  cursor:pointer; font-family:'Noto Naskh Arabic',serif;
+  font-size:0.95rem; font-weight:600; transition:opacity 0.2s;
+}
+.adm-btn:hover { opacity:0.85; }
+.adm-save   { background:#c8922a; color:#071520; }
+.adm-cancel { background:#0a1e2e; color:#4da3d4; border:1px solid #7a3b12; }
+.adm-add    { background:#1a5a7a; color:#d0eaf7; width:100%; }
+.adm-sel {
+  width:100%; padding:9px 12px;
+  background:#0a1e2e; color:#d0eaf7;
+  border:1px solid #7a3b1260; border-radius:7px;
+  font-family:'Noto Naskh Arabic',serif; font-size:0.9rem;
+  outline:none; cursor:pointer;
+}
+.adm-sel:focus { border-color:#4da3d4; }
+
+#admin-footer {
+  background:#06101a; padding:11px 20px;
+  display:flex; justify-content:space-between; align-items:center;
+  border-top:1px solid #7a3b1240;
+  border-radius:0 0 12px 12px;
+  font-size:0.8rem;
+  position:sticky; bottom:0;
+}
+#admin-status { color:#4da3d4; font-weight:700; }
+</style>
+
+</body>
+</html>
