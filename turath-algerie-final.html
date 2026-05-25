@@ -794,85 +794,97 @@ footer { position: relative; }
 .ai-send-btn:hover { opacity:0.9; transform:translateY(-1px); }
 .ai-send-btn:disabled { opacity:0.5; cursor:not-allowed; transform:none; }
 
+
 /* ══════════════════════════════════════════
-   TAB 5: TRADITIONAL CLOTHING AI
+   TAB 5: HERITAGE GALLERY
 ══════════════════════════════════════════ */
-.libas-layout {
-  max-width: 600px; margin: 0 auto;
-  display: flex; flex-direction: column; gap: 20px;
+.gallery-filters {
+  display:flex; flex-wrap:wrap; gap:8px;
+  justify-content:center; margin-bottom:24px; padding:0 10px;
 }
-.libas-step { background: white; border-radius: 14px; border: 1px solid var(--gold-light); padding: 18px; }
-.libas-step-num {
-  font-family: 'Amiri', serif; font-size: 1.1rem;
-  color: var(--brown-deep); font-weight: 700; margin-bottom: 14px;
+.gallery-filter {
+  font-family:'Noto Naskh Arabic',serif;
+  padding:8px 18px; border-radius:30px;
+  border:2px solid var(--gold-light);
+  background:white; color:var(--brown-mid);
+  cursor:pointer; font-size:0.9rem; transition:all 0.25s;
 }
-.libas-upload-zone {
-  border: 2px dashed var(--gold-light); border-radius: 10px;
-  padding: 30px 20px; text-align: center; cursor: pointer;
-  transition: all 0.2s; min-height: 160px;
-  display: flex; align-items: center; justify-content: center;
-  flex-direction: column; gap: 8px;
+.gallery-filter:hover { border-color:var(--gold); background:var(--cream-dark); }
+.gallery-filter.active {
+  background:linear-gradient(135deg,var(--brown-deep),var(--brown-warm));
+  color:var(--gold-pale); border-color:var(--gold); font-weight:700;
 }
-.libas-upload-zone:hover { border-color: var(--gold); background: var(--cream); }
-.libas-upload-zone.has-img { padding: 8px; }
-.libas-upload-title { font-family: 'Amiri', serif; font-size: 1.2rem; color: var(--brown-deep); }
-.libas-upload-sub { font-size: 0.82rem; color: #aaa; }
-.libas-regions-grid {
-  display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;
+.gallery-grid {
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:20px; max-width:1200px; margin:0 auto; padding:0 10px;
 }
-.libas-region-btn {
-  font-family: 'Noto Naskh Arabic', serif;
-  padding: 12px 8px; background: var(--cream-dark);
-  border: 2px solid var(--gold-light); border-radius: 10px;
-  cursor: pointer; transition: all 0.2s;
-  display: flex; flex-direction: column; align-items: center; gap: 4px;
-  font-size: 0.88rem; color: var(--brown-mid);
+.gallery-card {
+  border-radius:16px; overflow:hidden; cursor:pointer; position:relative;
+  box-shadow:0 4px 20px rgba(61,31,10,0.15);
+  transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  background:var(--brown-deep);
 }
-.libas-region-btn:hover { border-color: var(--gold); background: var(--gold-pale); }
-.libas-region-btn.selected {
-  border-color: var(--gold); background: var(--gold);
-  color: var(--brown-deep); font-weight: 700;
+.gallery-card:hover { transform:translateY(-8px) scale(1.02); box-shadow:0 16px 40px rgba(61,31,10,0.3); }
+.gallery-card-img { width:100%; height:300px; object-fit:cover; display:block; transition:transform 0.4s; }
+.gallery-card:hover .gallery-card-img { transform:scale(1.05); }
+.gallery-card:hover .gallery-card-img-wrap img { transform:scale(1.05); }
+.gallery-card-overlay {
+  position:absolute; inset:0;
+  background:linear-gradient(to top,rgba(30,10,0,0.95) 0%,rgba(30,10,0,0.2) 55%,transparent 100%);
+  display:flex; flex-direction:column; justify-content:flex-end; padding:20px;
 }
-.libas-region-icon { font-size: 1.6rem; }
-.libas-generate-btn {
-  font-family: 'Amiri', serif; font-size: 1.3rem;
-  width: 100%; padding: 16px;
-  background: linear-gradient(135deg, var(--brown-deep), var(--brown-warm));
-  color: var(--gold-pale); border: 2px solid var(--gold);
-  border-radius: 12px; cursor: pointer; transition: all 0.25s;
+.gallery-card-region { font-size:0.72rem; color:var(--gold); font-weight:700; letter-spacing:2px; margin-bottom:5px; }
+.gallery-card-title { font-family:'Amiri',serif; font-size:1.35rem; color:white; line-height:1.3; margin-bottom:4px; }
+.gallery-card-sub { font-size:0.78rem; color:rgba(255,255,255,0.65); }
+.gallery-card-badge {
+  position:absolute; top:12px; right:12px;
+  background:var(--gold); color:var(--brown-deep);
+  font-size:0.68rem; padding:3px 10px; border-radius:20px; font-weight:700;
 }
-.libas-generate-btn:disabled { opacity: 0.4; cursor: not-allowed; }
-.libas-generate-btn:not(:disabled):hover { transform: translateY(-2px); box-shadow: 0 6px 20px var(--shadow); }
-.libas-result-title {
-  font-family: 'Amiri', serif; font-size: 1.4rem;
-  color: var(--brown-deep); text-align: center; margin-bottom: 14px;
+.gallery-card-icon { position:absolute; top:12px; left:12px; font-size:1.8rem; filter:drop-shadow(0 2px 4px rgba(0,0,0,0.5)); }
+
+/* نافذة التفاصيل */
+.gallery-modal {
+  display:none; position:fixed; inset:0;
+  background:rgba(0,0,0,0.85); z-index:600;
+  overflow-y:auto; backdrop-filter:blur(8px);
+  padding:20px 15px; align-items:center; justify-content:center;
 }
-.libas-result-img {
-  width: 100%; border-radius: 14px;
-  border: 3px solid var(--gold); margin-bottom: 14px;
+.gallery-modal.open { display:flex; }
+.gallery-modal-box {
+  background:var(--cream); border-radius:20px; max-width:880px; width:100%;
+  position:relative; overflow:hidden; border:2px solid var(--gold);
+  animation:modalIn 0.35s cubic-bezier(0.34,1.56,0.64,1);
 }
-.libas-download-btn {
-  display: block; text-align: center;
-  padding: 12px; background: var(--green-heritage);
-  color: white; border-radius: 10px; text-decoration: none;
-  font-size: 1rem; font-weight: 700; transition: opacity 0.2s;
+.gallery-modal-close {
+  position:absolute; top:12px; left:12px; z-index:10;
+  background:rgba(0,0,0,0.5); border:none; color:white;
+  width:34px; height:34px; border-radius:50%; cursor:pointer; font-size:1rem;
 }
-.libas-download-btn:hover { opacity: 0.85; }
-.libas-loading {
-  text-align: center; padding: 30px;
-  background: white; border-radius: 14px;
-  border: 1px solid var(--gold-light);
+.gallery-modal-close:hover { background:rgba(0,0,0,0.8); }
+.gallery-modal-content { display:grid; grid-template-columns:1fr 1fr; }
+.gallery-modal-img-wrap { position:relative; }
+.gallery-modal-img-wrap img { width:100%; height:100%; object-fit:cover; min-height:380px; }
+.gallery-modal-region {
+  position:absolute; bottom:12px; right:12px;
+  background:var(--gold); color:var(--brown-deep);
+  padding:4px 12px; border-radius:20px; font-size:0.78rem; font-weight:700;
 }
-.libas-loading-spinner {
-  width: 50px; height: 50px; border-radius: 50%;
-  border: 4px solid var(--cream-dark);
-  border-top-color: var(--gold);
-  animation: spin 1s linear infinite;
-  margin: 0 auto 16px;
+.gallery-modal-info { padding:26px 22px; display:flex; flex-direction:column; gap:12px; }
+.gm-title { font-family:'Amiri',serif; font-size:1.7rem; color:var(--brown-deep); }
+.gm-location { font-size:0.85rem; color:var(--gold); font-weight:700; }
+.gm-desc { font-size:0.9rem; color:var(--text-mid); line-height:1.8; }
+.gm-details { display:grid; grid-template-columns:1fr 1fr; gap:8px; background:var(--cream-dark); border-radius:10px; padding:12px; }
+.gm-detail-label { color:var(--gold); font-weight:700; font-size:0.72rem; }
+.gm-detail-val { color:var(--text-dark); font-size:0.82rem; margin-top:2px; }
+.gm-ai-btn {
+  font-family:'Amiri',serif; padding:11px 18px;
+  background:linear-gradient(135deg,var(--brown-deep),var(--brown-warm));
+  color:var(--gold-pale); border:2px solid var(--gold);
+  border-radius:10px; cursor:pointer; font-size:0.95rem; transition:all 0.2s; margin-top:auto;
 }
-@keyframes spin { to { transform: rotate(360deg); } }
-.libas-loading-text { font-family: 'Amiri', serif; font-size: 1.1rem; color: var(--brown-deep); }
-.libas-loading-sub { font-size: 0.82rem; color: #aaa; margin-top: 6px; }
+.gm-ai-btn:hover { opacity:0.9; transform:translateY(-1px); }
+.gallery-card.hidden { display:none; }
 
 /* ══════════════════════════════════════════
    RESPONSIVE — DESKTOP (PC)
@@ -1084,7 +1096,19 @@ footer { position: relative; }
   /* الفوتر */
   footer { font-size:0.78rem; padding:14px 10px 70px; }
 
-  /* ══ المرشد الذكي على الهاتف ══ */
+  /* ══ جاليري الأزياء على الهاتف ══ */
+  #tab-libas { padding: 8px 6px 110px !important; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; }
+  .gallery-card-img { height: 190px !important; }
+  .gallery-card-title { font-size: 1rem !important; }
+  .gallery-card-sub { display: none; }
+  .gallery-modal-content { grid-template-columns: 1fr !important; }
+  .gallery-modal-img-wrap img { min-height: 220px !important; max-height: 260px; }
+  .gallery-modal-info { padding: 16px !important; gap: 10px !important; }
+  .gm-title { font-size: 1.3rem !important; }
+  .gm-details { grid-template-columns: 1fr 1fr !important; }
+  .gallery-filters { gap: 6px; }
+  .gallery-filter { font-size: 0.8rem; padding: 6px 12px; }
   #tab-ai { padding: 8px 8px 110px !important; overflow-x:hidden !important; }
 
   /* ══ اللباس التراثي على الهاتف ══ */
@@ -1664,91 +1688,48 @@ footer { position: relative; }
     </div>
   </section>
 
-  <!-- ══════ TAB 5: TRADITIONAL CLOTHING AI ══════ -->
+  <!-- ══════ TAB 5: HERITAGE GALLERY ══════ -->
   <section id="tab-libas" class="page-section">
     <div class="section-hero">
-      <h2>👘 اللباس التراثي الذكي</h2>
+      <h2>👘 جاليري الأزياء التراثية</h2>
       <div class="ornament-line"><hr><span>✦</span><hr></div>
-      <p>ارفع صورتك واختر منطقتك — سيُلبسك الذكاء الاصطناعي اللباس التقليدي</p>
+      <p>اكتشف روعة الأزياء التقليدية لمناطق الجزائر — تراث حي يحكي قصة الأجداد</p>
     </div>
 
-    <div class="libas-layout">
+    <!-- فلاتر المناطق -->
+    <div class="gallery-filters">
+      <button class="gallery-filter active" onclick="filterGallery('all', this)">🌟 الكل</button>
+      <button class="gallery-filter" onclick="filterGallery('شمال', this)">🏔️ الشمال</button>
+      <button class="gallery-filter" onclick="filterGallery('جنوب', this)">🏜️ الجنوب</button>
+      <button class="gallery-filter" onclick="filterGallery('شرق', this)">🌉 الشرق</button>
+      <button class="gallery-filter" onclick="filterGallery('غرب', this)">🕌 الغرب</button>
+    </div>
 
-      <!-- الخطوة 1: رفع الصورة -->
-      <div class="libas-step" id="libas-step1">
-        <div class="libas-step-num">① ارفع صورتك</div>
-        <div class="libas-upload-zone" id="libas-upload-zone" onclick="document.getElementById('libas-file').click()">
-          <input type="file" id="libas-file" accept="image/*" style="display:none" onchange="libasPreview(this)">
-          <div id="libas-upload-hint">
-            <div style="font-size:3rem">🤳</div>
-            <div class="libas-upload-title">اضغط لاختيار صورة</div>
-            <div class="libas-upload-sub">صورة واضحة للوجه — JPG أو PNG</div>
+    <!-- المعرض -->
+    <div class="gallery-grid" id="gallery-grid"></div>
+
+    <!-- نافذة التفاصيل -->
+    <div class="gallery-modal" id="gallery-modal" onclick="closeGalleryModal(event)">
+      <div class="gallery-modal-box">
+        <button class="gallery-modal-close" onclick="closeGalleryModalBtn()">✕</button>
+        <div class="gallery-modal-content">
+          <div class="gallery-modal-img-wrap">
+            <img id="gm-img" src="" alt="">
+            <div class="gallery-modal-region" id="gm-region"></div>
           </div>
-          <img id="libas-preview" style="display:none; width:100%; max-height:280px; object-fit:cover; border-radius:10px;">
+          <div class="gallery-modal-info">
+            <h2 id="gm-title" class="gm-title"></h2>
+            <div id="gm-location" class="gm-location"></div>
+            <p id="gm-desc" class="gm-desc"></p>
+            <div class="gm-details" id="gm-details"></div>
+            <button class="gm-ai-btn" id="gm-ai-btn" onclick="askAboutCostume()">
+              🤖 اسأل المرشد الذكي عن هذا الزي
+            </button>
+          </div>
         </div>
       </div>
-
-      <!-- الخطوة 2: اختيار المنطقة -->
-      <div class="libas-step">
-        <div class="libas-step-num">② اختر منطقتك التراثية</div>
-        <div class="libas-regions-grid">
-          <button class="libas-region-btn" onclick="selectLibasRegion(this, 'القبائل')">
-            <span class="libas-region-icon">⛰️</span>
-            <span>القبائل</span>
-          </button>
-          <button class="libas-region-btn" onclick="selectLibasRegion(this, 'تلمسان')">
-            <span class="libas-region-icon">🕌</span>
-            <span>تلمسان</span>
-          </button>
-          <button class="libas-region-btn" onclick="selectLibasRegion(this, 'جانت')">
-            <span class="libas-region-icon">🏜️</span>
-            <span>جانت / الطوارق</span>
-          </button>
-          <button class="libas-region-btn" onclick="selectLibasRegion(this, 'بسكرة')">
-            <span class="libas-region-icon">🌴</span>
-            <span>بسكرة</span>
-          </button>
-          <button class="libas-region-btn" onclick="selectLibasRegion(this, 'قسنطينة')">
-            <span class="libas-region-icon">🌉</span>
-            <span>قسنطينة</span>
-          </button>
-          <button class="libas-region-btn" onclick="selectLibasRegion(this, 'الأوراس')">
-            <span class="libas-region-icon">🏔️</span>
-            <span>الشاوية / الأوراس</span>
-          </button>
-          <button class="libas-region-btn" onclick="selectLibasRegion(this, 'وهران')">
-            <span class="libas-region-icon">🏖️</span>
-            <span>وهران</span>
-          </button>
-          <button class="libas-region-btn" onclick="selectLibasRegion(this, 'ميزاب')">
-            <span class="libas-region-icon">🏘️</span>
-            <span>ميزاب / غرداية</span>
-          </button>
-        </div>
-      </div>
-
-      <!-- الخطوة 3: توليد الصورة -->
-      <button class="libas-generate-btn" id="libas-generate-btn" onclick="generateLibas()" disabled>
-        ✨ ألبسني اللباس التراثي
-      </button>
-
-      <!-- النتيجة -->
-      <div id="libas-result" style="display:none">
-        <div class="libas-result-title">🎉 نتيجتك التراثية</div>
-        <img id="libas-result-img" src="" alt="صورتك بالزي التراثي" class="libas-result-img">
-        <a id="libas-download-btn" href="#" download="turath-photo.jpg" class="libas-download-btn">
-          ⬇️ تحميل الصورة
-        </a>
-      </div>
-
-      <!-- حالة التحميل -->
-      <div id="libas-loading" style="display:none" class="libas-loading">
-        <div class="libas-loading-spinner"></div>
-        <div class="libas-loading-text">الذكاء الاصطناعي يُلبسك اللباس التراثي...</div>
-        <div class="libas-loading-sub">قد يستغرق من 20 إلى 60 ثانية</div>
-      </div>
-
     </div>
+
   </section>
 
   <footer>
@@ -2215,11 +2196,12 @@ const DEFAULT_POSTS = [
 function enterSite(){
   document.getElementById('hero').style.display='none';
   document.getElementById('app').style.display='block';
-  loadDevContent();   // تحميل المحتوى المعدّل من المطور
-  applyDevImages();   // تحميل صور المطور المحفوظة
+  loadDevContent();
+  applyDevImages();
   renderWilayas(WILAYAS);
   renderPlans();
   loadPosts();
+  initGallery();
 }
 
 function showTab(tab){
@@ -2844,89 +2826,191 @@ function submitPost(){
 
 // ════════════════════════════════════════════════
 // ════════════════════════════════════════════════
-//  اللباس التراثي الذكي — Replicate via Vercel
+//  جاليري الأزياء التراثية
 // ════════════════════════════════════════════════
 
-const VERCEL_API_URL = "https://turath-server.vercel.app/api/generate";
+const GALLERY_DATA = [
+  {
+    title: "الشدة التلمسانية",
+    region: "غرب", zone: "تلمسان",
+    icon: "🕌", badge: "أندلسي",
+    img: "https://upload.wikimedia.org/wikipedia/commons/5/5e/Tlemcen_robe.jpg",
+    desc: "الشدة التلمسانية تحفة فنية أندلسية تجمع بين الحرير والذهب والمخمل، تُعدّ من أرقى الأزياء التقليدية في شمال أفريقيا وتُرتدى في المناسبات الكبرى.",
+    details: [
+      {label:"المنطقة", val:"تلمسان — الشمال الغربي"},
+      {label:"المادة", val:"حرير وذهب ومخمل"},
+      {label:"المناسبة", val:"الأعراس والمناسبات"},
+      {label:"الأصل", val:"حضارة أندلسية"},
+    ]
+  },
+  {
+    title: "اللباس القبائلي",
+    region: "شمال", zone: "القبائل",
+    icon: "⛰️", badge: "أمازيغي",
+    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Femme_kabyle.jpg/500px-Femme_kabyle.jpg",
+    desc: "اللباس الأمازيغي القبائلي يتميز بتطريزه الملون بألوان زاهية وحليه الفضية الثقيلة. يعكس هوية الشعب القبائلي ومرونته الثقافية عبر آلاف السنين.",
+    details: [
+      {label:"المنطقة", val:"القبائل الكبرى والصغرى"},
+      {label:"المادة", val:"قطن وصوف وفضة"},
+      {label:"المناسبة", val:"الأعياد والحفلات"},
+      {label:"الأصل", val:"حضارة أمازيغية"},
+    ]
+  },
+  {
+    title: "لباس الطوارق",
+    region: "جنوب", zone: "تمنراست",
+    icon: "🏜️", badge: "صحراوي",
+    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Tuareg_man_2008.jpg/500px-Tuareg_man_2008.jpg",
+    desc: "اللباس الأزرق الأسطوري للطوارق — شعب الصحراء الكبرى. يتميز بعمامة الليثام التي تغطي الوجه واللون الأزرق الداكن الذي يتصبغ منه جلدهم فسُمّوا بـ'الرجال الزرق'.",
+    details: [
+      {label:"المنطقة", val:"تمنراست — الهقار"},
+      {label:"المادة", val:"قطن مصبوغ بالنيلة"},
+      {label:"المميز", val:"عمامة الليثام"},
+      {label:"الأصل", val:"حضارة طوارقية"},
+    ]
+  },
+  {
+    title: "اللباس الشاوي",
+    region: "شرق", zone: "الأوراس",
+    icon: "🏔️", badge: "أمازيغي",
+    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Tenue_Chaoui.jpg/500px-Tenue_Chaoui.jpg",
+    desc: "زي الشاوية يتميز بألوانه الصارخة وتطريزاته الهندسية الفريدة المستوحاة من جبال الأوراس. الحلي الفضية الثقيلة جزء أساسي من هذا الزي العريق.",
+    details: [
+      {label:"المنطقة", val:"الأوراس — باتنة وخنشلة"},
+      {label:"المادة", val:"صوف وفضة"},
+      {label:"المميز", val:"تطريز هندسي"},
+      {label:"الأصل", val:"حضارة شاوية أمازيغية"},
+    ]
+  },
+  {
+    title: "البرنوس الجزائري",
+    region: "جنوب", zone: "بسكرة",
+    icon: "🌴", badge: "صحراوي",
+    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Burnous_Algerie.jpg/500px-Burnous_Algerie.jpg",
+    desc: "البرنوس الصوفي الكلاسيكي — رمز الرجل الجزائري الأصيل. يُصنع من صوف الغنم الخالص ويتميز بقبعته المخروطية. يرتديه الرجال في المناسبات ومجالس الكبار.",
+    details: [
+      {label:"المنطقة", val:"الهضاب العليا والجنوب"},
+      {label:"المادة", val:"صوف مغزول يدوياً"},
+      {label:"المميز", val:"القبة المخروطية"},
+      {label:"الأصل", val:"تراث بربري قديم"},
+    ]
+  },
+  {
+    title: "اللباس المزابي",
+    region: "جنوب", zone: "غرداية",
+    icon: "🏘️", badge: "إباضي",
+    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Femme_mozabite.jpg/500px-Femme_mozabite.jpg",
+    desc: "تتميز المرأة المزابية بلباسها الأبيض الكامل الذي يُغطي كل الجسم في رمزية روحانية عميقة. تصميمه الفريد يعكس قيم الحضارة الإباضية في الحياء والتواضع.",
+    details: [
+      {label:"المنطقة", val:"غرداية — وادي ميزاب"},
+      {label:"المادة", val:"قطن أبيض"},
+      {label:"المميز", val:"التغطية الكاملة البيضاء"},
+      {label:"الأصل", val:"حضارة إباضية"},
+    ]
+  },
+  {
+    title: "الحايك القسنطيني",
+    region: "شرق", zone: "قسنطينة",
+    icon: "🌉", badge: "عثماني",
+    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Haik_Constantine.jpg/500px-Haik_Constantine.jpg",
+    desc: "الحايك الأبيض الرقيق رمز المرأة القسنطينية الأصيلة. يُعبّر عن الوقار والجمال ويُلقى على الكتف بطريقة فنية مميزة تتوارثها الأجيال.",
+    details: [
+      {label:"المنطقة", val:"قسنطينة — الشرق"},
+      {label:"المادة", val:"حرير أو قطن أبيض"},
+      {label:"المميز", val:"البياض والرقة"},
+      {label:"الأصل", val:"تراث عثماني"},
+    ]
+  },
+  {
+    title: "اللباس الوهراني",
+    region: "غرب", zone: "وهران",
+    icon: "🏖️", badge: "أندلسي",
+    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Costume_Oran.jpg/500px-Costume_Oran.jpg",
+    desc: "اللباس الوهراني يجمع بين الأناقة الأندلسية وأثر الحضور الإسباني في المدينة. يتميز بألوانه الزاهية وتطريزاته الدقيقة المستوحاة من تاريخ المدينة المتنوع.",
+    details: [
+      {label:"المنطقة", val:"وهران — الشمال الغربي"},
+      {label:"المادة", val:"حرير وقطن"},
+      {label:"المميز", val:"مزيج أندلسي إسباني"},
+      {label:"الأصل", val:"تراث متعدد الحضارات"},
+    ]
+  },
+];
 
-let libasImageBase64 = null;
-let libasSelectedRegion = null;
+let currentCostume = null;
 
-function libasPreview(input) {
-  const file = input.files[0];
-  if (!file) return;
-  if (file.size > 8 * 1024 * 1024) {
-    alert('الصورة كبيرة جداً — الحد الأقصى 8MB');
-    return;
-  }
-  const reader = new FileReader();
-  reader.onload = e => {
-    // حفظ base64 بدون header
-    libasImageBase64 = e.target.result.split(',')[1];
-    // عرض المعاينة
-    const preview = document.getElementById('libas-preview');
-    preview.src = e.target.result;
-    preview.style.display = 'block';
-    document.getElementById('libas-upload-hint').style.display = 'none';
-    document.getElementById('libas-upload-zone').classList.add('has-img');
-    checkLibasReady();
-  };
-  reader.readAsDataURL(file);
+function initGallery() {
+  renderGallery(GALLERY_DATA);
 }
 
-function selectLibasRegion(btn, region) {
-  document.querySelectorAll('.libas-region-btn').forEach(b => b.classList.remove('selected'));
-  btn.classList.add('selected');
-  libasSelectedRegion = region;
-  checkLibasReady();
+function renderGallery(data) {
+  const grid = document.getElementById('gallery-grid');
+  const colors = ['#3d1f0a','#1a3a2a','#0a1a3a','#2a0a1a','#1a2a0a','#3a1a0a','#0a2a3a','#2a1a3a'];
+  grid.innerHTML = data.map((item, i) => `
+    <div class="gallery-card" onclick="openGalleryModal(${GALLERY_DATA.indexOf(item)})">
+      <div class="gallery-card-img-wrap" style="width:100%;height:300px;position:relative;overflow:hidden;background:${colors[i%colors.length]}">
+        <img
+          src="${item.img}"
+          alt="${item.title}"
+          style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s;"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+        >
+        <div style="display:none;position:absolute;inset:0;background:linear-gradient(135deg,${colors[i%colors.length]},#7a3b12);align-items:center;justify-content:center;flex-direction:column;gap:12px">
+          <div style="font-size:4rem">${item.icon}</div>
+          <div style="font-family:'Amiri',serif;font-size:1.3rem;color:#f5dfa0;text-align:center;padding:0 16px">${item.title}</div>
+        </div>
+      </div>
+      <div class="gallery-card-overlay">
+        <div class="gallery-card-region">${item.zone}</div>
+        <div class="gallery-card-title">${item.title}</div>
+        <div class="gallery-card-sub">اضغط لاكتشاف التفاصيل ←</div>
+      </div>
+      <div class="gallery-card-badge">${item.badge}</div>
+      <div class="gallery-card-icon">${item.icon}</div>
+    </div>
+  `).join('');
 }
 
-function checkLibasReady() {
-  const btn = document.getElementById('libas-generate-btn');
-  btn.disabled = !(libasImageBase64 && libasSelectedRegion);
+function filterGallery(region, btn) {
+  document.querySelectorAll('.gallery-filter').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const filtered = region === 'all' ? GALLERY_DATA : GALLERY_DATA.filter(i => i.region === region);
+  renderGallery(filtered);
 }
 
-async function generateLibas() {
-  if (!libasImageBase64 || !libasSelectedRegion) return;
+function openGalleryModal(idx) {
+  const item = GALLERY_DATA[idx];
+  currentCostume = item;
+  document.getElementById('gm-img').src = item.img;
+  document.getElementById('gm-img').onerror = function(){ this.src=`https://via.placeholder.com/500x400/3d1f0a/c8922a?text=${encodeURIComponent(item.title)}`; };
+  document.getElementById('gm-title').textContent = item.title;
+  document.getElementById('gm-region').textContent = item.zone;
+  document.getElementById('gm-location').textContent = '📍 ' + item.details[0].val;
+  document.getElementById('gm-desc').textContent = item.desc;
+  document.getElementById('gm-details').innerHTML = item.details.map(d => `
+    <div class="gm-detail">
+      <div class="gm-detail-label">${d.label}</div>
+      <div class="gm-detail-val">${d.val}</div>
+    </div>
+  `).join('');
+  document.getElementById('gallery-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
 
-  // إخفاء النتيجة السابقة وإظهار التحميل
-  document.getElementById('libas-result').style.display = 'none';
-  document.getElementById('libas-loading').style.display = 'block';
-  document.getElementById('libas-generate-btn').disabled = true;
+function closeGalleryModal(e) {
+  if(e.target === document.getElementById('gallery-modal')) closeGalleryModalBtn();
+}
+function closeGalleryModalBtn() {
+  document.getElementById('gallery-modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
 
-  try {
-    const response = await fetch(VERCEL_API_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        imageBase64: libasImageBase64,
-        region: libasSelectedRegion
-      })
-    });
-
-    const data = await response.json();
-
-    if (!response.ok || data.error) {
-      throw new Error(data.error || 'فشل توليد الصورة');
-    }
-
-    // عرض النتيجة
-    document.getElementById('libas-loading').style.display = 'none';
-    document.getElementById('libas-result').style.display = 'block';
-    const resultImg = document.getElementById('libas-result-img');
-    resultImg.src = data.imageUrl;
-    document.getElementById('libas-download-btn').href = data.imageUrl;
-
-    // تمرير للنتيجة
-    resultImg.scrollIntoView({ behavior: 'smooth' });
-
-  } catch (err) {
-    document.getElementById('libas-loading').style.display = 'none';
-    document.getElementById('libas-generate-btn').disabled = false;
-    alert(`⚠️ ${err.message}\nحاول مرة أخرى.`);
-  }
-
-  document.getElementById('libas-generate-btn').disabled = false;
+function askAboutCostume() {
+  if(!currentCostume) return;
+  closeGalleryModalBtn();
+  showTabMobile('ai', document.getElementById('mob-btn-ai'));
+  setTimeout(() => {
+    sendAiMsg(`حدثني بالتفصيل عن "${currentCostume.title}" من منطقة ${currentCostume.zone} — تاريخه، طريقة صنعه، مناسبات ارتدائه، ومعناه الثقافي`);
+  }, 500);
 }
 
 // ════════════════════════════════════════════════
